@@ -269,6 +269,7 @@ namespace Store {
 			this->qunt_kilo->Name = L"qunt_kilo";
 			this->qunt_kilo->Size = System::Drawing::Size(296, 29);
 			this->qunt_kilo->TabIndex = 0;
+			this->qunt_kilo->ValueChanged += gcnew System::EventHandler(this, &Return::qunt_kilo_ValueChanged);
 			// 
 			// button3
 			// 
@@ -486,7 +487,9 @@ namespace Store {
 				SqlCommand^ command = gcnew SqlCommand(query, connection);
 				SqlDataReader^ reader = command->ExecuteReader();
 				if (reader->HasRows) {
-					itembox->Items->Clear();
+					this->itembox->Items->Clear();
+					this->splitContainer1->Panel1->Enabled = 0;
+					this->itembox->Enabled = 1;
 					while (reader->Read()) {
 						SqlConnection^ itemconnection = gcnew SqlConnection(connectionString);
 						int itemID = reader->GetInt32(reader->GetOrdinal("item_id"));
@@ -537,14 +540,15 @@ namespace Store {
 				MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
 		}
+		private: double changeprice = 0;
 		private: System::Void itembox_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 			ListBox^ listBox = safe_cast<ListBox^>(sender);
 
 			if (listBox->SelectedItem != nullptr) {
 				ListItem^ selectedItem = safe_cast<ListItem^>(listBox->SelectedItem);
 				this->qunt_kilo->Value = Convert::ToDecimal(selectedItem->Quantity);
-
-
+				changeprice = selectedItem->Sellprice;
+				this->label2->Text = FormatNumberWithCommas(changeprice * Convert::ToDouble(this->qunt_kilo->Value));
 			}
 		}
 		private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -570,9 +574,9 @@ namespace Store {
 			SqlConnection^ connection = gcnew SqlConnection(connectionString);
 			try {
 				connection->Open();
-				String^ query = "SELECT P.*, I.kilo_in_price AS ogkilo , I.qun_in_price As ogqun FROM Purchase P JOIN Items I ON P.item_id = I.id WHERE P.id = "+selectedItem->ID+";";
+				String^ query = "SELECT P.*, I.kilo_in_price AS ogkilo , I.qun_in_price As ogqun FROM Purchase P JOIN Items I ON P.item_id = I.id WHERE P.id = " + selectedItem->ID + ";";
 				SqlCommand^ command = gcnew SqlCommand(query, connection);
-				SqlDataReader^ reader = command->ExecuteReader(); 
+				SqlDataReader^ reader = command->ExecuteReader();
 				bool fromfirst = 0;
 				double first = 0;
 				bool fromsecond = 0;
@@ -655,18 +659,25 @@ namespace Store {
 							if (fromfirst) {
 								query += "Update Purchase set kilo =kilo-" + first + " where id=" + selectedItem->ID + ";";
 								if (retqunt_kilo) {
-									query += "Update Item_return set kilo=kilo+"+retqunt_kilo + ", in_price=(SELECT MAX(value) FROM (VALUES ((in_price),("+reader->GetDecimal(15)+")) AS t(value)) where item_id="+ reader->GetInt32(1)+"; ";
+									query += "Update Item_return set kilo=kilo+" + retqunt_kilo + ", in_price=(SELECT MAX(value) FROM (VALUES ((in_price),(" + reader->GetDecimal(15) + ")) AS t(value)) where item_id=" + reader->GetInt32(1) + "; ";
+									query += "Update Purchase set kill_or_qunt =kill_or_qunt-" + retqunt_kilo + " where id=" + selectedItem->ID + ";";
 								}
 							}
 							else {
 								query += "Update Purchase set kill_or_qunt =kill_or_qunt-" + second + " where id=" + selectedItem->ID + ";";
 								if (retqunt_kilo) {
 									query += "Update Item_return set kilo=kilo+" + retqunt_kilo + ", in_price=(SELECT MAX(value) FROM (VALUES (in_price),(" + reader->GetDecimal(6) + ")) AS t(value)) where item_id=" + reader->GetInt32(1) + "; ";
+									query += "Update Purchase set kilo =kilo-" + retqunt_kilo + " where id=" + selectedItem->ID + ";";
 								}
 							}
 						}
 						else {
-							query += "Update Item_return set kilo=kilo+" + retqunt_kilo + ", in_price=(SELECT MAX(value) FROM (VALUES (in_price),(" + reader->GetDecimal(15) + "),("+ reader->GetDecimal(6) +")) AS t(value)) where item_id = " + reader->GetInt32(1) + "; ";
+							query += "Update Item_return set kilo=kilo+" + retqunt_kilo + ", in_price=(SELECT MAX(value) FROM (VALUES (in_price),(" + reader->GetDecimal(15) + "),(" + reader->GetDecimal(6) + ")) AS t(value)) where item_id = " + reader->GetInt32(1) + "; ";
+							double updateret1 = min(Convert::ToDouble(reader->GetDecimal(4)), retqunt_kilo);
+							retqunt_kilo -= updateret1;
+							double updateret2 = min(Convert::ToDouble(reader->GetDecimal(14)), retqunt_kilo);
+							query += "Update Purchase set kilo =kilo-" + updateret1 + " where id=" + selectedItem->ID + ";";
+							query += "Update Purchase set kill_or_qunt =kill_or_qunt-" + updateret2 + " where id=" + selectedItem->ID + ";";
 						}
 					}
 					else {
@@ -676,21 +687,28 @@ namespace Store {
 								query += "Update Purchase set quantity =quantity-" + first + " where id=" + selectedItem->ID + ";";
 								if (retqunt_kilo) {
 									query += "Update Item_return set quantity=quantity+" + retqunt_kilo + ", in_price=(SELECT MAX(value) FROM (VALUES (in_price),(" + reader->GetDecimal(15) + ")) AS t(value)) where item_id=" + reader->GetInt32(1) + "; ";
+									query += "Update Purchase set kill_or_qunt =kill_or_qunt-" + retqunt_kilo + " where id=" + selectedItem->ID + ";";
 								}
 							}
 							else {
 								query += "Update Purchase set kill_or_qunt =kill_or_qunt-" + second + " where id=" + selectedItem->ID + ";";
 								if (retqunt_kilo) {
 									query += "Update Item_return set quantity=quantity+" + retqunt_kilo + ", in_price=(SELECT MAX(value) FROM (VALUES (in_price),(" + reader->GetDecimal(9) + ")) AS t(value)) where item_id=" + reader->GetInt32(1) + "; ";
+									query += "Update Purchase set quantity =quantity-" + retqunt_kilo + " where id=" + selectedItem->ID + ";";
 								}
 							}
 						}
 						else {
 							query += "Update Item_return set quantity=quantity+" + retqunt_kilo + ", in_price=(SELECT MAX(value) FROM (VALUES (in_price),(" + reader->GetDecimal(15) + "),(" + reader->GetDecimal(9) + ")) AS t(value)) where item_id = " + reader->GetInt32(1) + "; ";
+							double updateret1 = min(Convert::ToDouble(reader->GetDecimal(8)), retqunt_kilo);
+							retqunt_kilo -= updateret1;
+							double updateret2 = min(Convert::ToDouble(reader->GetDecimal(14)), retqunt_kilo);
+							query += "Update Purchase set quantity =quantity-" + updateret1 + " where id=" + selectedItem->ID + ";";
+							query += "Update Purchase set kill_or_qunt =kill_or_qunt-" + updateret2 + " where id=" + selectedItem->ID + ";";
 						}
 					}
 					query += "DELETE FROM Purchase WHERE(kilo + quantity + kill_or_qunt) = 0; ";
-					query += "DELETE FROM Invoice WHERE id = "+reader->GetInt32(2)+" AND id NOT IN(SELECT DISTINCT invoice_id FROM Purchase);";
+					query += "DELETE FROM Invoice WHERE id = " + reader->GetInt32(2) + " AND id NOT IN(SELECT DISTINCT invoice_id FROM Purchase);";
 					query += "Update Invoice set remaining=remaining where id=" + reader->GetInt32(2) + ";";
 					updateconnection->Open();
 					SqlCommand^ command0 = gcnew SqlCommand(query, updateconnection);
@@ -698,13 +716,31 @@ namespace Store {
 					updateconnection->Close();
 					//end of update tables
 					MessageBox::Show(L"تم ارجاع العنصر", "Error", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					this->splitContainer1->Panel1->Enabled = 0;
+					this->itembox->Enabled = 1;
 				}
 				connection->Close();
 			}
 			catch (SqlException^ ex) {
 				MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
-			
+
+		}
+		private: System::String^ FormatNumberWithCommas(Double number) {
+			String^ s = number.ToString("N2");
+			Double n = s->Length - 3;
+			Double end = (number >= 0) ? 0 : 1; // Support for negative numbers
+			while (n > end) {
+				s->Insert((int)n, ",");
+
+				n -= 3;
+			}
+			return s;
+		}
+		private: System::Void qunt_kilo_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
+			if (itembox->SelectedItem != nullptr) {
+				this->label2->Text = FormatNumberWithCommas(changeprice * Convert::ToDouble(this->qunt_kilo->Value));
+			}
 		}
 	};
 }

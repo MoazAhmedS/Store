@@ -296,6 +296,8 @@ namespace Store {
 						itemconnection->Open();
 						SqlCommand^ command1 = gcnew SqlCommand(query, itemconnection);
 						SqlDataReader^ reader = command1->ExecuteReader();
+						double updateitems1 = 0;
+						double updateitems2 = 0;
 						while (reader->Read()) {
 								//// check and return the type of the origin item kilo
 							if (reader->GetBoolean(reader->GetOrdinal("SenKilo"))) {
@@ -403,7 +405,7 @@ namespace Store {
 										item->Quantity -= returnvalue;
 										itemvalue = item->Quantity;
 										command->Parameters->AddWithValue("@kill_or_qunt", itemvalue);
-										command->Parameters->AddWithValue("@stor_in_price", reader->GetDecimal(reader->GetOrdinal("kilo_in_price")));
+										command->Parameters->AddWithValue("@stor_in_price", reader->GetDecimal(reader->GetOrdinal("qun_in_price")));
 										fromitems = 1;
 									}
 								}
@@ -432,8 +434,10 @@ namespace Store {
 							}
 
 
-
+							updateitems1 = Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("quantity")));
+							updateitems2 = Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("kilo")));
 						}
+						
 						itemconnection->Close();
 						// assigin the new value the tables after purchasing;
 						if (fromreturn) {
@@ -456,7 +460,8 @@ namespace Store {
 						}
 						else if (fromitems) {
 							String^ query = "update Items set kilo =kilo - @kilo, quantity=quantity - @quantity where id=@id;";
-							if (fromstor) {
+							
+							if (fromstor||(otype&&updateitems2== itemvalue)||(!otype&&updateitems1== itemvalue)) {
 								query += "update Storage set in_kilo =in_kilo - @ikilo, in_qun=in_qun-@iquantity where item_id=@id;";
 								query += "UPDATE Items SET kilo =kilo+ s.in_kilo , kilo_in_price = s.kilo_in_price , quantity= quantity+ s.in_qun ,qun_in_price = s.qun_in_price FROM Items i INNER JOIN Storage s ON i.id = s.item_id WHERE i.id = @id;";
 								query += "UPDATE Storage SET in_kilo = 0,in_qun=0 WHERE item_id = @id;";
@@ -464,7 +469,7 @@ namespace Store {
 							SqlCommand^ command0 = gcnew SqlCommand(query, itemconnection);
 							command0->Parameters->AddWithValue("@kilo", otype ? itemvalue : safe_cast<System::Object^>(0));
 							command0->Parameters->AddWithValue("@quantity", !otype ? itemvalue : safe_cast<System::Object^>(0));
-							if (fromstor) {
+							if (fromstor || (otype && updateitems2 == itemvalue) || (!otype && updateitems1 == itemvalue)) {
 								command0->Parameters->AddWithValue("@ikilo", otype ? storvalue : safe_cast<System::Object^>(0));
 								command0->Parameters->AddWithValue("@iquantity", !otype ? storvalue : safe_cast<System::Object^>(0));
 							}
