@@ -1,5 +1,5 @@
 ﻿#pragma once
-
+#include "Functions.h"
 namespace Store {
 
 	using namespace System;
@@ -741,7 +741,7 @@ namespace Store {
 		//
 
 
-
+		String^ connectionString = "";
 		private: System::Void Additems_Load(System::Object^ sender, System::EventArgs^ e) {
 			System::Drawing::Drawing2D::GraphicsPath^ path = gcnew System::Drawing::Drawing2D::GraphicsPath();
 			int borderRadius = 20; // Adjust the radius value as per your preference
@@ -755,6 +755,7 @@ namespace Store {
 
 			this->Region = gcnew System::Drawing::Region(path);
 			this->label14->Text = L"اضافه عناصر الي قسم" + " " + catg;
+			connectionString = Load_Data();
 		}
 		private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 			if (this->checkBox1->Checked) {
@@ -846,7 +847,6 @@ namespace Store {
 				return;
 			};
 
-			String^ connectionString = "Server=DESKTOP-4KT2SAO\\SQLEXPRESS;Database=store;User Id=sa;Password=123;";
 			SqlConnection^ connection = gcnew SqlConnection(connectionString);
 			try {
 
@@ -913,7 +913,6 @@ namespace Store {
 			}
 		}
 		private: bool isAvaliable(String^ name, int catID, bool enthick, double thick) {
-			String^ connectionString = "Server=DESKTOP-4KT2SAO\\SQLEXPRESS;Database=store;User Id=sa;Password=123;";
 			SqlConnection^ connection = gcnew SqlConnection(connectionString);
 			try {
 			// Open the connection
@@ -957,7 +956,6 @@ namespace Store {
 			return 0;
 		}
 		private: void insertStorage(int itemID) {
-			String^ connectionString = "Server=DESKTOP-4KT2SAO\\SQLEXPRESS;Database=store;User Id=sa;Password=123;";
 			SqlConnection^ connection = gcnew SqlConnection(connectionString);
 			try {
 				String^ insertQuery = "INSERT INTO Storage (item_id, enkilo, in_kilo, kilo_in_price, enqunt, in_qun, qun_in_price) VALUES (@item_id, @enkilo, @in_kilo, @kilo_in_price, @enqunt, @in_qun, @qun_in_price)";
@@ -979,7 +977,6 @@ namespace Store {
 			}
 		}
 		private: void insertReturn(int itemID) {
-			String^ connectionString = "Server=DESKTOP-4KT2SAO\\SQLEXPRESS;Database=store;User Id=sa;Password=123;";
 			SqlConnection^ connection = gcnew SqlConnection(connectionString);
 			try {
 				String^ insertQuery = "INSERT INTO Item_return (item_id, enKilo, kilo, enQunt, quantity, in_price) VALUES (@item_id, @enKilo, @kilo, @enQunt, @quantity, @in_price)";

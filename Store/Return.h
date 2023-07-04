@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "cartitem.h"
 #include <algorithm>
+#include "Functions.h"
 namespace Store {
 
 	using namespace System;
@@ -371,6 +372,7 @@ namespace Store {
 
 		}
 #pragma endregion
+		String^ connectionString = "";
 		private: System::Void Return_Load(System::Object^ sender, System::EventArgs^ e) {
 			System::Drawing::Drawing2D::GraphicsPath^ path = gcnew System::Drawing::Drawing2D::GraphicsPath();
 			int borderRadius = 20; // Adjust the radius value as per your preference
@@ -383,6 +385,7 @@ namespace Store {
 			path->CloseAllFigures();
 
 			this->Region = gcnew System::Drawing::Region(path);
+			connectionString = Load_Data();
 		}
 		private:
 		bool isDragging;
@@ -421,7 +424,6 @@ namespace Store {
 				MessageBox::Show(L"ادخل الرقم");
 				return;
 			}
-			String^ connectionString = "Server=DESKTOP-4KT2SAO\\SQLEXPRESS;Database=store;User Id=sa;Password=123;";
 			SqlConnection^ connection = gcnew SqlConnection(connectionString);
 			try {
 				connection->Open();
@@ -431,12 +433,19 @@ namespace Store {
 				if (reader->HasRows) {
 					flowLayoutPanel1->Controls->Clear();
 					while (reader->Read()) {
+
 						Label^ label = gcnew Label();
 						label->Text = reader->GetString(1);
 						label->Size = System::Drawing::Size(300, 25);
 						label->Font = gcnew System::Drawing::Font(label->Font->FontFamily, 14, System::Drawing::FontStyle::Bold);
-
 						flowLayoutPanel1->Controls->Add(label);
+
+						Label^ label2 = gcnew Label();
+						label2->Text = "            " + L"باقي" + "      " + L"الاجمالي"+"               "+L"تاريخ الشراء";
+						label2->Size = System::Drawing::Size(460, 25);
+						label2->Font = gcnew System::Drawing::Font(label->Font->FontFamily, 14, System::Drawing::FontStyle::Bold);
+						flowLayoutPanel1->Controls->Add(label2);
+
 						int cust_id = reader->GetInt32(0);
 						SqlConnection^ itemconnection = gcnew SqlConnection(connectionString);
 						String^ selectQuery = L"SELECT *,FORMAT(date, 'yyyy-MM-dd HH:mm tt') AS formatted_date FROM invoice WHERE cust_id = " + cust_id + " ORDER BY date ASC; ";
@@ -447,7 +456,7 @@ namespace Store {
 							SqlDataReader^ reader2 = command2->ExecuteReader();
 							while (reader2->Read()) {
 								Button^ button = gcnew Button();
-								button->Text = Convert::ToString(reader2->GetString(8)) + "    " + reader2->GetDecimal(3) + "    " + reader2->GetDecimal(6);
+								button->Text = Convert::ToString(reader2->GetString(9)) + "    " + reader2->GetDecimal(3) + "    " + reader2->GetDecimal(6);
 								button->Name = Convert::ToString(reader2->GetInt32(0));
 								button->Click += gcnew System::EventHandler(this, &Return::button_Click);
 								button->Size = System::Drawing::Size(420, 40);
@@ -479,7 +488,6 @@ namespace Store {
 			getdata(clickedButton->Name);
 		}
 		private: void getdata(String^ inv_id) {
-			String^ connectionString = "Server=DESKTOP-4KT2SAO\\SQLEXPRESS;Database=store;User Id=sa;Password=123;";
 			SqlConnection^ connection = gcnew SqlConnection(connectionString);
 			try {
 				connection->Open();
@@ -570,7 +578,6 @@ namespace Store {
 			//return the the qunt/kilo with same origin price to items table
 			//return the rest to item_return
 			double retqunt_kilo = Convert::ToDouble(this->qunt_kilo->Value);
-			String^ connectionString = "Server=DESKTOP-4KT2SAO\\SQLEXPRESS;Database=store;User Id=sa;Password=123;";
 			SqlConnection^ connection = gcnew SqlConnection(connectionString);
 			try {
 				connection->Open();
@@ -726,17 +733,7 @@ namespace Store {
 			}
 
 		}
-		private: System::String^ FormatNumberWithCommas(Double number) {
-			String^ s = number.ToString("N2");
-			Double n = s->Length - 3;
-			Double end = (number >= 0) ? 0 : 1; // Support for negative numbers
-			while (n > end) {
-				s->Insert((int)n, ",");
-
-				n -= 3;
-			}
-			return s;
-		}
+		
 		private: System::Void qunt_kilo_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
 			if (itembox->SelectedItem != nullptr) {
 				this->label2->Text = FormatNumberWithCommas(changeprice * Convert::ToDouble(this->qunt_kilo->Value));

@@ -1,5 +1,5 @@
 ﻿#pragma once
-
+#include "Functions.h"
 namespace Store {
 
 	using namespace System;
@@ -444,6 +444,7 @@ namespace Store {
 		private: System::Void panel3_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 
 		}
+		public: String^ connectionString = "";
 		private: System::Void Sell_Load(System::Object^ sender, System::EventArgs^ e) {
 			System::Drawing::Drawing2D::GraphicsPath^ path = gcnew System::Drawing::Drawing2D::GraphicsPath();
 			int borderRadius = 20; // Adjust the radius value as per your preference
@@ -456,7 +457,7 @@ namespace Store {
 			path->CloseAllFigures();
 
 			this->Region = gcnew System::Drawing::Region(path);
-
+			connectionString = Load_Data();
 			getdata();
 		}
 		private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -519,17 +520,6 @@ namespace Store {
 		}
 		private:
 			//format the number to add comma for the thousands
-		System::String^ FormatNumberWithCommas(Double number) {
-			String^ s = number.ToString("N2");
-			Double n = s->Length - 3;
-			Double end = (number >= 0) ? 0 : 1; // Support for negative numbers
-			while (n > end) {
-				s->Insert((int)n, ",");
-
-				n -= 3;
-			}
-			return s;
-		}
 
 		private: System::Void numericUpDown1_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
 			double kilo = Convert::ToDouble(this->kilo->Value);
@@ -560,7 +550,7 @@ namespace Store {
 		}
 		private: bool og = 0;
 		private: void getdata() {
-			String^ connectionString = "Server=DESKTOP-4KT2SAO\\SQLEXPRESS;Database=store;User Id=sa;Password=123;";
+
 			SqlConnection^ connection = gcnew SqlConnection(connectionString);
 			try {
 
@@ -699,7 +689,6 @@ namespace Store {
 			}
 		}
 		private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-			String^ connectionString = "Server=DESKTOP-4KT2SAO\\SQLEXPRESS;Database=store;User Id=sa;Password=123;";
 			SqlConnection^ connection = gcnew SqlConnection(connectionString);
 			try {
 				String^ thick = this->comboBox1->SelectedItem->ToString();
@@ -721,6 +710,7 @@ namespace Store {
 						k = 1;
 						q = 0;
 						this->button2->Enabled = 1;
+						this->button3->Enabled = 0;
 						this->kilo_price->Minimum = reader->GetDecimal(reader->GetOrdinal("kilo_min_price"));
 						this->kilo_price->Value = reader->GetDecimal(reader->GetOrdinal("kilo_price"));
 						this->kilo->Value = reader->GetDecimal(reader->GetOrdinal("total_kilo"));
@@ -738,6 +728,7 @@ namespace Store {
 						k = 0;
 						q = 1;
 						this->button3->Enabled = 1;
+						this->button2->Enabled = 0;
 						this->qunt->Value = reader->GetDecimal(reader->GetOrdinal("total_qunt"));
 						this->qun_price->Minimum = reader->GetDecimal(reader->GetOrdinal("qun_min_price"));
 						this->qun_price->Value = reader->GetDecimal(reader->GetOrdinal("qun_price"));
