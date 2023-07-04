@@ -7,6 +7,7 @@
 #include "BuyConfirmation.h"
 #include <vector>
 #include <string>
+#include "Functions.h"
 #include "Return.h"
 namespace Store {
 
@@ -24,7 +25,10 @@ namespace Store {
 	/// </summary>
 	public ref class Dashboard: public System::Windows::Forms::Form {
 		public:
-		Dashboard(void) {
+		Dashboard(int id,String^ name,bool type) {
+			emp_id = id;
+			emp_name = name;
+			isMode = type;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -40,6 +44,9 @@ namespace Store {
 				delete components;
 			}
 		}
+		private: int emp_id;
+		private: bool isMode;
+		private: String^ emp_name;
 		private: System::Windows::Forms::Panel^ head;
 		private: System::Windows::Forms::Panel^ control;
 		protected:
@@ -77,6 +84,12 @@ namespace Store {
 		private: System::Windows::Forms::Label^ label5;
 		private: System::Windows::Forms::Button^ button6;
 		private: System::Windows::Forms::Button^ button7;
+		private: System::Windows::Forms::CheckBox^ checkBox1;
+		private: System::Windows::Forms::Panel^ panel7;
+		private: System::Windows::Forms::Panel^ panel5;
+		private: System::Windows::Forms::Panel^ panel6;
+		private: System::Windows::Forms::Label^ label8;
+		private: System::Windows::Forms::Label^ label7;
 
 
 
@@ -110,14 +123,20 @@ namespace Store {
 		void InitializeComponent(void) {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Dashboard::typeid));
 			this->head = (gcnew System::Windows::Forms::Panel());
+			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->checkBox1 = (gcnew System::Windows::Forms::CheckBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->control = (gcnew System::Windows::Forms::Panel());
-			this->button7 = (gcnew System::Windows::Forms::Button());
-			this->button6 = (gcnew System::Windows::Forms::Button());
-			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->panel7 = (gcnew System::Windows::Forms::Panel());
 			this->button4 = (gcnew System::Windows::Forms::Button());
+			this->panel5 = (gcnew System::Windows::Forms::Panel());
+			this->button6 = (gcnew System::Windows::Forms::Button());
+			this->panel6 = (gcnew System::Windows::Forms::Panel());
+			this->button5 = (gcnew System::Windows::Forms::Button());
+			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
@@ -135,6 +154,9 @@ namespace Store {
 			this->shop = (gcnew System::Windows::Forms::Panel());
 			this->head->SuspendLayout();
 			this->control->SuspendLayout();
+			this->panel7->SuspendLayout();
+			this->panel5->SuspendLayout();
+			this->panel6->SuspendLayout();
 			this->panel3->SuspendLayout();
 			this->panel1->SuspendLayout();
 			this->panel4->SuspendLayout();
@@ -147,6 +169,9 @@ namespace Store {
 			// head
 			// 
 			this->head->BackColor = System::Drawing::Color::LightGray;
+			this->head->Controls->Add(this->label8);
+			this->head->Controls->Add(this->label7);
+			this->head->Controls->Add(this->checkBox1);
 			this->head->Controls->Add(this->label1);
 			this->head->Controls->Add(this->button3);
 			this->head->Controls->Add(this->button1);
@@ -156,6 +181,49 @@ namespace Store {
 			this->head->Size = System::Drawing::Size(934, 40);
 			this->head->TabIndex = 0;
 			this->head->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Dashboard::head_Paint);
+			// 
+			// label8
+			// 
+			this->label8->AutoSize = true;
+			this->label8->Dock = System::Windows::Forms::DockStyle::Left;
+			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+															  static_cast<System::Byte>(0)));
+			this->label8->Location = System::Drawing::Point(164, 0);
+			this->label8->Name = L"label8";
+			this->label8->Padding = System::Windows::Forms::Padding(10, 2, 0, 0);
+			this->label8->Size = System::Drawing::Size(34, 33);
+			this->label8->TabIndex = 6;
+			this->label8->Text = L"-";
+			this->label8->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Dock = System::Windows::Forms::DockStyle::Left;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+															  static_cast<System::Byte>(0)));
+			this->label7->Location = System::Drawing::Point(130, 0);
+			this->label7->Name = L"label7";
+			this->label7->Padding = System::Windows::Forms::Padding(10, 2, 0, 0);
+			this->label7->Size = System::Drawing::Size(34, 33);
+			this->label7->TabIndex = 5;
+			this->label7->Text = L"-";
+			this->label7->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// checkBox1
+			// 
+			this->checkBox1->AutoSize = true;
+			this->checkBox1->BackColor = System::Drawing::Color::Transparent;
+			this->checkBox1->Dock = System::Windows::Forms::DockStyle::Right;
+			this->checkBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+																 static_cast<System::Byte>(0)));
+			this->checkBox1->Location = System::Drawing::Point(704, 0);
+			this->checkBox1->Name = L"checkBox1";
+			this->checkBox1->Padding = System::Windows::Forms::Padding(5);
+			this->checkBox1->Size = System::Drawing::Size(146, 40);
+			this->checkBox1->TabIndex = 4;
+			this->checkBox1->Text = L" وضع الاداره";
+			this->checkBox1->UseVisualStyleBackColor = false;
 			// 
 			// label1
 			// 
@@ -208,10 +276,10 @@ namespace Store {
 			// control
 			// 
 			this->control->BackColor = System::Drawing::SystemColors::Control;
+			this->control->Controls->Add(this->panel7);
+			this->control->Controls->Add(this->panel5);
+			this->control->Controls->Add(this->panel6);
 			this->control->Controls->Add(this->button7);
-			this->control->Controls->Add(this->button6);
-			this->control->Controls->Add(this->button5);
-			this->control->Controls->Add(this->button4);
 			this->control->Controls->Add(this->button2);
 			this->control->Dock = System::Windows::Forms::DockStyle::Bottom;
 			this->control->Location = System::Drawing::Point(0, 481);
@@ -221,66 +289,99 @@ namespace Store {
 			this->control->TabIndex = 1;
 			this->control->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Dashboard::control_Paint);
 			// 
-			// button7
+			// panel7
 			// 
-			this->button7->Location = System::Drawing::Point(273, 5);
-			this->button7->Margin = System::Windows::Forms::Padding(50);
-			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(134, 80);
-			this->button7->TabIndex = 4;
-			this->button7->Text = L"button7";
-			this->button7->UseVisualStyleBackColor = true;
-			// 
-			// button6
-			// 
-			this->button6->AutoSize = true;
-			this->button6->BackColor = System::Drawing::Color::DarkSeaGreen;
-			this->button6->Dock = System::Windows::Forms::DockStyle::Right;
-			this->button6->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
-			this->button6->Location = System::Drawing::Point(599, 5);
-			this->button6->Margin = System::Windows::Forms::Padding(3, 3, 10, 3);
-			this->button6->Name = L"button6";
-			this->button6->Size = System::Drawing::Size(165, 80);
-			this->button6->TabIndex = 3;
-			this->button6->Text = L"ارجاع بالفاتوره";
-			this->button6->UseVisualStyleBackColor = false;
-			this->button6->Click += gcnew System::EventHandler(this, &Dashboard::button6_Click);
-			// 
-			// button5
-			// 
-			this->button5->AutoSize = true;
-			this->button5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
-																		static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->button5->Dock = System::Windows::Forms::DockStyle::Right;
-			this->button5->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
-			this->button5->Location = System::Drawing::Point(764, 5);
-			this->button5->Name = L"button5";
-			this->button5->Size = System::Drawing::Size(165, 80);
-			this->button5->TabIndex = 2;
-			this->button5->Text = L"بيع / إنشاء فاتوره";
-			this->button5->UseVisualStyleBackColor = false;
-			this->button5->Click += gcnew System::EventHandler(this, &Dashboard::button5_Click_1);
+			this->panel7->Controls->Add(this->button4);
+			this->panel7->Dock = System::Windows::Forms::DockStyle::Left;
+			this->panel7->Location = System::Drawing::Point(5, 5);
+			this->panel7->Name = L"panel7";
+			this->panel7->Padding = System::Windows::Forms::Padding(5);
+			this->panel7->Size = System::Drawing::Size(156, 80);
+			this->panel7->TabIndex = 7;
 			// 
 			// button4
 			// 
 			this->button4->AutoSize = true;
 			this->button4->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
 																		static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->button4->Dock = System::Windows::Forms::DockStyle::Left;
+			this->button4->Dock = System::Windows::Forms::DockStyle::Fill;
 			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															   static_cast<System::Byte>(0)));
 			this->button4->Location = System::Drawing::Point(5, 5);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(125, 80);
+			this->button4->Padding = System::Windows::Forms::Padding(5);
+			this->button4->Size = System::Drawing::Size(146, 70);
 			this->button4->TabIndex = 1;
 			this->button4->Text = L"اضافه قسم";
 			this->button4->UseVisualStyleBackColor = false;
 			this->button4->Click += gcnew System::EventHandler(this, &Dashboard::button4_Click);
+			// 
+			// panel5
+			// 
+			this->panel5->Controls->Add(this->button6);
+			this->panel5->Dock = System::Windows::Forms::DockStyle::Right;
+			this->panel5->Location = System::Drawing::Point(617, 5);
+			this->panel5->Name = L"panel5";
+			this->panel5->Padding = System::Windows::Forms::Padding(5);
+			this->panel5->Size = System::Drawing::Size(156, 80);
+			this->panel5->TabIndex = 5;
+			// 
+			// button6
+			// 
+			this->button6->AutoSize = true;
+			this->button6->BackColor = System::Drawing::Color::DarkSeaGreen;
+			this->button6->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->button6->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+															   static_cast<System::Byte>(0)));
+			this->button6->Location = System::Drawing::Point(5, 5);
+			this->button6->Margin = System::Windows::Forms::Padding(3, 3, 10, 3);
+			this->button6->Name = L"button6";
+			this->button6->Size = System::Drawing::Size(146, 70);
+			this->button6->TabIndex = 3;
+			this->button6->Text = L"ارجاع بالفاتوره";
+			this->button6->UseVisualStyleBackColor = false;
+			this->button6->Click += gcnew System::EventHandler(this, &Dashboard::button6_Click);
+			// 
+			// panel6
+			// 
+			this->panel6->Controls->Add(this->button5);
+			this->panel6->Dock = System::Windows::Forms::DockStyle::Right;
+			this->panel6->Location = System::Drawing::Point(773, 5);
+			this->panel6->Name = L"panel6";
+			this->panel6->Padding = System::Windows::Forms::Padding(5);
+			this->panel6->Size = System::Drawing::Size(156, 80);
+			this->panel6->TabIndex = 6;
+			// 
+			// button5
+			// 
+			this->button5->AutoSize = true;
+			this->button5->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+																		static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->button5->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->button5->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+															   static_cast<System::Byte>(0)));
+			this->button5->Location = System::Drawing::Point(5, 5);
+			this->button5->Name = L"button5";
+			this->button5->Padding = System::Windows::Forms::Padding(5);
+			this->button5->Size = System::Drawing::Size(146, 70);
+			this->button5->TabIndex = 2;
+			this->button5->Text = L"بيع / إنشاء فاتوره";
+			this->button5->UseVisualStyleBackColor = false;
+			this->button5->Click += gcnew System::EventHandler(this, &Dashboard::button5_Click_1);
+			// 
+			// button7
+			// 
+			this->button7->Location = System::Drawing::Point(244, 8);
+			this->button7->Margin = System::Windows::Forms::Padding(50);
+			this->button7->Name = L"button7";
+			this->button7->Size = System::Drawing::Size(134, 80);
+			this->button7->TabIndex = 4;
+			this->button7->Text = L"button7";
+			this->button7->UseVisualStyleBackColor = true;
+			this->button7->Click += gcnew System::EventHandler(this, &Dashboard::button7_Click);
 			// 
 			// button2
 			// 
@@ -464,7 +565,12 @@ namespace Store {
 			this->head->ResumeLayout(false);
 			this->head->PerformLayout();
 			this->control->ResumeLayout(false);
-			this->control->PerformLayout();
+			this->panel7->ResumeLayout(false);
+			this->panel7->PerformLayout();
+			this->panel5->ResumeLayout(false);
+			this->panel5->PerformLayout();
+			this->panel6->ResumeLayout(false);
+			this->panel6->PerformLayout();
 			this->panel3->ResumeLayout(false);
 			this->panel1->ResumeLayout(false);
 			this->panel4->ResumeLayout(false);
@@ -485,22 +591,29 @@ namespace Store {
 			ListItem^ newItem = gcnew ListItem(name, category, thick, id, price, quantity, type, sellprice);
 			cart->Items->Add(newItem);
 		}
+		public: String^ connectionString = "";
 		private: System::Void Dashboard_Load(System::Object^ sender, System::EventArgs^ e) {
-
+			this->label8->Text = emp_name;
+			if (isMode) {
+				this->checkBox1->Visible = 1;
+			}else{
+				this->checkBox1->Visible = 0;
+			}
+			connectionString = Load_Data();
 			refresh();
 		}
-
+		public: delegate void ReOpenHandler();
+		public: event ReOpenHandler^ reopen;
 		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+			reopen();
 			Close();
-			Environment::Exit(0);
-
 		}
 
-			   void SellForm_ItemAddedToCart(System::String^ name, System::String^ category, double thick, int id, double price, double quantity, bool type, double sellprice) {
-				   ListItem^ newItem = gcnew ListItem(name, category, thick, id, price, quantity, type, sellprice);
-				   updatetotal(1, price);
-				   cart->Items->Add(newItem);
-			   }
+		private: void SellForm_ItemAddedToCart(System::String^ name, System::String^ category, double thick, int id, double price, double quantity, bool type, double sellprice) {
+			ListItem^ newItem = gcnew ListItem(name, category, thick, id, price, quantity, type, sellprice);
+			updatetotal(1, price);
+			cart->Items->Add(newItem);
+		}
 		private: System::Void button_Click(System::Object^ sender, System::EventArgs^ e) {
 			Button^ clickedButton = safe_cast<Button^>(sender);
 
@@ -556,17 +669,7 @@ namespace Store {
 
 			}
 		}
-		System::String^ FormatNumberWithCommas(Double number) {
-			String^ s = number.ToString("N2");
-			Double n = s->Length - 3;
-			Double end = (number >= 0) ? 0 : 1; // Support for negative numbers
-			while (n > end) {
-				s->Insert((int)n, ",");
-
-				n -= 3;
-			}
-			return s;
-		}
+		
 		private: void updatetotal(bool ty, double value) {
 			double ntotal;
 			if (ty) {
@@ -669,7 +772,7 @@ namespace Store {
 
 
 
-			String^ connectionString = "Server=DESKTOP-4KT2SAO\\SQLEXPRESS;Database=store;User Id=sa;Password=123;";
+
 			SqlConnection^ connection = gcnew SqlConnection(connectionString);
 
 
@@ -811,7 +914,7 @@ namespace Store {
 			}
 
 			// Create an instance of the second form
-			BuyConfirmation^ buy = gcnew BuyConfirmation(itemList);
+			BuyConfirmation^ buy = gcnew BuyConfirmation(itemList,emp_id,Convert::ToDouble(this->label3->Text));
 			buy->clearthecartitems += gcnew BuyConfirmation::clearthecart(this, &Dashboard::ClearCart);
 			buy->CatgButton1ClickEvent += gcnew BuyConfirmation::CatgButton1ClickEventHandler(this, &Dashboard::CatgButton1ClickHandler);
 
@@ -822,5 +925,7 @@ namespace Store {
 			Return^ ret = gcnew Return(1);
 			ret->ShowDialog();
 		}
-};
+		private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
+		}
+	};
 }

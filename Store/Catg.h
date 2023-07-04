@@ -1,4 +1,5 @@
 ﻿#pragma once
+#include "Functions.h"
 namespace Store {
 
 	using namespace System;
@@ -15,7 +16,7 @@ namespace Store {
 	/// </summary>
 
 	public ref class Catg: public System::Windows::Forms::Form {
-	public:
+		public:
 		Catg(void) {
 			InitializeComponent();
 			//
@@ -23,28 +24,28 @@ namespace Store {
 			//
 		}
 
-	protected:
-		/// <summary>
-		/// Clean up any resources being used.
-		/// </summary>
+		protected:
+			/// <summary>
+			/// Clean up any resources being used.
+			/// </summary>
 		~Catg() {
 			if (components) {
 				delete components;
 			}
 		}
-	
-	private: System::Windows::Forms::Button^ button1;
-	protected:
-	private: System::Windows::Forms::TextBox^ textBox1;
-	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Panel^ panel1;
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Label^ label2;
 
-	private:
-		/// <summary>
-		/// Required designer variable.
-		/// </summary>
+		private: System::Windows::Forms::Button^ button1;
+		protected:
+		private: System::Windows::Forms::TextBox^ textBox1;
+		private: System::Windows::Forms::Label^ label1;
+		private: System::Windows::Forms::Panel^ panel1;
+		private: System::Windows::Forms::Button^ button2;
+		private: System::Windows::Forms::Label^ label2;
+
+		private:
+			/// <summary>
+			/// Required designer variable.
+			/// </summary>
 		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
@@ -105,6 +106,7 @@ namespace Store {
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(356, 45);
 			this->panel1->TabIndex = 3;
+			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Catg::panel1_Paint);
 			this->panel1->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &Catg::panel1_MouseDown);
 			this->panel1->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &Catg::panel1_MouseMove);
 			this->panel1->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &Catg::panel1_MouseUp);
@@ -159,89 +161,92 @@ namespace Store {
 
 		}
 #pragma endregion
-	public: delegate void CatgButton1ClickEventHandler();
-	public: event CatgButton1ClickEventHandler^ CatgButton1ClickEvent;
+		public: delegate void CatgButton1ClickEventHandler();
+		public: event CatgButton1ClickEventHandler^ CatgButton1ClickEvent;
+		public: String^ connectionString = "";
+		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+			if (!String::IsNullOrEmpty(this->textBox1->Text)) {
+				try {
 
-	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		if (!String::IsNullOrEmpty(this->textBox1->Text)) {
-			try {
-				String^ connectionString = "Server=DESKTOP-4KT2SAO\\SQLEXPRESS;Database=store;User Id=sa;Password=123;";
-				SqlConnection^ connection = gcnew SqlConnection(connectionString);
-				connection->Open();
-				String^ selectQuery = L"SELECT Name FROM Category WHERE Name = @Name";
-				SqlCommand^ selectCommand = gcnew SqlCommand(selectQuery, connection);
-				selectCommand->Parameters->AddWithValue("@Name", this->textBox1->Text);
-				SqlDataReader^ reader = selectCommand->ExecuteReader();
-				if (reader->Read()) {
-					// Value already exists
-					MessageBox::Show(L"القسم موجود بالفعل", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+					SqlConnection^ connection = gcnew SqlConnection(connectionString);
+					connection->Open();
+					String^ selectQuery = L"SELECT Name FROM Category WHERE Name = @Name";
+					SqlCommand^ selectCommand = gcnew SqlCommand(selectQuery, connection);
+					selectCommand->Parameters->AddWithValue("@Name", this->textBox1->Text);
+					SqlDataReader^ reader = selectCommand->ExecuteReader();
+					if (reader->Read()) {
+						// Value already exists
+						MessageBox::Show(L"القسم موجود بالفعل", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+					}
+					else {
+						reader->Close();
+						// Create INSERT statement
+						String^ insertQuery = L"INSERT INTO Category (Name) VALUES (@Name)";
+
+
+						// Prepare SQL command
+						SqlCommand^ command = gcnew SqlCommand(insertQuery, connection);
+						command->Parameters->AddWithValue("@Name", this->textBox1->Text);
+						// Execute SQL command
+						command->ExecuteNonQuery();
+
+						// Close the connection
+						connection->Close();
+
+						MessageBox::Show(L" تم اضافه القسم" + " " + this->textBox1->Text, "Success", MessageBoxButtons::OK, MessageBoxIcon::None);
+						//Dashboard^ dash = gcnew Dashboard();
+						CatgButton1ClickEvent();
+					}
+
 				}
-				else {
-					reader->Close();
-					// Create INSERT statement
-					String^ insertQuery = L"INSERT INTO Category (Name) VALUES (@Name)";
-
-
-					// Prepare SQL command
-					SqlCommand^ command = gcnew SqlCommand(insertQuery, connection);
-					command->Parameters->AddWithValue("@Name", this->textBox1->Text);
-					// Execute SQL command
-					command->ExecuteNonQuery();
-
-					// Close the connection
-					connection->Close();
-
-					MessageBox::Show(L" تم اضافه القسم" + " " + this->textBox1->Text, "Success", MessageBoxButtons::OK, MessageBoxIcon::None);
-					//Dashboard^ dash = gcnew Dashboard();
-					CatgButton1ClickEvent();
+				catch (Exception^ ex) {
+					MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				}
-				
+
 			}
-			catch (Exception^ ex) {
-				MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			else {
+				MessageBox::Show(L"لا يمكن اضافه هذا الاسم", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
 			}
-
 		}
-		else {
-			MessageBox::Show(L"لا يمكن اضافه هذا الاسم", "Success", MessageBoxButtons::OK, MessageBoxIcon::Information);
+		private: System::Void Catg_Load(System::Object^ sender, System::EventArgs^ e) {
+			System::Drawing::Drawing2D::GraphicsPath^ path = gcnew System::Drawing::Drawing2D::GraphicsPath();
+			int borderRadius = 20; // Adjust the radius value as per your preference
+
+			// Create a rounded rectangle shape using the border radius value
+			path->AddArc(0, 0, borderRadius, borderRadius, 180, 90);
+			path->AddArc(this->Width - borderRadius, 0, borderRadius, borderRadius, 270, 90);
+			path->AddArc(this->Width - borderRadius, this->Height - borderRadius, borderRadius, borderRadius, 0, 90);
+			path->AddArc(0, this->Height - borderRadius, borderRadius, borderRadius, 90, 90);
+			path->CloseAllFigures();
+
+			this->Region = gcnew System::Drawing::Region(path);
+			connectionString = Load_Data();
 		}
-	}
-	private: System::Void Catg_Load(System::Object^ sender, System::EventArgs^ e) {
-		System::Drawing::Drawing2D::GraphicsPath^ path = gcnew System::Drawing::Drawing2D::GraphicsPath();
-		int borderRadius = 20; // Adjust the radius value as per your preference
-
-		// Create a rounded rectangle shape using the border radius value
-		path->AddArc(0, 0, borderRadius, borderRadius, 180, 90);
-		path->AddArc(this->Width - borderRadius, 0, borderRadius, borderRadius, 270, 90);
-		path->AddArc(this->Width - borderRadius, this->Height - borderRadius, borderRadius, borderRadius, 0, 90);
-		path->AddArc(0, this->Height - borderRadius, borderRadius, borderRadius, 90, 90);
-		path->CloseAllFigures();
-
-		this->Region = gcnew System::Drawing::Region(path);
-	}
-	private:
+		private:
 		bool isDragging;
 		Point offset;
 
-	private:
+		private:
 		System::Void panel1_MouseDown(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 			isDragging = true;
 			offset = Point(e->X, e->Y);
 		}
-	private:
+		private:
 		System::Void panel1_MouseMove(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 			if (isDragging) {
 				Point newLocation = Point(this->Left + e->X - offset.X, this->Top + e->Y - offset.Y);
 				this->Location = newLocation;
 			}
 		}
-	private:
+		private:
 		System::Void panel1_MouseUp(System::Object^ sender, System::Windows::Forms::MouseEventArgs^ e) {
 			isDragging = false;
 		}
-	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 
-		this->Close();
-	}
+			this->Close();
+		}
+		private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+		}
 	};
 }

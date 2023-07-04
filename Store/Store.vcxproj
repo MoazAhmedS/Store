@@ -83,6 +83,8 @@
     <ClCompile Include="BuyConfirmation.cpp" />
     <ClCompile Include="Catg.cpp" />
     <ClCompile Include="Dashboard.cpp" />
+    <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="Login.cpp" />
     <ClCompile Include="Return.cpp" />
     <ClCompile Include="Sell.cpp" />
   </ItemGroup>
@@ -98,6 +100,10 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Dashboard.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Functions.h" />
+    <ClInclude Include="Login.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Return.h">
@@ -119,6 +125,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login.resx">
+      <DependentUpon>Login.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Return.resx">
       <DependentUpon>Return.h</DependentUpon>
