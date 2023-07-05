@@ -320,6 +320,7 @@ namespace Store {
 															static_cast<System::Byte>(0)));
 			this->qunt->Location = System::Drawing::Point(6, 37);
 			this->qunt->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 100000000, 0, 0, 0 });
+			this->qunt->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 100000000, 0, 0, System::Int32::MinValue });
 			this->qunt->Name = L"qunt";
 			this->qunt->Size = System::Drawing::Size(224, 29);
 			this->qunt->TabIndex = 6;
@@ -387,6 +388,7 @@ namespace Store {
 			this->kilo->ImeMode = System::Windows::Forms::ImeMode::NoControl;
 			this->kilo->Location = System::Drawing::Point(6, 37);
 			this->kilo->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 100000000, 0, 0, 0 });
+			this->kilo->Minimum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 100000000, 0, 0, System::Int32::MinValue });
 			this->kilo->Name = L"kilo";
 			this->kilo->Size = System::Drawing::Size(224, 29);
 			this->kilo->TabIndex = 2;

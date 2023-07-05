@@ -295,6 +295,7 @@ namespace Store {
 																static_cast<System::Byte>(0)));
 			this->discount->Location = System::Drawing::Point(19, 324);
 			this->discount->Margin = System::Windows::Forms::Padding(10);
+			this->discount->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1000000, 0, 0, 0 });
 			this->discount->Name = L"discount";
 			this->discount->Size = System::Drawing::Size(254, 29);
 			this->discount->TabIndex = 10;
@@ -318,6 +319,7 @@ namespace Store {
 															static_cast<System::Byte>(0)));
 			this->paid->Location = System::Drawing::Point(19, 280);
 			this->paid->Margin = System::Windows::Forms::Padding(10);
+			this->paid->Maximum = System::Decimal(gcnew cli::array< System::Int32 >(4) { 1410065408, 2, 0, 0 });
 			this->paid->Name = L"paid";
 			this->paid->Size = System::Drawing::Size(254, 29);
 			this->paid->TabIndex = 8;
