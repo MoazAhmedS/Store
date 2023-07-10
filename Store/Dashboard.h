@@ -6,6 +6,7 @@
 #include "cartitem.h"
 #include "BuyConfirmation.h"
 #include <vector>
+#include "ItemManager.h"
 #include <string>
 #include "Functions.h"
 #include "Return.h"
@@ -25,7 +26,7 @@ namespace Store {
 	/// </summary>
 	public ref class Dashboard: public System::Windows::Forms::Form {
 		public:
-		Dashboard(int id,String^ name,bool type) {
+		Dashboard(int id, String^ name, bool type) {
 			emp_id = id;
 			emp_name = name;
 			isMode = type;
@@ -83,13 +84,15 @@ namespace Store {
 		private: System::Windows::Forms::Label^ label4;
 		private: System::Windows::Forms::Label^ label5;
 		private: System::Windows::Forms::Button^ button6;
-		private: System::Windows::Forms::Button^ button7;
+
 		private: System::Windows::Forms::CheckBox^ checkBox1;
 		private: System::Windows::Forms::Panel^ panel7;
 		private: System::Windows::Forms::Panel^ panel5;
 		private: System::Windows::Forms::Panel^ panel6;
 		private: System::Windows::Forms::Label^ label8;
 		private: System::Windows::Forms::Label^ label7;
+		private: System::Windows::Forms::Panel^ panel8;
+		private: System::Windows::Forms::Button^ button7;
 
 
 
@@ -136,7 +139,6 @@ namespace Store {
 			this->button6 = (gcnew System::Windows::Forms::Button());
 			this->panel6 = (gcnew System::Windows::Forms::Panel());
 			this->button5 = (gcnew System::Windows::Forms::Button());
-			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
@@ -152,6 +154,8 @@ namespace Store {
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->shop = (gcnew System::Windows::Forms::Panel());
+			this->panel8 = (gcnew System::Windows::Forms::Panel());
+			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->head->SuspendLayout();
 			this->control->SuspendLayout();
 			this->panel7->SuspendLayout();
@@ -164,6 +168,7 @@ namespace Store {
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->shop->SuspendLayout();
+			this->panel8->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// head
@@ -224,6 +229,7 @@ namespace Store {
 			this->checkBox1->TabIndex = 4;
 			this->checkBox1->Text = L" وضع الاداره";
 			this->checkBox1->UseVisualStyleBackColor = false;
+			this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &Dashboard::checkBox1_CheckedChanged);
 			// 
 			// label1
 			// 
@@ -276,10 +282,10 @@ namespace Store {
 			// control
 			// 
 			this->control->BackColor = System::Drawing::SystemColors::Control;
+			this->control->Controls->Add(this->panel8);
 			this->control->Controls->Add(this->panel7);
 			this->control->Controls->Add(this->panel5);
 			this->control->Controls->Add(this->panel6);
-			this->control->Controls->Add(this->button7);
 			this->control->Controls->Add(this->button2);
 			this->control->Dock = System::Windows::Forms::DockStyle::Bottom;
 			this->control->Location = System::Drawing::Point(0, 481);
@@ -371,17 +377,6 @@ namespace Store {
 			this->button5->Text = L"بيع / إنشاء فاتوره";
 			this->button5->UseVisualStyleBackColor = false;
 			this->button5->Click += gcnew System::EventHandler(this, &Dashboard::button5_Click_1);
-			// 
-			// button7
-			// 
-			this->button7->Location = System::Drawing::Point(244, 8);
-			this->button7->Margin = System::Windows::Forms::Padding(50);
-			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(134, 80);
-			this->button7->TabIndex = 4;
-			this->button7->Text = L"button7";
-			this->button7->UseVisualStyleBackColor = true;
-			this->button7->Click += gcnew System::EventHandler(this, &Dashboard::button7_Click);
 			// 
 			// button2
 			// 
@@ -548,6 +543,32 @@ namespace Store {
 			this->shop->TabIndex = 3;
 			this->shop->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Dashboard::shop_Paint);
 			// 
+			// panel8
+			// 
+			this->panel8->Controls->Add(this->button7);
+			this->panel8->Dock = System::Windows::Forms::DockStyle::Left;
+			this->panel8->Location = System::Drawing::Point(161, 5);
+			this->panel8->Name = L"panel8";
+			this->panel8->Padding = System::Windows::Forms::Padding(5);
+			this->panel8->Size = System::Drawing::Size(156, 80);
+			this->panel8->TabIndex = 6;
+			// 
+			// button7
+			// 
+			this->button7->AutoSize = true;
+			this->button7->BackColor = System::Drawing::Color::DarkSeaGreen;
+			this->button7->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->button7->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+															   static_cast<System::Byte>(0)));
+			this->button7->Location = System::Drawing::Point(5, 5);
+			this->button7->Margin = System::Windows::Forms::Padding(3, 3, 10, 3);
+			this->button7->Name = L"button7";
+			this->button7->Size = System::Drawing::Size(146, 70);
+			this->button7->TabIndex = 3;
+			this->button7->Text = L"النقص في العناصر";
+			this->button7->UseVisualStyleBackColor = false;
+			// 
 			// Dashboard
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -579,6 +600,8 @@ namespace Store {
 			this->tabControl1->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
 			this->shop->ResumeLayout(false);
+			this->panel8->ResumeLayout(false);
+			this->panel8->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -596,7 +619,8 @@ namespace Store {
 			this->label8->Text = emp_name;
 			if (isMode) {
 				this->checkBox1->Visible = 1;
-			}else{
+			}
+			else {
 				this->checkBox1->Visible = 0;
 			}
 			connectionString = Load_Data();
@@ -622,6 +646,13 @@ namespace Store {
 
 			openc->ShowDialog();
 		}
+
+		private: System::Void manager_button(System::Object^ sender, System::EventArgs^ e) {
+			Button^ clickedButton = safe_cast<Button^>(sender);
+			ItemManager^ openc = gcnew ItemManager(clickedButton->Name);
+			openc->ShowDialog();
+		}
+
 		private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
 			this->WindowState = System::Windows::Forms::FormWindowState::Minimized;
 		}
@@ -665,11 +696,11 @@ namespace Store {
 
 				// Now you can use these values as needed
 				// For example, display them in labels or perform calculations
-				this->label1->Text = Convert::ToString(itemPrice);
+				//this->label1->Text = Convert::ToString(itemPrice);
 
 			}
 		}
-		
+
 		private: void updatetotal(bool ty, double value) {
 			double ntotal;
 			if (ty) {
@@ -815,7 +846,13 @@ namespace Store {
 							Button^ button = gcnew Button();
 							button->Text = itemName + "\n" + itemPrice;
 							button->Name = Convert::ToString(readerdata->GetInt32(0));
-							button->Click += gcnew System::EventHandler(this, &Dashboard::button_Click);
+							if (this->checkBox1->Checked) {
+								button->Click += gcnew System::EventHandler(this, &Dashboard::manager_button);
+							}
+							else {
+								button->Click += gcnew System::EventHandler(this, &Dashboard::button_Click);
+							}
+
 							button->Size = System::Drawing::Size(200, 100);
 							button->FlatStyle = FlatStyle::Flat;
 							if (readerdata->GetDecimal(3) > 0 || readerdata->GetDecimal(9) > 0) {
@@ -841,16 +878,19 @@ namespace Store {
 						if (connection2->State == System::Data::ConnectionState::Open)
 							connection2->Close();
 					}
-					Button^ button = gcnew Button();
-					button->Text = "+";
-					button->Name = Convert::ToString(reader->GetInt32(0));
-					button->Click += gcnew System::EventHandler(this, &Dashboard::buttonAdd_Click);
-					button->Size = System::Drawing::Size(200, 100);
-					button->FlatStyle = FlatStyle::Flat;
-					button->BackColor = Color::PaleGreen;
-					button->Font = gcnew System::Drawing::Font(button->Font->FontFamily, 50);
+					if (this->checkBox1->Checked) {
+						Button^ button = gcnew Button();
+						button->Text = "+";
+						button->Name = Convert::ToString(reader->GetInt32(0));
+						button->Click += gcnew System::EventHandler(this, &Dashboard::buttonAdd_Click);
+						button->Size = System::Drawing::Size(200, 100);
+						button->FlatStyle = FlatStyle::Flat;
+						button->BackColor = Color::PaleGreen;
+						button->Font = gcnew System::Drawing::Font(button->Font->FontFamily, 50);
 
-					flowLayoutPanel->Controls->Add(button);
+						flowLayoutPanel->Controls->Add(button);
+					}
+					
 
 				}
 
@@ -914,7 +954,7 @@ namespace Store {
 			}
 
 			// Create an instance of the second form
-			BuyConfirmation^ buy = gcnew BuyConfirmation(itemList,emp_id,Convert::ToDouble(this->label3->Text));
+			BuyConfirmation^ buy = gcnew BuyConfirmation(itemList, emp_id, Convert::ToDouble(this->label3->Text));
 			buy->clearthecartitems += gcnew BuyConfirmation::clearthecart(this, &Dashboard::ClearCart);
 			buy->CatgButton1ClickEvent += gcnew BuyConfirmation::CatgButton1ClickEventHandler(this, &Dashboard::CatgButton1ClickHandler);
 
@@ -927,5 +967,8 @@ namespace Store {
 		}
 		private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
 		}
-	};
+		private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
+			refresh();
+		}
+};
 }

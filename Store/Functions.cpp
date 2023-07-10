@@ -1,4 +1,4 @@
-#include "Functions.h"
+﻿#include "Functions.h"
 #include <iostream>
 #include <fstream>
 
@@ -41,6 +41,8 @@ String^ Load_Data() {
 
     return "";
 }
+
+
 
 String^ FormatNumberWithCommas(Double number) {
     String^ s = number.ToString("N2");

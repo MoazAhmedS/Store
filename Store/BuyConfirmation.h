@@ -259,9 +259,9 @@ namespace Store {
 			// button4
 			// 
 			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button4->Location = System::Drawing::Point(25, 77);
+			this->button4->Location = System::Drawing::Point(13, 77);
 			this->button4->Name = L"button4";
-			this->button4->Size = System::Drawing::Size(373, 38);
+			this->button4->Size = System::Drawing::Size(385, 38);
 			this->button4->TabIndex = 6;
 			this->button4->Text = L"فحص الرقم";
 			this->button4->UseVisualStyleBackColor = true;
@@ -271,10 +271,10 @@ namespace Store {
 			// 
 			this->cust_num->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 																static_cast<System::Byte>(0)));
-			this->cust_num->Location = System::Drawing::Point(25, 35);
+			this->cust_num->Location = System::Drawing::Point(13, 35);
 			this->cust_num->Margin = System::Windows::Forms::Padding(10);
 			this->cust_num->Name = L"cust_num";
-			this->cust_num->Size = System::Drawing::Size(254, 29);
+			this->cust_num->Size = System::Drawing::Size(266, 29);
 			this->cust_num->TabIndex = 4;
 			// 
 			// label4
@@ -291,6 +291,7 @@ namespace Store {
 			// 
 			// discount
 			// 
+			this->discount->DecimalPlaces = 2;
 			this->discount->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 																static_cast<System::Byte>(0)));
 			this->discount->Location = System::Drawing::Point(19, 324);
@@ -315,6 +316,7 @@ namespace Store {
 			// 
 			// paid
 			// 
+			this->paid->DecimalPlaces = 2;
 			this->paid->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															static_cast<System::Byte>(0)));
 			this->paid->Location = System::Drawing::Point(19, 280);
@@ -525,13 +527,7 @@ namespace Store {
 		}
 		public: void purchaseitem(int invoice) {
 			SqlConnection^ connection = gcnew SqlConnection(connectionString);
-			bool fromreturn = 0;
-			double returnvalue = 0;
-			bool fromstor = 0;
-			double storvalue = 0;
-			bool fromitems = 0;
-			double itemvalue = 0;
-			bool otype = 0;
+			
 			try {
 				for each (ListItem ^ item in receivedItems) {
 					String^ purchaseQuery = "INSERT INTO purchase (item_id, invoice_id, enkilo, kilo, kilo_price, kilo_in_price, "
@@ -542,8 +538,13 @@ namespace Store {
 					command->Parameters->AddWithValue("@item_id", item->ID);
 					command->Parameters->AddWithValue("@invoice_id", invoice);
 
-
-
+					bool fromreturn = 0;
+					double returnvalue = 0;
+					bool fromstor = 0;
+					double storvalue = 0;
+					bool fromitems = 0;
+					double itemvalue = 0;
+					bool otype = 0;
 
 					//get the data from the source table for each item
 
@@ -699,13 +700,13 @@ namespace Store {
 						// assigin the new value the tables after purchasing;
 						if (fromreturn) {
 							String^ query = "update Item_return set kilo = kilo - @kilo, quantity=quantity - @quantity where item_id=@id;";
-							if (fromitems) {
+							if (fromitems || (otype && updateitems2 == returnvalue) || (!otype && updateitems1 == returnvalue)) {
 								query += "update Items set kilo =kilo - @ikilo, quantity=quantity - @iquantity where id=@id;";
 							}
 							SqlCommand^ command0 = gcnew SqlCommand(query, itemconnection);
 							command0->Parameters->AddWithValue("@kilo", otype ? returnvalue : safe_cast<System::Object^>(0));
 							command0->Parameters->AddWithValue("@quantity", !otype ? returnvalue : safe_cast<System::Object^>(0));
-							if (fromitems) {
+							if (fromitems || (otype && updateitems2 == returnvalue) || (!otype && updateitems1 == returnvalue)) {
 								command0->Parameters->AddWithValue("@ikilo", otype ? itemvalue : safe_cast<System::Object^>(0));
 								command0->Parameters->AddWithValue("@iquantity", !otype ? itemvalue : safe_cast<System::Object^>(0));
 							}

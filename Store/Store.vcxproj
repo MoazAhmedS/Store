@@ -84,6 +84,7 @@
     <ClCompile Include="Catg.cpp" />
     <ClCompile Include="Dashboard.cpp" />
     <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="ItemManager.cpp" />
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="Return.cpp" />
     <ClCompile Include="Sell.cpp" />
@@ -103,6 +104,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Functions.h" />
+    <ClInclude Include="ItemManager.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Login.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -125,6 +129,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ItemManager.resx">
+      <DependentUpon>ItemManager.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.h</DependentUpon>
