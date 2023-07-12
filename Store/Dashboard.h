@@ -9,6 +9,8 @@
 #include "ItemManager.h"
 #include <string>
 #include "Functions.h"
+#include "Shortage.h"
+#include "ItemAvailable.h"
 #include "Return.h"
 namespace Store {
 
@@ -93,6 +95,8 @@ namespace Store {
 		private: System::Windows::Forms::Label^ label7;
 		private: System::Windows::Forms::Panel^ panel8;
 		private: System::Windows::Forms::Button^ button7;
+		private: System::Windows::Forms::Panel^ panel9;
+		private: System::Windows::Forms::Button^ button8;
 
 
 
@@ -133,6 +137,8 @@ namespace Store {
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->control = (gcnew System::Windows::Forms::Panel());
+			this->panel8 = (gcnew System::Windows::Forms::Panel());
+			this->button7 = (gcnew System::Windows::Forms::Button());
 			this->panel7 = (gcnew System::Windows::Forms::Panel());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->panel5 = (gcnew System::Windows::Forms::Panel());
@@ -154,10 +160,11 @@ namespace Store {
 			this->tabPage1 = (gcnew System::Windows::Forms::TabPage());
 			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->shop = (gcnew System::Windows::Forms::Panel());
-			this->panel8 = (gcnew System::Windows::Forms::Panel());
-			this->button7 = (gcnew System::Windows::Forms::Button());
+			this->panel9 = (gcnew System::Windows::Forms::Panel());
+			this->button8 = (gcnew System::Windows::Forms::Button());
 			this->head->SuspendLayout();
 			this->control->SuspendLayout();
+			this->panel8->SuspendLayout();
 			this->panel7->SuspendLayout();
 			this->panel5->SuspendLayout();
 			this->panel6->SuspendLayout();
@@ -168,7 +175,7 @@ namespace Store {
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
 			this->shop->SuspendLayout();
-			this->panel8->SuspendLayout();
+			this->panel9->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// head
@@ -282,6 +289,7 @@ namespace Store {
 			// control
 			// 
 			this->control->BackColor = System::Drawing::SystemColors::Control;
+			this->control->Controls->Add(this->panel9);
 			this->control->Controls->Add(this->panel8);
 			this->control->Controls->Add(this->panel7);
 			this->control->Controls->Add(this->panel5);
@@ -294,6 +302,33 @@ namespace Store {
 			this->control->Size = System::Drawing::Size(934, 90);
 			this->control->TabIndex = 1;
 			this->control->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Dashboard::control_Paint);
+			// 
+			// panel8
+			// 
+			this->panel8->Controls->Add(this->button7);
+			this->panel8->Dock = System::Windows::Forms::DockStyle::Left;
+			this->panel8->Location = System::Drawing::Point(161, 5);
+			this->panel8->Name = L"panel8";
+			this->panel8->Padding = System::Windows::Forms::Padding(5);
+			this->panel8->Size = System::Drawing::Size(156, 80);
+			this->panel8->TabIndex = 6;
+			// 
+			// button7
+			// 
+			this->button7->AutoSize = true;
+			this->button7->BackColor = System::Drawing::Color::DarkSeaGreen;
+			this->button7->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->button7->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+															   static_cast<System::Byte>(0)));
+			this->button7->Location = System::Drawing::Point(5, 5);
+			this->button7->Margin = System::Windows::Forms::Padding(3, 3, 10, 3);
+			this->button7->Name = L"button7";
+			this->button7->Size = System::Drawing::Size(146, 70);
+			this->button7->TabIndex = 3;
+			this->button7->Text = L"النقص في العناصر";
+			this->button7->UseVisualStyleBackColor = false;
+			this->button7->Click += gcnew System::EventHandler(this, &Dashboard::button7_Click_1);
 			// 
 			// panel7
 			// 
@@ -380,7 +415,7 @@ namespace Store {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(460, 34);
+			this->button2->Location = System::Drawing::Point(513, 10);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(75, 23);
 			this->button2->TabIndex = 0;
@@ -543,31 +578,33 @@ namespace Store {
 			this->shop->TabIndex = 3;
 			this->shop->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Dashboard::shop_Paint);
 			// 
-			// panel8
+			// panel9
 			// 
-			this->panel8->Controls->Add(this->button7);
-			this->panel8->Dock = System::Windows::Forms::DockStyle::Left;
-			this->panel8->Location = System::Drawing::Point(161, 5);
-			this->panel8->Name = L"panel8";
-			this->panel8->Padding = System::Windows::Forms::Padding(5);
-			this->panel8->Size = System::Drawing::Size(156, 80);
-			this->panel8->TabIndex = 6;
+			this->panel9->Controls->Add(this->button8);
+			this->panel9->Dock = System::Windows::Forms::DockStyle::Left;
+			this->panel9->Location = System::Drawing::Point(317, 5);
+			this->panel9->Name = L"panel9";
+			this->panel9->Padding = System::Windows::Forms::Padding(5);
+			this->panel9->Size = System::Drawing::Size(156, 80);
+			this->panel9->TabIndex = 8;
 			// 
-			// button7
+			// button8
 			// 
-			this->button7->AutoSize = true;
-			this->button7->BackColor = System::Drawing::Color::DarkSeaGreen;
-			this->button7->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->button7->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button8->AutoSize = true;
+			this->button8->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+																		static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->button8->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->button8->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															   static_cast<System::Byte>(0)));
-			this->button7->Location = System::Drawing::Point(5, 5);
-			this->button7->Margin = System::Windows::Forms::Padding(3, 3, 10, 3);
-			this->button7->Name = L"button7";
-			this->button7->Size = System::Drawing::Size(146, 70);
-			this->button7->TabIndex = 3;
-			this->button7->Text = L"النقص في العناصر";
-			this->button7->UseVisualStyleBackColor = false;
+			this->button8->Location = System::Drawing::Point(5, 5);
+			this->button8->Name = L"button8";
+			this->button8->Padding = System::Windows::Forms::Padding(5);
+			this->button8->Size = System::Drawing::Size(146, 70);
+			this->button8->TabIndex = 1;
+			this->button8->Text = L"جرد";
+			this->button8->UseVisualStyleBackColor = false;
+			this->button8->Click += gcnew System::EventHandler(this, &Dashboard::button8_Click);
 			// 
 			// Dashboard
 			// 
@@ -586,6 +623,8 @@ namespace Store {
 			this->head->ResumeLayout(false);
 			this->head->PerformLayout();
 			this->control->ResumeLayout(false);
+			this->panel8->ResumeLayout(false);
+			this->panel8->PerformLayout();
 			this->panel7->ResumeLayout(false);
 			this->panel7->PerformLayout();
 			this->panel5->ResumeLayout(false);
@@ -600,8 +639,8 @@ namespace Store {
 			this->tabControl1->ResumeLayout(false);
 			this->tabPage1->ResumeLayout(false);
 			this->shop->ResumeLayout(false);
-			this->panel8->ResumeLayout(false);
-			this->panel8->PerformLayout();
+			this->panel9->ResumeLayout(false);
+			this->panel9->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
@@ -970,5 +1009,13 @@ namespace Store {
 		private: System::Void checkBox1_CheckedChanged(System::Object^ sender, System::EventArgs^ e) {
 			refresh();
 		}
+	private: System::Void button7_Click_1(System::Object^ sender, System::EventArgs^ e) {
+		Shortage^ shrt = gcnew Shortage();
+		shrt->ShowDialog();
+	}
+	private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
+		ItemAvailable^ av = gcnew ItemAvailable();
+		av->ShowDialog();
+	}
 };
 }

@@ -84,10 +84,12 @@
     <ClCompile Include="Catg.cpp" />
     <ClCompile Include="Dashboard.cpp" />
     <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="ItemAvailable.cpp" />
     <ClCompile Include="ItemManager.cpp" />
     <ClCompile Include="Login.cpp" />
     <ClCompile Include="Return.cpp" />
     <ClCompile Include="Sell.cpp" />
+    <ClCompile Include="Shortage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Additems.h">
@@ -104,6 +106,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Functions.h" />
+    <ClInclude Include="ItemAvailable.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ItemManager.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -114,6 +119,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Sell.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="Shortage.h">
       <FileType>CppForm</FileType>
     </ClInclude>
   </ItemGroup>
@@ -130,6 +138,9 @@
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ItemAvailable.resx">
+      <DependentUpon>ItemAvailable.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ItemManager.resx">
       <DependentUpon>ItemManager.h</DependentUpon>
     </EmbeddedResource>
@@ -141,6 +152,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sell.resx">
       <DependentUpon>Sell.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Shortage.resx">
+      <DependentUpon>Shortage.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
