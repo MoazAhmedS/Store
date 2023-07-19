@@ -599,7 +599,7 @@ namespace Store {
 					String^ subKilo2 = L"(SELECT COALESCE(SUM(r.kilo), 0) FROM Item_return r WHERE r.item_id = i.id)";
 					String^ subQunt1 = L"(SELECT COALESCE(SUM(s.in_qun), 0) FROM Storage s WHERE s.item_id = i.id)";
 					String^ subQunt2 = L"(SELECT COALESCE(SUM(r.quantity), 0) FROM Item_return r WHERE r.item_id = i.id)";
-					String^ subtype = L"(SELECT s.enkilo FROM Storage s WHERE s.item_id = i.id)";
+					String^ subtype = L"(SELECT TOP 1 s.enkilo FROM Storage s WHERE s.item_id = i.id)";
 
 					selectQuery = L"Select i.*," + subKilo1 + "+" + subKilo2 + "+ i.kilo AS total_kilo," + subQunt1 + "+" + subQunt2 + "+ i.quantity AS total_qunt," + subtype + " as ogtype from Items i where i.id=" + ID + " and (i.quantity >0 or i.kilo >0);";
 					command = gcnew SqlCommand(selectQuery, connection);
@@ -646,7 +646,7 @@ namespace Store {
 			}
 			catch (SqlException^ ex) {
 				// Handle any SQL errors
-				Console::WriteLine("An error occurred: " + ex->Message);
+				MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
 			finally {
 				// Close the database connection
@@ -700,7 +700,7 @@ namespace Store {
 				String^ subKilo2 = L"(SELECT COALESCE(SUM(r.kilo), 0) FROM Item_return r WHERE r.item_id = i.id)";
 				String^ subQunt1 = L"(SELECT COALESCE(SUM(s.in_qun), 0) FROM Storage s WHERE s.item_id = i.id)";
 				String^ subQunt2 = L"(SELECT COALESCE(SUM(r.quantity), 0) FROM Item_return r WHERE r.item_id = i.id)";
-				String^ subtype = L"(SELECT s.enkilo FROM Storage s WHERE s.item_id = i.id)";
+				String^ subtype = L"(SELECT TOP 1 s.enkilo FROM Storage s WHERE s.item_id = i.id)";
 
 				String^ selectQuery = L"SELECT i.*," + subKilo1 + "+" + subKilo2 + "+ i.kilo AS total_kilo," + subQunt1 + "+" + subQunt2 + "+ i.quantity AS total_qunt," + subtype + " as ogtype from Items i where i.name=N'" + name + "' and i.thickness=" + thick + "and (i.quantity >0 or i.kilo >0) and category_id="+ctID+";";
 				SqlCommand^ command = gcnew SqlCommand(selectQuery, connection);
@@ -750,7 +750,7 @@ namespace Store {
 			}
 			catch (SqlException^ ex) {
 			   // Handle any SQL errors
-				Console::WriteLine("An error occurred: " + ex->Message);
+				MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
 			finally {
 				// Close the database connection

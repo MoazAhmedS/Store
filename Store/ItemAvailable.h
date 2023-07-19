@@ -100,6 +100,8 @@ namespace Store {
 			this->Column5 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column6 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->label12 = (gcnew System::Windows::Forms::Label());
+			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->label10 = (gcnew System::Windows::Forms::Label());
 			this->label11 = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
@@ -110,8 +112,6 @@ namespace Store {
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label12 = (gcnew System::Windows::Forms::Label());
-			this->label13 = (gcnew System::Windows::Forms::Label());
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->panel2->SuspendLayout();
@@ -307,6 +307,29 @@ namespace Store {
 			this->panel2->Size = System::Drawing::Size(1221, 78);
 			this->panel2->TabIndex = 8;
 			// 
+			// label12
+			// 
+			this->label12->AutoSize = true;
+			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+															   static_cast<System::Byte>(0)));
+			this->label12->ForeColor = System::Drawing::Color::ForestGreen;
+			this->label12->Location = System::Drawing::Point(1012, 43);
+			this->label12->Name = L"label12";
+			this->label12->Size = System::Drawing::Size(49, 24);
+			this->label12->TabIndex = 11;
+			this->label12->Text = L"0.00";
+			// 
+			// label13
+			// 
+			this->label13->AutoSize = true;
+			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+															   static_cast<System::Byte>(0)));
+			this->label13->Location = System::Drawing::Point(1012, 8);
+			this->label13->Name = L"label13";
+			this->label13->Size = System::Drawing::Size(172, 24);
+			this->label13->TabIndex = 10;
+			this->label13->Text = L"اجمالي المبالغ المستحقه";
+			// 
 			// label10
 			// 
 			this->label10->AutoSize = true;
@@ -421,29 +444,6 @@ namespace Store {
 			this->label1->Size = System::Drawing::Size(150, 24);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"اجمالي اعلي الارباح";
-			// 
-			// label12
-			// 
-			this->label12->AutoSize = true;
-			this->label12->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
-			this->label12->ForeColor = System::Drawing::Color::ForestGreen;
-			this->label12->Location = System::Drawing::Point(1012, 43);
-			this->label12->Name = L"label12";
-			this->label12->Size = System::Drawing::Size(49, 24);
-			this->label12->TabIndex = 11;
-			this->label12->Text = L"0.00";
-			// 
-			// label13
-			// 
-			this->label13->AutoSize = true;
-			this->label13->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
-			this->label13->Location = System::Drawing::Point(1012, 8);
-			this->label13->Name = L"label13";
-			this->label13->Size = System::Drawing::Size(172, 24);
-			this->label13->TabIndex = 10;
-			this->label13->Text = L"اجمالي المبالغ المستحقه";
 			// 
 			// ItemAvailable
 			// 

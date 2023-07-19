@@ -82,8 +82,10 @@
     <ClCompile Include="Additems.cpp" />
     <ClCompile Include="BuyConfirmation.cpp" />
     <ClCompile Include="Catg.cpp" />
+    <ClCompile Include="CreateUser.cpp" />
     <ClCompile Include="Dashboard.cpp" />
     <ClCompile Include="Functions.cpp" />
+    <ClCompile Include="InvoiceBrowser.cpp" />
     <ClCompile Include="ItemAvailable.cpp" />
     <ClCompile Include="ItemManager.cpp" />
     <ClCompile Include="Login.cpp" />
@@ -102,10 +104,16 @@
     <ClInclude Include="Catg.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="CreateUser.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Dashboard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="Functions.h" />
+    <ClInclude Include="InvoiceBrowser.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="ItemAvailable.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -135,8 +143,14 @@
     <EmbeddedResource Include="Catg.resx">
       <DependentUpon>Catg.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CreateUser.resx">
+      <DependentUpon>CreateUser.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvoiceBrowser.resx">
+      <DependentUpon>InvoiceBrowser.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ItemAvailable.resx">
       <DependentUpon>ItemAvailable.h</DependentUpon>

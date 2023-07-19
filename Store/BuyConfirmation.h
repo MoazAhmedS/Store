@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "cartitem.h"
 #include "Functions.h"
+#include <algorithm>
 namespace Store {
 
 	using namespace System;
@@ -113,9 +114,6 @@ namespace Store {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->paid))->BeginInit();
 			this->panel2->SuspendLayout();
 			this->SuspendLayout();
-			// 
-			// head
-			// 
 			this->head->BackColor = System::Drawing::Color::LightGray;
 			this->head->Controls->Add(this->label1);
 			this->head->Controls->Add(this->button1);
@@ -127,12 +125,9 @@ namespace Store {
 			this->head->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &BuyConfirmation::panel1_MouseDown);
 			this->head->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &BuyConfirmation::panel1_MouseMove);
 			this->head->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &BuyConfirmation::panel1_MouseUp);
-			// 
-			// label1
-			// 
 			this->label1->AutoSize = true;
 			this->label1->Dock = System::Windows::Forms::DockStyle::Left;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(0, 0);
 			this->label1->Name = L"label1";
@@ -141,15 +136,12 @@ namespace Store {
 			this->label1->TabIndex = 3;
 			this->label1->Text = L"تاكيد عمليه البيع";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
-			// 
-			// button1
-			// 
 			this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
 			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->button1->Dock = System::Windows::Forms::DockStyle::Right;
 			this->button1->FlatAppearance->BorderSize = 0;
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															   static_cast<System::Byte>(0)));
 			this->button1->ForeColor = System::Drawing::Color::Red;
 			this->button1->Location = System::Drawing::Point(395, 0);
@@ -158,9 +150,6 @@ namespace Store {
 			this->button1->TabIndex = 0;
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &BuyConfirmation::button1_Click);
-			// 
-			// panel1
-			// 
 			this->panel1->Controls->Add(this->checkBox1);
 			this->panel1->Controls->Add(this->groupBox1);
 			this->panel1->Controls->Add(this->discount);
@@ -175,11 +164,8 @@ namespace Store {
 			this->panel1->Size = System::Drawing::Size(437, 466);
 			this->panel1->TabIndex = 2;
 			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &BuyConfirmation::panel1_Paint);
-			// 
-			// checkBox1
-			// 
 			this->checkBox1->AutoSize = true;
-			this->checkBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->checkBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 																 static_cast<System::Byte>(0)));
 			this->checkBox1->Location = System::Drawing::Point(182, 16);
 			this->checkBox1->Name = L"checkBox1";
@@ -188,9 +174,6 @@ namespace Store {
 			this->checkBox1->Text = L"اضافه فاتوره الي حساب العميل";
 			this->checkBox1->UseVisualStyleBackColor = true;
 			this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &BuyConfirmation::checkBox1_CheckedChanged);
-			// 
-			// groupBox1
-			// 
 			this->groupBox1->Controls->Add(this->cust_rem);
 			this->groupBox1->Controls->Add(this->cust_name);
 			this->groupBox1->Controls->Add(this->label8);
@@ -199,7 +182,7 @@ namespace Store {
 			this->groupBox1->Controls->Add(this->cust_num);
 			this->groupBox1->Controls->Add(this->label4);
 			this->groupBox1->Enabled = false;
-			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 																 static_cast<System::Byte>(0)));
 			this->groupBox1->Location = System::Drawing::Point(14, 50);
 			this->groupBox1->Name = L"groupBox1";
@@ -207,11 +190,8 @@ namespace Store {
 			this->groupBox1->TabIndex = 11;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"بيانات العميل";
-			// 
-			// cust_rem
-			// 
 			this->cust_rem->AutoSize = true;
-			this->cust_rem->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->cust_rem->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 																static_cast<System::Byte>(0)));
 			this->cust_rem->Location = System::Drawing::Point(21, 174);
 			this->cust_rem->Margin = System::Windows::Forms::Padding(10);
@@ -219,11 +199,8 @@ namespace Store {
 			this->cust_rem->Size = System::Drawing::Size(49, 24);
 			this->cust_rem->TabIndex = 11;
 			this->cust_rem->Text = L"0.00";
-			// 
-			// cust_name
-			// 
 			this->cust_name->AutoSize = true;
-			this->cust_name->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->cust_name->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 																 static_cast<System::Byte>(0)));
 			this->cust_name->Location = System::Drawing::Point(21, 130);
 			this->cust_name->Margin = System::Windows::Forms::Padding(10);
@@ -231,11 +208,8 @@ namespace Store {
 			this->cust_name->Size = System::Drawing::Size(52, 24);
 			this->cust_name->TabIndex = 10;
 			this->cust_name->Text = L"------";
-			// 
-			// label8
-			// 
 			this->label8->AutoSize = true;
-			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
 			this->label8->Location = System::Drawing::Point(285, 174);
 			this->label8->Margin = System::Windows::Forms::Padding(10);
@@ -243,11 +217,8 @@ namespace Store {
 			this->label8->Size = System::Drawing::Size(113, 24);
 			this->label8->TabIndex = 9;
 			this->label8->Text = L"المبلغ المستحق";
-			// 
-			// label7
-			// 
 			this->label7->AutoSize = true;
-			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
 			this->label7->Location = System::Drawing::Point(316, 130);
 			this->label7->Margin = System::Windows::Forms::Padding(10);
@@ -255,9 +226,6 @@ namespace Store {
 			this->label7->Size = System::Drawing::Size(82, 24);
 			this->label7->TabIndex = 8;
 			this->label7->Text = L"اسم العميل";
-			// 
-			// button4
-			// 
 			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button4->Location = System::Drawing::Point(13, 77);
 			this->button4->Name = L"button4";
@@ -266,21 +234,15 @@ namespace Store {
 			this->button4->Text = L"فحص الرقم";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &BuyConfirmation::button4_Click);
-			// 
-			// cust_num
-			// 
-			this->cust_num->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->cust_num->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 																static_cast<System::Byte>(0)));
 			this->cust_num->Location = System::Drawing::Point(13, 35);
 			this->cust_num->Margin = System::Windows::Forms::Padding(10);
 			this->cust_num->Name = L"cust_num";
 			this->cust_num->Size = System::Drawing::Size(266, 29);
 			this->cust_num->TabIndex = 4;
-			// 
-			// label4
-			// 
 			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
 			this->label4->Location = System::Drawing::Point(316, 38);
 			this->label4->Margin = System::Windows::Forms::Padding(10);
@@ -288,11 +250,8 @@ namespace Store {
 			this->label4->Size = System::Drawing::Size(82, 24);
 			this->label4->TabIndex = 5;
 			this->label4->Text = L"رقم العميل";
-			// 
-			// discount
-			// 
 			this->discount->DecimalPlaces = 2;
-			this->discount->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->discount->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 																static_cast<System::Byte>(0)));
 			this->discount->Location = System::Drawing::Point(19, 324);
 			this->discount->Margin = System::Windows::Forms::Padding(10);
@@ -301,11 +260,8 @@ namespace Store {
 			this->discount->Size = System::Drawing::Size(254, 29);
 			this->discount->TabIndex = 10;
 			this->discount->ValueChanged += gcnew System::EventHandler(this, &BuyConfirmation::discount_ValueChanged);
-			// 
-			// label6
-			// 
 			this->label6->AutoSize = true;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
 			this->label6->Location = System::Drawing::Point(326, 326);
 			this->label6->Margin = System::Windows::Forms::Padding(10);
@@ -313,11 +269,8 @@ namespace Store {
 			this->label6->Size = System::Drawing::Size(92, 24);
 			this->label6->TabIndex = 9;
 			this->label6->Text = L"اضافه خصم";
-			// 
-			// paid
-			// 
 			this->paid->DecimalPlaces = 2;
-			this->paid->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->paid->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															static_cast<System::Byte>(0)));
 			this->paid->Location = System::Drawing::Point(19, 280);
 			this->paid->Margin = System::Windows::Forms::Padding(10);
@@ -325,11 +278,8 @@ namespace Store {
 			this->paid->Name = L"paid";
 			this->paid->Size = System::Drawing::Size(254, 29);
 			this->paid->TabIndex = 8;
-			// 
-			// label5
-			// 
 			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
 			this->label5->Location = System::Drawing::Point(312, 282);
 			this->label5->Margin = System::Windows::Forms::Padding(10);
@@ -337,11 +287,8 @@ namespace Store {
 			this->label5->Size = System::Drawing::Size(106, 24);
 			this->label5->TabIndex = 7;
 			this->label5->Text = L"المبلغ المدفوع";
-			// 
-			// label3
-			// 
 			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(19, 370);
 			this->label3->Margin = System::Windows::Forms::Padding(10);
@@ -349,11 +296,8 @@ namespace Store {
 			this->label3->Size = System::Drawing::Size(58, 25);
 			this->label3->TabIndex = 3;
 			this->label3->Text = L"0.00";
-			// 
-			// label2
-			// 
 			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(287, 370);
 			this->label2->Margin = System::Windows::Forms::Padding(10);
@@ -361,9 +305,6 @@ namespace Store {
 			this->label2->Size = System::Drawing::Size(131, 25);
 			this->label2->TabIndex = 2;
 			this->label2->Text = L"اجمالي الفاتوره";
-			// 
-			// panel2
-			// 
 			this->panel2->Controls->Add(this->button3);
 			this->panel2->Controls->Add(this->button2);
 			this->panel2->Dock = System::Windows::Forms::DockStyle::Bottom;
@@ -371,13 +312,10 @@ namespace Store {
 			this->panel2->Name = L"panel2";
 			this->panel2->Size = System::Drawing::Size(437, 55);
 			this->panel2->TabIndex = 0;
-			// 
-			// button3
-			// 
 			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
 																		static_cast<System::Int32>(static_cast<System::Byte>(192)));
 			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															   static_cast<System::Byte>(0)));
 			this->button3->Location = System::Drawing::Point(3, 3);
 			this->button3->Name = L"button3";
@@ -386,13 +324,10 @@ namespace Store {
 			this->button3->Text = L"إلغاء";
 			this->button3->UseVisualStyleBackColor = false;
 			this->button3->Click += gcnew System::EventHandler(this, &BuyConfirmation::button3_Click);
-			// 
-			// button2
-			// 
 			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
 																		static_cast<System::Int32>(static_cast<System::Byte>(192)));
 			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															   static_cast<System::Byte>(0)));
 			this->button2->Location = System::Drawing::Point(224, 3);
 			this->button2->Name = L"button2";
@@ -401,9 +336,6 @@ namespace Store {
 			this->button2->Text = L"تاكيد";
 			this->button2->UseVisualStyleBackColor = false;
 			this->button2->Click += gcnew System::EventHandler(this, &BuyConfirmation::button2_Click);
-			// 
-			// BuyConfirmation
-			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(437, 506);
@@ -511,7 +443,7 @@ namespace Store {
 				// Execute the invoice query and retrieve the last inserted invoice ID
 				int invoiceId = Convert::ToInt32(command->ExecuteScalar());
 				//label1->Text = Convert::ToString(invoiceId);
-				purchaseitem(invoiceId);
+				purchaseitem(invoiceId, cust_id);
 
 				connection->Close();
 			}
@@ -525,254 +457,450 @@ namespace Store {
 			}
 
 		}
-		public: void purchaseitem(int invoice) {
-			SqlConnection^ connection = gcnew SqlConnection(connectionString);
-			
+		private: bool change = 0;
+		public: void purchaseitem(int invoice, int cust_id) {
+
 			try {
 				for each (ListItem ^ item in receivedItems) {
-					String^ purchaseQuery = "INSERT INTO purchase (item_id, invoice_id, enkilo, kilo, kilo_price, kilo_in_price, "
-						"enQunt, quantity, qun_in_price, qun_price, enStor, kill_or_qunt, stor_in_price) "
-						"VALUES (@item_id, @invoice_id, @enkilo, @kilo, @kilo_price, @kilo_in_price, @enQunt, @quantity, "
-						"@qun_in_price, @qun_price, @enStor, @kill_or_qunt, @stor_in_price)";
-					SqlCommand^ command = gcnew SqlCommand(purchaseQuery, connection);
-					command->Parameters->AddWithValue("@item_id", item->ID);
-					command->Parameters->AddWithValue("@invoice_id", invoice);
 
-					bool fromreturn = 0;
-					double returnvalue = 0;
-					bool fromstor = 0;
-					double storvalue = 0;
-					bool fromitems = 0;
-					double itemvalue = 0;
-					bool otype = 0;
-
-					//get the data from the source table for each item
+					SqlConnection^ connection_R = gcnew SqlConnection(connectionString);
 
 					try {
-						SqlConnection^ itemconnection = gcnew SqlConnection(connectionString);
-						String^ query = "SELECT i.*, s.enkilo as'SenKilo',s.in_kilo as 'Sin_kilo',s.kilo_in_price as 'Skilo_in_price' ,s.enqunt as 'Senqunt',s.in_qun as 'Sin_qun',s.qun_in_price as 'Squn_in_price', r.enKilo as 'RenKilo',r.kilo as 'Rkilo' , r.enQunt as 'RenQunt',r.quantity as 'Rquantity',r.in_price as 'Rin_price' FROM Items i LEFT JOIN Storage s ON s.item_id = i.id LEFT JOIN Item_return r ON r.item_id = i.id WHERE i.id =" + item->ID + "; ";
-						itemconnection->Open();
-						SqlCommand^ command1 = gcnew SqlCommand(query, itemconnection);
-						SqlDataReader^ reader = command1->ExecuteReader();
-						double updateitems1 = 0;
-						double updateitems2 = 0;
-						while (reader->Read()) {
-								//// check and return the type of the origin item kilo
-							if (reader->GetBoolean(reader->GetOrdinal("SenKilo"))) {
-								otype = 1;
-								command->Parameters->AddWithValue("@enkilo", 1);
-
-
-								command->Parameters->AddWithValue("@enQunt", safe_cast<System::Object^>(0));
-								command->Parameters->AddWithValue("@qun_price", safe_cast<System::Object^>(0));
-								command->Parameters->AddWithValue("@quantity", safe_cast<System::Object^>(0));
-								command->Parameters->AddWithValue("@qun_in_price", safe_cast<System::Object^>(0));
-								if (!item->Type) {
-									item->Quantity *= Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("piece_weight")));
-									command->Parameters->AddWithValue("@kilo_price", item->Sellprice / Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("piece_weight"))));
-								}
-								else {
-									command->Parameters->AddWithValue("@kilo_price", item->Sellprice);
-								}
-
-								//check if there is returned item
-								if (reader->GetDecimal(reader->GetOrdinal("Rkilo")) > 0) {
-									fromreturn = 1;
-									if (Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("Rkilo"))) >= item->Quantity) {
-										command->Parameters->AddWithValue("@enStor", safe_cast<System::Object^>(0));
-										command->Parameters->AddWithValue("@kill_or_qunt", safe_cast<System::Object^>(0));
-										command->Parameters->AddWithValue("@stor_in_price", safe_cast<System::Object^>(0));
-										returnvalue = item->Quantity;
-										command->Parameters->AddWithValue("@kilo", returnvalue);
-										command->Parameters->AddWithValue("@kilo_in_price", reader->GetDecimal(reader->GetOrdinal("Rin_price")));
-									}
-									else {
-										returnvalue = Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("Rkilo")));
-										command->Parameters->AddWithValue("@kilo", returnvalue);
-										command->Parameters->AddWithValue("@kilo_in_price", reader->GetDecimal(reader->GetOrdinal("Rin_price")));
-										command->Parameters->AddWithValue("@enStor", 1);
-										item->Quantity -= returnvalue;
-
-										itemvalue = item->Quantity;
-										command->Parameters->AddWithValue("@kill_or_qunt", itemvalue);
-										command->Parameters->AddWithValue("@stor_in_price", reader->GetDecimal(reader->GetOrdinal("kilo_in_price")));
-										fromitems = 1;
-									}
-								}
-								else {
-									fromitems = 1;
-									if (Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("kilo"))) >= item->Quantity) {
-										command->Parameters->AddWithValue("@enStor", safe_cast<System::Object^>(0));
-										command->Parameters->AddWithValue("@kill_or_qunt", safe_cast<System::Object^>(0));
-										command->Parameters->AddWithValue("@stor_in_price", safe_cast<System::Object^>(0));
-										itemvalue = item->Quantity;
-										command->Parameters->AddWithValue("@kilo", itemvalue);
-										command->Parameters->AddWithValue("@kilo_in_price", reader->GetDecimal(reader->GetOrdinal("kilo_in_price")));
-
-									}
-									else {
-										itemvalue = Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("kilo")));
-										command->Parameters->AddWithValue("@kilo", itemvalue);
-										command->Parameters->AddWithValue("@kilo_in_price", reader->GetDecimal(reader->GetOrdinal("kilo_in_price")));
-										command->Parameters->AddWithValue("@enStor", 1);
-
-										item->Quantity -= itemvalue;
-										storvalue = item->Quantity;
-										command->Parameters->AddWithValue("@kill_or_qunt", storvalue);
-										command->Parameters->AddWithValue("@stor_in_price", reader->GetDecimal(reader->GetOrdinal("Skilo_in_price")));
-										fromstor = 1;
-									}
-								}
-
-
+						String^ query = "SELECT TOP 1 s.*, i.piece_weight FROM Storage s JOIN Items i ON s.item_id = i.id WHERE s.item_id =" + item->ID + ";";
+						connection_R->Open();
+						SqlCommand^ command_R = gcnew SqlCommand(query, connection_R);
+						SqlDataReader^ reader_R = command_R->ExecuteReader();
+						while (reader_R->Read()) {
+							change = 0;
+							if (reader_R->GetBoolean(reader_R->GetOrdinal("enkilo")) && !item->Type) {
+								item->Quantity *= Convert::ToDouble(reader_R->GetDecimal(reader_R->GetOrdinal("piece_weight")));
+								item->Type = 1;
+								change = 1;
 							}
-							else {
-								otype = 0;
-								command->Parameters->AddWithValue("@enkilo", safe_cast<System::Object^>(0));
-								command->Parameters->AddWithValue("@enQunt", 1);
-								command->Parameters->AddWithValue("@kilo_price", safe_cast<System::Object^>(0));
+							else if (reader_R->GetBoolean(reader_R->GetOrdinal("enqunt")) && item->Type) {
+								item->Quantity /= Convert::ToDouble(reader_R->GetDecimal(reader_R->GetOrdinal("piece_weight")));
+								item->Type = 0;
+								change = 1;
+							}
 
-								command->Parameters->AddWithValue("@kilo_in_price", safe_cast<System::Object^>(0));
-								command->Parameters->AddWithValue("@kilo", safe_cast<System::Object^>(0));
-								//// check and return the type of the origin item qunatity
-								if (item->Type) {
-									item->Quantity /= Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("piece_weight")));
-									command->Parameters->AddWithValue("@qun_price", item->Sellprice * Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("piece_weight"))));
-								}
-								else {
-									command->Parameters->AddWithValue("@qun_price", item->Sellprice);
-								}
+							item->Quantity = from_Returned_Item(item, invoice, Convert::ToDouble(reader_R->GetDecimal(reader_R->GetOrdinal("piece_weight"))));
+							MessageBox::Show("Return " + Convert::ToString(item->Quantity));
+							if (item->Quantity) {
+								item->Quantity = from_Items(item, invoice, Convert::ToDouble(reader_R->GetDecimal(reader_R->GetOrdinal("piece_weight"))));
+								MessageBox::Show("Items " + Convert::ToString(item->Quantity));
+							}
 
-								//check if there is returned item
-								if (reader->GetDecimal(reader->GetOrdinal("Rquantity")) > 0) {
-
-									fromreturn = 1;
-									if (Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("Rquantity"))) >= item->Quantity) {
-										command->Parameters->AddWithValue("@enStor", safe_cast<System::Object^>(0));
-										command->Parameters->AddWithValue("@kill_or_qunt", safe_cast<System::Object^>(0));
-										command->Parameters->AddWithValue("@stor_in_price", safe_cast<System::Object^>(0));
-										returnvalue = item->Quantity;
-										command->Parameters->AddWithValue("@quantity", returnvalue);
-										command->Parameters->AddWithValue("@qun_in_price", reader->GetDecimal(reader->GetOrdinal("Rin_price")));
-									}
-									else {
-										returnvalue = Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("Rquantity")));
-										command->Parameters->AddWithValue("@quantity", returnvalue);
-										command->Parameters->AddWithValue("@qun_in_price", reader->GetDecimal(reader->GetOrdinal("Rin_price")));
-										command->Parameters->AddWithValue("@enStor", 1);
-										item->Quantity -= returnvalue;
-										itemvalue = item->Quantity;
-										command->Parameters->AddWithValue("@kill_or_qunt", itemvalue);
-										command->Parameters->AddWithValue("@stor_in_price", reader->GetDecimal(reader->GetOrdinal("qun_in_price")));
-										fromitems = 1;
-									}
-								}
-								else {
-									fromitems = 1;
-									if (Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("quantity"))) >= item->Quantity) {
-										command->Parameters->AddWithValue("@enStor", safe_cast<System::Object^>(0));
-										command->Parameters->AddWithValue("@kill_or_qunt", safe_cast<System::Object^>(0));
-										command->Parameters->AddWithValue("@stor_in_price", safe_cast<System::Object^>(0));
-										itemvalue = item->Quantity;
-										command->Parameters->AddWithValue("@quantity", itemvalue);
-										command->Parameters->AddWithValue("@qun_in_price", reader->GetDecimal(reader->GetOrdinal("qun_in_price")));
-									}
-									else {
-										itemvalue = Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("quantity")));
-										command->Parameters->AddWithValue("@quantity", itemvalue);
-										command->Parameters->AddWithValue("@qun_in_price", reader->GetDecimal(reader->GetOrdinal("qun_in_price")));
-										command->Parameters->AddWithValue("@enStor", 1);
-										item->Quantity -= itemvalue;
-										storvalue = item->Quantity;
-										command->Parameters->AddWithValue("@kill_or_qunt", storvalue);
-										command->Parameters->AddWithValue("@stor_in_price", reader->GetDecimal(reader->GetOrdinal("Squn_in_price")));
-										fromstor = 1;
-									}
-								}
+							if (item->Quantity) {
+								item->Quantity = from_Storage(item, invoice, Convert::ToDouble(reader_R->GetDecimal(reader_R->GetOrdinal("piece_weight"))));
+								MessageBox::Show("Storage " + Convert::ToString(item->Quantity));
+								from_storage_to_items(item);
 							}
 
 
-							updateitems1 = Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("quantity")));
-							updateitems2 = Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("kilo")));
-						}
 
-						itemconnection->Close();
-						// assigin the new value the tables after purchasing;
-						if (fromreturn) {
-							String^ query = "update Item_return set kilo = kilo - @kilo, quantity=quantity - @quantity where item_id=@id;";
-							if (fromitems || (otype && updateitems2 == returnvalue) || (!otype && updateitems1 == returnvalue)) {
-								query += "update Items set kilo =kilo - @ikilo, quantity=quantity - @iquantity where id=@id;";
-							}
-							SqlCommand^ command0 = gcnew SqlCommand(query, itemconnection);
-							command0->Parameters->AddWithValue("@kilo", otype ? returnvalue : safe_cast<System::Object^>(0));
-							command0->Parameters->AddWithValue("@quantity", !otype ? returnvalue : safe_cast<System::Object^>(0));
-							if (fromitems || (otype && updateitems2 == returnvalue) || (!otype && updateitems1 == returnvalue)) {
-								command0->Parameters->AddWithValue("@ikilo", otype ? itemvalue : safe_cast<System::Object^>(0));
-								command0->Parameters->AddWithValue("@iquantity", !otype ? itemvalue : safe_cast<System::Object^>(0));
-							}
-							command0->Parameters->AddWithValue("@id", item->ID);
 
-							itemconnection->Open();
-							command0->ExecuteNonQuery();
-							itemconnection->Close();
-						}
-						else if (fromitems) {
-							String^ query = "update Items set kilo =kilo - @kilo, quantity=quantity - @quantity where id=@id;";
 
-							if (fromstor || (otype && updateitems2 == itemvalue) || (!otype && updateitems1 == itemvalue)) {
-								query += "update Storage set in_kilo =in_kilo - @ikilo, in_qun=in_qun-@iquantity where item_id=@id;";
-								query += "UPDATE Items SET kilo =kilo+ s.in_kilo , kilo_in_price = s.kilo_in_price , quantity= quantity+ s.in_qun ,qun_in_price = s.qun_in_price FROM Items i INNER JOIN Storage s ON i.id = s.item_id WHERE i.id = @id;";
-								query += "UPDATE Storage SET in_kilo = 0,in_qun=0 WHERE item_id = @id;";
-							}
-							SqlCommand^ command0 = gcnew SqlCommand(query, itemconnection);
-							command0->Parameters->AddWithValue("@kilo", otype ? itemvalue : safe_cast<System::Object^>(0));
-							command0->Parameters->AddWithValue("@quantity", !otype ? itemvalue : safe_cast<System::Object^>(0));
-							if (fromstor || (otype && updateitems2 == itemvalue) || (!otype && updateitems1 == itemvalue)) {
-								command0->Parameters->AddWithValue("@ikilo", otype ? storvalue : safe_cast<System::Object^>(0));
-								command0->Parameters->AddWithValue("@iquantity", !otype ? storvalue : safe_cast<System::Object^>(0));
-							}
-							command0->Parameters->AddWithValue("@id", item->ID);
-
-							itemconnection->Open();
-							command0->ExecuteNonQuery();
-							itemconnection->Close();
 						}
 					}
 					catch (SqlException^ ex) {
-						// Handle any SQL errors
+			  // Handle any SQL errors
 						MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+					}
 
-					}
-					finally {
-						// Close the database connection
-						if (connection->State == System::Data::ConnectionState::Open)
-							connection->Close();
-					}
-					connection->Open();
-					command->ExecuteNonQuery();
-					connection->Close();
+
 
 				}
-				if (1) {
-					String^ query = "update Invoice set remaining = remaining where id = " + invoice + "; ";
-					SqlCommand^ command0 = gcnew SqlCommand(query, connection);
 
-					connection->Open();
-					command0->ExecuteNonQuery();
-					connection->Close();
-				}
+				SqlConnection^ connection = gcnew SqlConnection(connectionString);
+				String^ query = "update Invoice set remaining = remaining where id = " + invoice + "; ";
+				query += "update Customer set remaining = remaining where id = " + cust_id + "; ";
+				SqlCommand^ command0 = gcnew SqlCommand(query, connection);
+
+				connection->Open();
+				command0->ExecuteNonQuery();
+				connection->Close();
+				MessageBox::Show(L"تم البيع", L"عمليه ناجحه");
 
 				clearthecartitems();
 				CatgButton1ClickEvent();
+
 			}
 			catch (SqlException^ ex) {
 			   // Handle any SQL errors
 				MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
-			finally {
-				// Close the database connection
-				if (connection->State == System::Data::ConnectionState::Open)
+
+		}
+
+		private: double from_Returned_Item(ListItem^ item, int invoice, double weight) {
+
+			bool otype = item->Type;
+
+			double quantity = item->Quantity;;
+
+			String^ query_ret = "Select * from Item_return where item_id=" + item->ID + " and (kilo+quantity)>0 ;";
+			SqlConnection^ connect_ret = gcnew SqlConnection(connectionString);
+			try {
+
+				connect_ret->Open();
+				SqlCommand^ comm_ret = gcnew SqlCommand(query_ret, connect_ret);
+				SqlDataReader^ read_ret = comm_ret->ExecuteReader();
+
+				while (read_ret->Read()) {
+
+					String^ purchaseQuery = "INSERT INTO purchase (item_id, invoice_id, enkilo, kilo, kilo_price, kilo_in_price,enQunt, quantity, qun_in_price, qun_price) VALUES (@item_id, @invoice_id, @enkilo, @kilo, @kilo_price, @kilo_in_price, @enQunt, @quantity, @qun_in_price, @qun_price)";
+					SqlConnection^ connection = gcnew SqlConnection(connectionString);
+					try {
+						SqlCommand^ command = gcnew SqlCommand(purchaseQuery, connection);
+						command->Parameters->AddWithValue("@item_id", item->ID);
+						command->Parameters->AddWithValue("@invoice_id", invoice);
+
+						//check the type of the item
+						double qunts;
+						if (item->Type) {
+							otype = 1;
+
+							command->Parameters->AddWithValue("@enkilo", 1);
+							command->Parameters->AddWithValue("@enQunt", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@qun_price", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@quantity", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@qun_in_price", safe_cast<System::Object^>(0));
+
+							if (change) {
+								command->Parameters->AddWithValue("@kilo_price", item->Sellprice / weight);
+							}
+							else {
+								command->Parameters->AddWithValue("@kilo_price", item->Sellprice);
+							}
+
+							qunts = min(Convert::ToDouble(read_ret->GetDecimal(read_ret->GetOrdinal("kilo"))), quantity);
+							quantity -= qunts;
+							if (qunts) {
+								command->Parameters->AddWithValue("@kilo", qunts);
+								command->Parameters->AddWithValue("@kilo_in_price", read_ret->GetDecimal(read_ret->GetOrdinal("in_price")));
+							}
+							else {
+								return item->Quantity;
+							}
+
+						}
+						else {
+							otype = 0;
+
+							command->Parameters->AddWithValue("@enQunt", 1);
+							command->Parameters->AddWithValue("@enkilo", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@kilo_price", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@kilo_in_price", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@kilo", safe_cast<System::Object^>(0));
+							//// check and return the type of the origin item qunatity
+							if (change) {
+								command->Parameters->AddWithValue("@qun_price", item->Sellprice * weight);
+							}
+							else {
+								command->Parameters->AddWithValue("@qun_price", item->Sellprice);
+							}
+
+							qunts = min(Convert::ToDouble(read_ret->GetDecimal(read_ret->GetOrdinal("quantity"))), quantity);
+							quantity -= qunts;
+							if (qunts) {
+								command->Parameters->AddWithValue("@quantity", qunts);
+								command->Parameters->AddWithValue("@qun_in_price", read_ret->GetDecimal(read_ret->GetOrdinal("in_price")));
+							}
+							else {
+								return item->Quantity;
+							}
+
+						}
+
+						connection->Open();
+						command->ExecuteNonQuery();
+						connection->Close();
+
+						//update the item_return
+						String^ query = "update Item_return set kilo = kilo - @kilo, quantity=quantity - @quantity where id=@id;";
+						SqlCommand^ command0 = gcnew SqlCommand(query, connection);
+						command0->Parameters->AddWithValue("@kilo", otype ? qunts : safe_cast<System::Object^>(0));
+						command0->Parameters->AddWithValue("@quantity", !otype ? qunts : safe_cast<System::Object^>(0));
+						command0->Parameters->AddWithValue("@id", read_ret->GetInt32(0));
+
+						connection->Open();
+						command0->ExecuteNonQuery();
+						connection->Close();
+						item->Quantity = quantity;
+
+
+					}
+					catch (SqlException^ ex) {
+						MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+					}
+				}
+				connect_ret->Close();
+				return quantity;
+
+			}
+			catch (SqlException^ ex) {
+				MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return item->Quantity;
+			}
+
+		}
+
+		private: double from_Storage(ListItem^ item, int invoice, double weight) {
+
+			bool otype = item->Type;
+
+			double quantity = item->Quantity;;
+
+			String^ query_ret = "Select * from Storage where item_id=" + item->ID + " and (in_kilo+in_qun)>0 ;";
+			SqlConnection^ connect_ret = gcnew SqlConnection(connectionString);
+			try {
+
+				connect_ret->Open();
+				SqlCommand^ comm_ret = gcnew SqlCommand(query_ret, connect_ret);
+				SqlDataReader^ read_ret = comm_ret->ExecuteReader();
+
+				while (read_ret->Read()) {
+
+					String^ purchaseQuery = "INSERT INTO purchase (item_id, invoice_id, enkilo, kilo, kilo_price, kilo_in_price,enQunt, quantity, qun_in_price, qun_price) VALUES (@item_id, @invoice_id, @enkilo, @kilo, @kilo_price, @kilo_in_price, @enQunt, @quantity, @qun_in_price, @qun_price)";
+					SqlConnection^ connection = gcnew SqlConnection(connectionString);
+					try {
+						SqlCommand^ command = gcnew SqlCommand(purchaseQuery, connection);
+						command->Parameters->AddWithValue("@item_id", item->ID);
+						command->Parameters->AddWithValue("@invoice_id", invoice);
+
+						//check the type of the item
+						double qunts;
+						if (item->Type) {
+							otype = 1;
+
+							command->Parameters->AddWithValue("@enkilo", 1);
+							command->Parameters->AddWithValue("@enQunt", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@qun_price", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@quantity", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@qun_in_price", safe_cast<System::Object^>(0));
+
+							if (change) {
+								command->Parameters->AddWithValue("@kilo_price", (item->Sellprice / weight));
+							}
+							else {
+								command->Parameters->AddWithValue("@kilo_price", item->Sellprice);
+							}
+
+							qunts = min(Convert::ToDouble(read_ret->GetDecimal(read_ret->GetOrdinal("in_kilo"))), quantity);
+							quantity -= qunts;
+							if (qunts) {
+								command->Parameters->AddWithValue("@kilo", qunts);
+								command->Parameters->AddWithValue("@kilo_in_price", read_ret->GetDecimal(read_ret->GetOrdinal("kilo_in_price")));
+							}
+							else {
+								return item->Quantity;
+							}
+
+						}
+						else {
+							otype = 0;
+
+							command->Parameters->AddWithValue("@enQunt", 1);
+							command->Parameters->AddWithValue("@enkilo", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@kilo_price", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@kilo_in_price", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@kilo", safe_cast<System::Object^>(0));
+							//// check and return the type of the origin item qunatity
+							if (change) {
+								command->Parameters->AddWithValue("@qun_price", item->Sellprice * weight);
+							}
+							else {
+								command->Parameters->AddWithValue("@qun_price", item->Sellprice);
+							}
+
+							qunts = min(Convert::ToDouble(read_ret->GetDecimal(read_ret->GetOrdinal("in_qun"))), quantity);
+							quantity -= qunts;
+							if (qunts) {
+								command->Parameters->AddWithValue("@quantity", qunts);
+								command->Parameters->AddWithValue("@qun_in_price", read_ret->GetDecimal(read_ret->GetOrdinal("qun_in_price")));
+							}
+							else {
+								return item->Quantity;
+							}
+
+						}
+
+						connection->Open();
+						command->ExecuteNonQuery();
+						connection->Close();
+
+						//update the item_return
+						String^ query = "update Storage set in_kilo = in_kilo - @in_kilo, in_qun=in_qun - @in_qun where id=@id;";
+						SqlCommand^ command0 = gcnew SqlCommand(query, connection);
+						command0->Parameters->AddWithValue("@in_kilo", otype ? qunts : safe_cast<System::Object^>(0));
+						command0->Parameters->AddWithValue("@in_qun", !otype ? qunts : safe_cast<System::Object^>(0));
+						command0->Parameters->AddWithValue("@id", read_ret->GetInt32(0));
+
+						connection->Open();
+						command0->ExecuteNonQuery();
+						connection->Close();
+						item->Quantity = quantity;
+
+
+					}
+					catch (SqlException^ ex) {
+						MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+					}
+				}
+				connect_ret->Close();
+				MessageBox::Show("Storage 2" + Convert::ToString(quantity));
+				return quantity;
+
+			}
+			catch (SqlException^ ex) {
+				MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return item->Quantity;
+			}
+
+		}
+
+		private: double from_Items(ListItem^ item, int invoice, double weight) {
+
+			bool otype = item->Type;
+
+			double quantity = item->Quantity;;
+
+			String^ query_ret = "Select * from Items where id=" + item->ID + " ;";
+			SqlConnection^ connect_ret = gcnew SqlConnection(connectionString);
+			try {
+
+				connect_ret->Open();
+				SqlCommand^ comm_ret = gcnew SqlCommand(query_ret, connect_ret);
+				SqlDataReader^ read_ret = comm_ret->ExecuteReader();
+
+				while (read_ret->Read()) {
+
+					String^ purchaseQuery = "INSERT INTO purchase (item_id, invoice_id, enkilo, kilo, kilo_price, kilo_in_price,enQunt, quantity, qun_in_price, qun_price) VALUES (@item_id, @invoice_id, @enkilo, @kilo, @kilo_price, @kilo_in_price, @enQunt, @quantity, @qun_in_price, @qun_price)";
+					SqlConnection^ connection = gcnew SqlConnection(connectionString);
+					try {
+						SqlCommand^ command = gcnew SqlCommand(purchaseQuery, connection);
+						command->Parameters->AddWithValue("@item_id", item->ID);
+						command->Parameters->AddWithValue("@invoice_id", invoice);
+
+						//check the type of the item
+						double qunts;
+						if (item->Type) {
+							otype = 1;
+
+							command->Parameters->AddWithValue("@enkilo", 1);
+							command->Parameters->AddWithValue("@enQunt", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@qun_price", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@quantity", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@qun_in_price", safe_cast<System::Object^>(0));
+
+							if (change) {
+								command->Parameters->AddWithValue("@kilo_price", (item->Sellprice / weight));
+							}
+							else {
+								command->Parameters->AddWithValue("@kilo_price", item->Sellprice);
+							}
+
+							qunts = min(Convert::ToDouble(read_ret->GetDecimal(read_ret->GetOrdinal("kilo"))), quantity);
+							quantity -= qunts;
+							if (qunts) {
+								command->Parameters->AddWithValue("@kilo", qunts);
+								command->Parameters->AddWithValue("@kilo_in_price", read_ret->GetDecimal(read_ret->GetOrdinal("kilo_in_price")));
+							}
+							else {
+								return item->Quantity;
+							}
+
+						}
+						else {
+							otype = 0;
+
+							command->Parameters->AddWithValue("@enQunt", 1);
+							command->Parameters->AddWithValue("@enkilo", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@kilo_price", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@kilo_in_price", safe_cast<System::Object^>(0));
+							command->Parameters->AddWithValue("@kilo", safe_cast<System::Object^>(0));
+							//// check and return the type of the origin item qunatity
+							if (change) {
+								command->Parameters->AddWithValue("@qun_price", item->Sellprice * weight);
+							}
+							else {
+								command->Parameters->AddWithValue("@qun_price", item->Sellprice);
+							}
+
+							qunts = min(Convert::ToDouble(read_ret->GetDecimal(read_ret->GetOrdinal("quantity"))), quantity);
+							quantity -= qunts;
+							if (qunts) {
+								command->Parameters->AddWithValue("@quantity", qunts);
+								command->Parameters->AddWithValue("@qun_in_price", read_ret->GetDecimal(read_ret->GetOrdinal("qun_in_price")));
+							}
+							else {
+								return item->Quantity;
+							}
+
+						}
+
+						connection->Open();
+						command->ExecuteNonQuery();
+						connection->Close();
+
+						//update the item_return
+						String^ query = "update Items set kilo = kilo - @kilo, quantity=quantity - @quantity where id=@id;";
+						SqlCommand^ command0 = gcnew SqlCommand(query, connection);
+						command0->Parameters->AddWithValue("@kilo", otype ? qunts : safe_cast<System::Object^>(0));
+						command0->Parameters->AddWithValue("@quantity", !otype ? qunts : safe_cast<System::Object^>(0));
+						command0->Parameters->AddWithValue("@id", read_ret->GetInt32(0));
+
+						connection->Open();
+						command0->ExecuteNonQuery();
+						connection->Close();
+						item->Quantity = quantity;
+
+
+					}
+					catch (SqlException^ ex) {
+						MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+					}
+				}
+				connect_ret->Close();
+				return quantity;
+
+			}
+			catch (SqlException^ ex) {
+				MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return item->Quantity;
+			}
+
+		}
+		private: void from_storage_to_items(ListItem^ item) {
+			SqlConnection^ connection_R = gcnew SqlConnection(connectionString);
+			try {
+				connection_R->Open();
+
+				String^ getQuery = "Select TOP 1 * from Storage Where item_id=" + item->ID + " and (in_kilo+in_qun)>0 ;";
+				SqlCommand^ command = gcnew SqlCommand(getQuery, connection_R);
+				SqlDataReader^ reader = command->ExecuteReader();
+				while (reader->Read()) {
+
+					String^ query = "update Items set kilo =kilo + @kilo ,kilo_in_price=@kilo_price, quantity =quantity + @quantity,qun_in_price=@qun_price where id=@id;";
+					query += "Update Storage set in_kilo=0,in_qun=0 where id=" + reader->GetInt32(0) + ";";
+					SqlConnection^ connection = gcnew SqlConnection(connectionString);
+					SqlCommand^ command0 = gcnew SqlCommand(query, connection);
+					command0->Parameters->AddWithValue("@kilo", reader->GetDecimal(3));
+					command0->Parameters->AddWithValue("@kilo_price", reader->GetDecimal(4));
+					command0->Parameters->AddWithValue("@quantity", reader->GetDecimal(6));
+					command0->Parameters->AddWithValue("@qun_price", reader->GetDecimal(7));
+					command0->Parameters->AddWithValue("@id", item->ID);
+
+					connection->Open();
+					command0->ExecuteNonQuery();
 					connection->Close();
+
+				}
+
+				connection_R->Close();
+			}
+			catch (SqlException^ ex) {
+				MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
 		}
 		private: System::Void panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {

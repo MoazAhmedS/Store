@@ -235,6 +235,7 @@ namespace Store {
 			this->flowLayoutPanel1->Name = L"flowLayoutPanel1";
 			this->flowLayoutPanel1->Size = System::Drawing::Size(449, 471);
 			this->flowLayoutPanel1->TabIndex = 6;
+			this->flowLayoutPanel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Return::flowLayoutPanel1_Paint);
 			// 
 			// splitContainer1
 			// 
@@ -442,13 +443,13 @@ namespace Store {
 
 						Label^ label2 = gcnew Label();
 						label2->Text = "            " + L"باقي" + "      " + L"الاجمالي"+"               "+L"تاريخ الشراء";
-						label2->Size = System::Drawing::Size(460, 25);
+						label2->Size = System::Drawing::Size(440, 25);
 						label2->Font = gcnew System::Drawing::Font(label->Font->FontFamily, 14, System::Drawing::FontStyle::Bold);
 						flowLayoutPanel1->Controls->Add(label2);
 
 						int cust_id = reader->GetInt32(0);
 						SqlConnection^ itemconnection = gcnew SqlConnection(connectionString);
-						String^ selectQuery = L"SELECT *,FORMAT(date, 'yyyy-MM-dd HH:mm tt') AS formatted_date FROM invoice WHERE cust_id = " + cust_id + " ORDER BY date ASC; ";
+						String^ selectQuery = L"SELECT *,FORMAT(date, 'yyyy-MM-dd')+'  '+CONVERT(VARCHAR(15),CAST(FORMAT(date, 'HH:mm tt')as time),100) AS formatted_date FROM invoice WHERE cust_id = " + cust_id + " ORDER BY date ASC; ";
 						try {
 
 							itemconnection->Open();
@@ -739,5 +740,7 @@ namespace Store {
 				this->label2->Text = FormatNumberWithCommas(changeprice * Convert::ToDouble(this->qunt_kilo->Value));
 			}
 		}
-	};
+		private: System::Void flowLayoutPanel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+		}
+};
 }
