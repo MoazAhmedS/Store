@@ -1012,12 +1012,15 @@ namespace Store {
 					connection->Close();
 				}
 				else {
-					query = "update Storage set in_kilo=in_kilo+@kilo, kilo_in_price=@newprice, in_qun=in_qun+@quantity, qun_in_price=@newpricequn where item_id=" + sID + ";";
+					query = "INSERT INTO Storage (item_id,enkilo, in_kilo, kilo_in_price,enqunt, in_qun, qun_in_price) VALUES (@item_id,@enkilo, @in_kilo, @kilo_in_price,@enqunt, @in_qun, @qun_in_price);";
 					SqlCommand^ command = gcnew SqlCommand(query, connection);
-					command->Parameters->AddWithValue("@kilo", ogtype ? this->in_kilo_qunt->Value : safe_cast<System::Object^>(0));
-					command->Parameters->AddWithValue("@quantity", !ogtype ? this->in_kilo_qunt->Value : safe_cast<System::Object^>(0));
-					command->Parameters->AddWithValue("@newprice", ogtype ? new_ogprice : safe_cast<System::Object^>(0));
-					command->Parameters->AddWithValue("@newpricequn", !ogtype ? new_ogprice : safe_cast<System::Object^>(0));
+					command->Parameters->AddWithValue("@item_id", sID);
+					command->Parameters->AddWithValue("@enkilo", ogtype ? ogtype : safe_cast<System::Object^>(0));
+					command->Parameters->AddWithValue("@enqunt", !ogtype ? !ogtype : safe_cast<System::Object^>(0));
+					command->Parameters->AddWithValue("@in_kilo", ogtype ? this->in_kilo_qunt->Value : safe_cast<System::Object^>(0));
+					command->Parameters->AddWithValue("@in_qun", !ogtype ? this->in_kilo_qunt->Value : safe_cast<System::Object^>(0));
+					command->Parameters->AddWithValue("@kilo_in_price", ogtype ? new_ogprice : safe_cast<System::Object^>(0));
+					command->Parameters->AddWithValue("@qun_in_price", !ogtype ? new_ogprice : safe_cast<System::Object^>(0));
 					connection->Open();
 					command->ExecuteNonQuery();
 					connection->Close();

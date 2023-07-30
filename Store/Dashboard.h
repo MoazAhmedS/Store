@@ -62,7 +62,7 @@ namespace Store {
 
 
 
-		private: System::Windows::Forms::ListBox^ cart;
+
 
 		private: System::Windows::Forms::Label^ label1;
 		private: System::Windows::Forms::Button^ button3;
@@ -83,10 +83,10 @@ namespace Store {
 		private: System::Windows::Forms::Panel^ panel1;
 		private: System::Windows::Forms::Label^ label3;
 		private: System::Windows::Forms::Label^ label2;
-		private: System::Windows::Forms::Panel^ panel4;
-		private: System::Windows::Forms::Label^ label6;
-		private: System::Windows::Forms::Label^ label4;
-		private: System::Windows::Forms::Label^ label5;
+
+
+
+
 		private: System::Windows::Forms::Button^ button6;
 
 		private: System::Windows::Forms::CheckBox^ checkBox1;
@@ -103,6 +103,35 @@ namespace Store {
 		private: System::Windows::Forms::Button^ button9;
 		private: System::Windows::Forms::Panel^ panel11;
 		private: System::Windows::Forms::Button^ button10;
+		private: System::Windows::Forms::DataGridView^ cart;
+		private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column4;
+		private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+		private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+		private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -135,6 +164,12 @@ namespace Store {
 		/// </summary>
 		void InitializeComponent(void) {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Dashboard::typeid));
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle5 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle6 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle4 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->head = (gcnew System::Windows::Forms::Panel());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
@@ -144,14 +179,14 @@ namespace Store {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->control = (gcnew System::Windows::Forms::Panel());
-			this->panel11 = (gcnew System::Windows::Forms::Panel());
-			this->button10 = (gcnew System::Windows::Forms::Button());
-			this->panel10 = (gcnew System::Windows::Forms::Panel());
-			this->button9 = (gcnew System::Windows::Forms::Button());
 			this->panel9 = (gcnew System::Windows::Forms::Panel());
 			this->button8 = (gcnew System::Windows::Forms::Button());
 			this->panel8 = (gcnew System::Windows::Forms::Panel());
 			this->button7 = (gcnew System::Windows::Forms::Button());
+			this->panel11 = (gcnew System::Windows::Forms::Panel());
+			this->button10 = (gcnew System::Windows::Forms::Button());
+			this->panel10 = (gcnew System::Windows::Forms::Panel());
+			this->button9 = (gcnew System::Windows::Forms::Button());
 			this->panel7 = (gcnew System::Windows::Forms::Panel());
 			this->button4 = (gcnew System::Windows::Forms::Button());
 			this->panel5 = (gcnew System::Windows::Forms::Panel());
@@ -160,11 +195,11 @@ namespace Store {
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
-			this->cart = (gcnew System::Windows::Forms::ListBox());
-			this->panel4 = (gcnew System::Windows::Forms::Panel());
-			this->label6 = (gcnew System::Windows::Forms::Label());
-			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->cart = (gcnew System::Windows::Forms::DataGridView());
+			this->Column4 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -174,16 +209,16 @@ namespace Store {
 			this->shop = (gcnew System::Windows::Forms::Panel());
 			this->head->SuspendLayout();
 			this->control->SuspendLayout();
-			this->panel11->SuspendLayout();
-			this->panel10->SuspendLayout();
 			this->panel9->SuspendLayout();
 			this->panel8->SuspendLayout();
+			this->panel11->SuspendLayout();
+			this->panel10->SuspendLayout();
 			this->panel7->SuspendLayout();
 			this->panel5->SuspendLayout();
 			this->panel6->SuspendLayout();
 			this->panel3->SuspendLayout();
 			this->panel1->SuspendLayout();
-			this->panel4->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->cart))->BeginInit();
 			this->panel2->SuspendLayout();
 			this->tabControl1->SuspendLayout();
 			this->tabPage1->SuspendLayout();
@@ -312,10 +347,10 @@ namespace Store {
 			// control
 			// 
 			this->control->BackColor = System::Drawing::SystemColors::Control;
-			this->control->Controls->Add(this->panel11);
-			this->control->Controls->Add(this->panel10);
 			this->control->Controls->Add(this->panel9);
 			this->control->Controls->Add(this->panel8);
+			this->control->Controls->Add(this->panel11);
+			this->control->Controls->Add(this->panel10);
 			this->control->Controls->Add(this->panel7);
 			this->control->Controls->Add(this->panel5);
 			this->control->Controls->Add(this->panel6);
@@ -327,66 +362,11 @@ namespace Store {
 			this->control->TabIndex = 1;
 			this->control->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &Dashboard::control_Paint);
 			// 
-			// panel11
-			// 
-			this->panel11->Controls->Add(this->button10);
-			this->panel11->Dock = System::Windows::Forms::DockStyle::Left;
-			this->panel11->Location = System::Drawing::Point(629, 5);
-			this->panel11->Name = L"panel11";
-			this->panel11->Padding = System::Windows::Forms::Padding(5);
-			this->panel11->Size = System::Drawing::Size(156, 80);
-			this->panel11->TabIndex = 10;
-			// 
-			// button10
-			// 
-			this->button10->AutoSize = true;
-			this->button10->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
-																		 static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->button10->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->button10->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																static_cast<System::Byte>(0)));
-			this->button10->Location = System::Drawing::Point(5, 5);
-			this->button10->Name = L"button10";
-			this->button10->Padding = System::Windows::Forms::Padding(5);
-			this->button10->Size = System::Drawing::Size(146, 70);
-			this->button10->TabIndex = 1;
-			this->button10->Text = L"فواتير";
-			this->button10->UseVisualStyleBackColor = false;
-			this->button10->Click += gcnew System::EventHandler(this, &Dashboard::button10_Click);
-			// 
-			// panel10
-			// 
-			this->panel10->Controls->Add(this->button9);
-			this->panel10->Dock = System::Windows::Forms::DockStyle::Left;
-			this->panel10->Location = System::Drawing::Point(473, 5);
-			this->panel10->Name = L"panel10";
-			this->panel10->Padding = System::Windows::Forms::Padding(5);
-			this->panel10->Size = System::Drawing::Size(156, 80);
-			this->panel10->TabIndex = 9;
-			// 
-			// button9
-			// 
-			this->button9->AutoSize = true;
-			this->button9->BackColor = System::Drawing::Color::DarkSeaGreen;
-			this->button9->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->button9->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
-			this->button9->Location = System::Drawing::Point(5, 5);
-			this->button9->Margin = System::Windows::Forms::Padding(3, 3, 10, 3);
-			this->button9->Name = L"button9";
-			this->button9->Size = System::Drawing::Size(146, 70);
-			this->button9->TabIndex = 3;
-			this->button9->Text = L"انشاء حساب موظف/عميل";
-			this->button9->UseVisualStyleBackColor = false;
-			this->button9->Click += gcnew System::EventHandler(this, &Dashboard::button9_Click);
-			// 
 			// panel9
 			// 
 			this->panel9->Controls->Add(this->button8);
 			this->panel9->Dock = System::Windows::Forms::DockStyle::Left;
-			this->panel9->Location = System::Drawing::Point(317, 5);
+			this->panel9->Location = System::Drawing::Point(629, 5);
 			this->panel9->Name = L"panel9";
 			this->panel9->Padding = System::Windows::Forms::Padding(5);
 			this->panel9->Size = System::Drawing::Size(156, 80);
@@ -414,7 +394,7 @@ namespace Store {
 			// 
 			this->panel8->Controls->Add(this->button7);
 			this->panel8->Dock = System::Windows::Forms::DockStyle::Left;
-			this->panel8->Location = System::Drawing::Point(161, 5);
+			this->panel8->Location = System::Drawing::Point(473, 5);
 			this->panel8->Name = L"panel8";
 			this->panel8->Padding = System::Windows::Forms::Padding(5);
 			this->panel8->Size = System::Drawing::Size(156, 80);
@@ -436,6 +416,61 @@ namespace Store {
 			this->button7->Text = L"النقص في العناصر";
 			this->button7->UseVisualStyleBackColor = false;
 			this->button7->Click += gcnew System::EventHandler(this, &Dashboard::button7_Click_1);
+			// 
+			// panel11
+			// 
+			this->panel11->Controls->Add(this->button10);
+			this->panel11->Dock = System::Windows::Forms::DockStyle::Left;
+			this->panel11->Location = System::Drawing::Point(317, 5);
+			this->panel11->Name = L"panel11";
+			this->panel11->Padding = System::Windows::Forms::Padding(5);
+			this->panel11->Size = System::Drawing::Size(156, 80);
+			this->panel11->TabIndex = 10;
+			// 
+			// button10
+			// 
+			this->button10->AutoSize = true;
+			this->button10->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
+																		 static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->button10->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->button10->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+																static_cast<System::Byte>(0)));
+			this->button10->Location = System::Drawing::Point(5, 5);
+			this->button10->Name = L"button10";
+			this->button10->Padding = System::Windows::Forms::Padding(5);
+			this->button10->Size = System::Drawing::Size(146, 70);
+			this->button10->TabIndex = 1;
+			this->button10->Text = L"فواتير";
+			this->button10->UseVisualStyleBackColor = false;
+			this->button10->Click += gcnew System::EventHandler(this, &Dashboard::button10_Click);
+			// 
+			// panel10
+			// 
+			this->panel10->Controls->Add(this->button9);
+			this->panel10->Dock = System::Windows::Forms::DockStyle::Left;
+			this->panel10->Location = System::Drawing::Point(161, 5);
+			this->panel10->Name = L"panel10";
+			this->panel10->Padding = System::Windows::Forms::Padding(5);
+			this->panel10->Size = System::Drawing::Size(156, 80);
+			this->panel10->TabIndex = 9;
+			// 
+			// button9
+			// 
+			this->button9->AutoSize = true;
+			this->button9->BackColor = System::Drawing::Color::DarkSeaGreen;
+			this->button9->Dock = System::Windows::Forms::DockStyle::Fill;
+			this->button9->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button9->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+															   static_cast<System::Byte>(0)));
+			this->button9->Location = System::Drawing::Point(5, 5);
+			this->button9->Margin = System::Windows::Forms::Padding(3, 3, 10, 3);
+			this->button9->Name = L"button9";
+			this->button9->Size = System::Drawing::Size(146, 70);
+			this->button9->TabIndex = 3;
+			this->button9->Text = L"انشاء حساب موظف/عميل";
+			this->button9->UseVisualStyleBackColor = false;
+			this->button9->Click += gcnew System::EventHandler(this, &Dashboard::button9_Click);
 			// 
 			// panel7
 			// 
@@ -523,7 +558,6 @@ namespace Store {
 			// panel3
 			// 
 			this->panel3->Controls->Add(this->panel1);
-			this->panel3->Controls->Add(this->panel4);
 			this->panel3->Controls->Add(this->panel2);
 			this->panel3->Dock = System::Windows::Forms::DockStyle::Right;
 			this->panel3->Location = System::Drawing::Point(917, 40);
@@ -536,67 +570,114 @@ namespace Store {
 			// 
 			this->panel1->Controls->Add(this->cart);
 			this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->panel1->Location = System::Drawing::Point(0, 33);
+			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(392, 428);
+			this->panel1->Size = System::Drawing::Size(392, 461);
 			this->panel1->TabIndex = 0;
 			// 
 			// cart
 			// 
+			this->cart->AllowUserToAddRows = false;
+			this->cart->AllowUserToDeleteRows = false;
+			this->cart->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::DisplayedCells;
+			this->cart->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::DisplayedCells;
+			this->cart->BackgroundColor = System::Drawing::SystemColors::Control;
+			this->cart->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleHorizontal;
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+																		static_cast<System::Byte>(0)));
+			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->cart->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			this->cart->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->cart->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(4) {
+				this->Column4, this->Column1,
+					this->Column2, this->Column3
+			});
+			dataGridViewCellStyle5->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle5->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
+																		System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			dataGridViewCellStyle5->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle5->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle5->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle5->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->cart->DefaultCellStyle = dataGridViewCellStyle5;
 			this->cart->Dock = System::Windows::Forms::DockStyle::Fill;
-			this->cart->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															static_cast<System::Byte>(0)));
-			this->cart->FormattingEnabled = true;
-			this->cart->ItemHeight = 24;
 			this->cart->Location = System::Drawing::Point(0, 0);
+			this->cart->MultiSelect = false;
 			this->cart->Name = L"cart";
-			this->cart->Size = System::Drawing::Size(392, 428);
-			this->cart->TabIndex = 0;
-			this->cart->SelectedIndexChanged += gcnew System::EventHandler(this, &Dashboard::cart_SelectedIndexChanged);
+			this->cart->ReadOnly = true;
+			this->cart->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
+			this->cart->RowHeadersBorderStyle = System::Windows::Forms::DataGridViewHeaderBorderStyle::Single;
+			dataGridViewCellStyle6->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleRight;
+			dataGridViewCellStyle6->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+																		static_cast<System::Byte>(0)));
+			dataGridViewCellStyle6->ForeColor = System::Drawing::Color::DarkRed;
+			dataGridViewCellStyle6->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle6->SelectionForeColor = System::Drawing::Color::DarkRed;
+			dataGridViewCellStyle6->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->cart->RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+			this->cart->RowHeadersVisible = false;
+			this->cart->RowHeadersWidthSizeMode = System::Windows::Forms::DataGridViewRowHeadersWidthSizeMode::DisableResizing;
+			this->cart->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->cart->Size = System::Drawing::Size(392, 461);
+			this->cart->TabIndex = 10;
+			this->cart->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Dashboard::cart_CellContentClick);
+			this->cart->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Dashboard::cart_CellContentClick_1);
+			this->cart->CellPainting += gcnew System::Windows::Forms::DataGridViewCellPaintingEventHandler(this, &Dashboard::dataGridView1_CellPainting);
 			// 
-			// panel4
+			// Column4
 			// 
-			this->panel4->Controls->Add(this->label6);
-			this->panel4->Controls->Add(this->label4);
-			this->panel4->Controls->Add(this->label5);
-			this->panel4->Dock = System::Windows::Forms::DockStyle::Top;
-			this->panel4->Location = System::Drawing::Point(0, 0);
-			this->panel4->Name = L"panel4";
-			this->panel4->Size = System::Drawing::Size(392, 33);
-			this->panel4->TabIndex = 2;
+			this->Column4->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::None;
+			dataGridViewCellStyle2->BackColor = System::Drawing::Color::White;
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+																		static_cast<System::Byte>(0)));
+			dataGridViewCellStyle2->ForeColor = System::Drawing::Color::DarkRed;
+			this->Column4->DefaultCellStyle = dataGridViewCellStyle2;
+			this->Column4->Frozen = true;
+			this->Column4->HeaderText = L"";
+			this->Column4->Name = L"Column4";
+			this->Column4->ReadOnly = true;
+			this->Column4->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->Column4->Width = 35;
 			// 
-			// label6
+			// Column1
 			// 
-			this->label6->Dock = System::Windows::Forms::DockStyle::Left;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															  static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(90, 0);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(73, 33);
-			this->label6->TabIndex = 2;
-			this->label6->Text = L"الكميه";
+			this->Column1->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::None;
+			this->Column1->HeaderText = L"الاسم";
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->Column1->Width = 145;
 			// 
-			// label4
+			// Column2
 			// 
-			this->label4->Dock = System::Windows::Forms::DockStyle::Left;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															  static_cast<System::Byte>(0)));
-			this->label4->Location = System::Drawing::Point(0, 0);
-			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(90, 33);
-			this->label4->TabIndex = 1;
-			this->label4->Text = L"اجمالي";
+			this->Column2->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::None;
+			dataGridViewCellStyle3->Format = L"N2";
+			dataGridViewCellStyle3->NullValue = nullptr;
+			this->Column2->DefaultCellStyle = dataGridViewCellStyle3;
+			this->Column2->HeaderText = L"الوزن/العدد";
+			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
+			this->Column2->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->Column2->Width = 105;
 			// 
-			// label5
+			// Column3
 			// 
-			this->label5->Dock = System::Windows::Forms::DockStyle::Right;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															  static_cast<System::Byte>(0)));
-			this->label5->Location = System::Drawing::Point(253, 0);
-			this->label5->Name = L"label5";
-			this->label5->Size = System::Drawing::Size(139, 33);
-			this->label5->TabIndex = 0;
-			this->label5->Text = L"اسم العنصر";
+			this->Column3->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::None;
+			dataGridViewCellStyle4->Format = L"N2";
+			dataGridViewCellStyle4->NullValue = nullptr;
+			this->Column3->DefaultCellStyle = dataGridViewCellStyle4;
+			this->Column3->HeaderText = L"الاجمالي";
+			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
+			this->Column3->Resizable = System::Windows::Forms::DataGridViewTriState::False;
+			this->Column3->Width = 105;
 			// 
 			// panel2
 			// 
@@ -692,14 +773,14 @@ namespace Store {
 			this->head->ResumeLayout(false);
 			this->head->PerformLayout();
 			this->control->ResumeLayout(false);
-			this->panel11->ResumeLayout(false);
-			this->panel11->PerformLayout();
-			this->panel10->ResumeLayout(false);
-			this->panel10->PerformLayout();
 			this->panel9->ResumeLayout(false);
 			this->panel9->PerformLayout();
 			this->panel8->ResumeLayout(false);
 			this->panel8->PerformLayout();
+			this->panel11->ResumeLayout(false);
+			this->panel11->PerformLayout();
+			this->panel10->ResumeLayout(false);
+			this->panel10->PerformLayout();
 			this->panel7->ResumeLayout(false);
 			this->panel7->PerformLayout();
 			this->panel5->ResumeLayout(false);
@@ -708,7 +789,7 @@ namespace Store {
 			this->panel6->PerformLayout();
 			this->panel3->ResumeLayout(false);
 			this->panel1->ResumeLayout(false);
-			this->panel4->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->cart))->EndInit();
 			this->panel2->ResumeLayout(false);
 			this->panel2->PerformLayout();
 			this->tabControl1->ResumeLayout(false);
@@ -722,10 +803,7 @@ namespace Store {
 
 #pragma endregion
 		double total = 0;
-		public: void AddItemToCart(String^ name, String^ category, double thick, int id, double price, double quantity, bool type, double sellprice) {
-			ListItem^ newItem = gcnew ListItem(name, category, thick, id, price, quantity, type, sellprice);
-			cart->Items->Add(newItem);
-		}
+
 		public: String^ connectionString = "";
 		private: System::Void Dashboard_Load(System::Object^ sender, System::EventArgs^ e) {
 			this->label8->Text = emp_name;
@@ -746,9 +824,21 @@ namespace Store {
 		}
 
 		private: void SellForm_ItemAddedToCart(System::String^ name, System::String^ category, double thick, int id, double price, double quantity, bool type, double sellprice) {
+
 			ListItem^ newItem = gcnew ListItem(name, category, thick, id, price, quantity, type, sellprice);
 			updatetotal(1, price);
-			cart->Items->Add(newItem);
+			String^ fullname;
+			if (thick) {
+				fullname = String::Format(L"{2} {1} {0} ", name, category, thick);
+			}
+			else {
+				fullname = String::Format(L"{1} {0} ", name, category);
+			}
+
+			int rowIndex = cart->Rows->Add("", fullname, quantity, price);
+			
+			this->cart->Rows[rowIndex]->Tag = newItem;
+			
 		}
 		private: System::Void button_Click(System::Object^ sender, System::EventArgs^ e) {
 			Button^ clickedButton = safe_cast<Button^>(sender);
@@ -771,44 +861,52 @@ namespace Store {
 		private: System::Void flowLayoutPanel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 
 		}
-		private:
-		System::Void cart_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-			// Get the selected item from the cart ListBox
-			if (cart->SelectedIndex != -1) {
-				String^ selectedItem = cart->SelectedItem->ToString();
 
-				// Remove any previously added remove buttons
-				RemoveButtons();
-				// Add a remove button next to the selected item
-				Label^ removeButton = gcnew Label();
-				removeButton->Text = L"حزف";
-				removeButton->ForeColor = Color::Red;
-				removeButton->Width = 75;
-				removeButton->Height = cart->ItemHeight;
+		private: System::Void dataGridView1_CellPainting(System::Object^ sender, System::Windows::Forms::DataGridViewCellPaintingEventArgs^ e) {
+			
+			// Check if it's a row header cell
+			if (cart->Rows->Count > 0) {
+				if (e->ColumnIndex == 0 && e->RowIndex == cart->CurrentRow->Index) {
+					e->Paint(e->CellBounds, DataGridViewPaintParts::All);
 
-				// Calculate the position of the remove button
-				int buttonX = cart->Width - removeButton->Width;
-				int buttonY = cart->Top + (cart->ItemHeight * cart->SelectedIndex);
-				removeButton->Location = Point(buttonX, buttonY);
+					// Set the color and thickness for the "X" symbol
+					Color xColor = Color::Red;
+					float xThickness = 5;
+					int xPadding = 6;
+					// Calculate the coordinates for drawing the "X" symbol
+					int xLeft = e->CellBounds.Left + xPadding;
+					int xTop = e->CellBounds.Top + xPadding;
+					int xRight = e->CellBounds.Right - xPadding;
+					int xBottom = e->CellBounds.Bottom - xPadding;
 
-				// Set the event handler for the remove button
-				removeButton->Click += gcnew EventHandler(this, &Dashboard::RemoveButton_Click);
+					// Draw the "X" symbol
+					e->Graphics->DrawLine(gcnew Pen(xColor, xThickness), xLeft, xTop, xRight, xBottom);
+					e->Graphics->DrawLine(gcnew Pen(xColor, xThickness), xLeft, xBottom, xRight, xTop);
 
-				// Add the remove button to the form
-				this->cart->Controls->Add(removeButton);
+					//this->cart->Rows[e->RowIndex]->HeaderCell->Value = "X";
+
+
+					e->Handled = true;
+				}
 			}
-			///////////////////////////////////////////////
-			ListItem^ selectedItem = dynamic_cast<ListItem^>(cart->SelectedItem);
-			if (selectedItem != nullptr) {
-				String^ itemName = selectedItem->Name;
-				int itemID = selectedItem->ID;
-				double itemPrice = selectedItem->Price;
-				double itemQuantity = selectedItem->Quantity;
 
-				// Now you can use these values as needed
-				// For example, display them in labels or perform calculations
-				//this->label1->Text = Convert::ToString(itemPrice);
+		}
 
+
+		private: System::Void cart_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+			
+			if (e->RowIndex >= 0 && e->ColumnIndex == 0) {
+			// Remove the row from the DataGridView
+				if (MessageBox::Show(L"هل انت متاكد من حزف العنصر المحدد", L"تاكيد", MessageBoxButtons::OKCancel, MessageBoxIcon::Warning) == System::Windows::Forms::DialogResult::OK) {
+					ListItem^ selectedItem = dynamic_cast<ListItem^>(this->cart->Rows[e->RowIndex]->Tag);
+					if (selectedItem != nullptr) {
+						updatetotal(0, selectedItem->Price);
+					}
+					cart->Rows->RemoveAt(e->RowIndex);
+				}
+				else {
+					return;
+				}
 			}
 		}
 
@@ -822,31 +920,6 @@ namespace Store {
 			}
 			this->label3->Text = FormatNumberWithCommas(ntotal);
 
-		}
-		private: System::Void RemoveButton_Click(System::Object^ sender, System::EventArgs^ e) {
-				  // Handle the remove button click event here
-				  // You can remove the selected item from the cart ListBox
-			if (cart->SelectedIndex != -1) {
-				Label^ removeLabel = safe_cast<Label^>(sender);
-				ListItem^ selectedItem = dynamic_cast<ListItem^>(cart->SelectedItem);
-				if (selectedItem != nullptr) {
-					updatetotal(0, selectedItem->Price);
-				}
-				cart->Controls->Remove(removeLabel);
-				cart->Items->RemoveAt(cart->SelectedIndex);
-			}
-
-
-		}
-
-		private: void RemoveButtons() {
-		 // Remove any previously added remove buttons from the form
-			for each (Control ^ control in cart->Controls) {
-				if (control->GetType() == Label::typeid && control->Text == L"حزف") {
-					cart->Controls->Remove(control);
-					break;
-				}
-			}
 		}
 		//////Testing printer///////////////
 		private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -1051,17 +1124,16 @@ namespace Store {
 			refresh();
 		}
 		private: void ClearCart() {
-			cart->Items->Clear();
+			cart->Rows->Clear();
 			updatetotal(0, Convert::ToDouble(this->label3->Text));
 		}
 		private: System::Void button5_Click_1(System::Object^ sender, System::EventArgs^ e) {
 			List<ListItem^>^ itemList = gcnew List<ListItem^>();
 
 			// Iterate over the items in the source ListBox and create ListItem objects
-			for each (ListItem ^ item in cart->Items) {
+			for each (DataGridViewRow ^ row in cart->Rows) {
 				// Create a new instance of ListItem using the constructor
-				ListItem^ newItem = gcnew ListItem(item->Name, item->Catg, item->Thick, item->ID, item->Price, item->Quantity, item->Type, item->Sellprice);
-
+				ListItem^ newItem = safe_cast<ListItem^>(row->Tag);
 				// Add the new item to the list
 				itemList->Add(newItem);
 			}
@@ -1098,6 +1170,8 @@ namespace Store {
 		private: System::Void button10_Click(System::Object^ sender, System::EventArgs^ e) {
 			InvoiceBrowser^ inv = gcnew InvoiceBrowser();
 			inv->ShowDialog();
+		}
+		private: System::Void cart_CellContentClick_1(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
 		}
 };
 }

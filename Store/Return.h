@@ -48,7 +48,7 @@ namespace Store {
 
 
 		private: System::Windows::Forms::TextBox^ cust_phone;
-		private: System::Windows::Forms::ListBox^ itembox;
+
 
 
 
@@ -62,6 +62,15 @@ namespace Store {
 		private: System::Windows::Forms::Label^ label3;
 		private: System::Windows::Forms::Button^ button4;
 		private: System::Windows::Forms::Button^ button2;
+		private: System::Windows::Forms::DataGridView^ itembox;
+
+		private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
+		private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
+		private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+		private: System::Windows::Forms::NumericUpDown^ ret_value;
+		private: System::Windows::Forms::Label^ label6;
+		private: System::Windows::Forms::Label^ label7;
+		private: System::Windows::Forms::Label^ label5;
 
 
 
@@ -86,6 +95,9 @@ namespace Store {
 		/// </summary>
 		void InitializeComponent(void) {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(Return::typeid));
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle1 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle2 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
+			System::Windows::Forms::DataGridViewCellStyle^ dataGridViewCellStyle3 = (gcnew System::Windows::Forms::DataGridViewCellStyle());
 			this->head = (gcnew System::Windows::Forms::Panel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->button1 = (gcnew System::Windows::Forms::Button());
@@ -93,10 +105,17 @@ namespace Store {
 			this->inv_id = (gcnew System::Windows::Forms::TextBox());
 			this->search_num = (gcnew System::Windows::Forms::Button());
 			this->cust_phone = (gcnew System::Windows::Forms::TextBox());
-			this->itembox = (gcnew System::Windows::Forms::ListBox());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->itembox = (gcnew System::Windows::Forms::DataGridView());
+			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->splitContainer1 = (gcnew System::Windows::Forms::SplitContainer());
+			this->label6 = (gcnew System::Windows::Forms::Label());
+			this->label7 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->ret_value = (gcnew System::Windows::Forms::NumericUpDown());
 			this->qunt_kilo = (gcnew System::Windows::Forms::NumericUpDown());
 			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->label4 = (gcnew System::Windows::Forms::Label());
@@ -106,10 +125,12 @@ namespace Store {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->head->SuspendLayout();
 			this->panel2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->itembox))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->BeginInit();
 			this->splitContainer1->Panel1->SuspendLayout();
 			this->splitContainer1->Panel2->SuspendLayout();
 			this->splitContainer1->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ret_value))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->qunt_kilo))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -200,23 +221,10 @@ namespace Store {
 			this->cust_phone->Size = System::Drawing::Size(233, 31);
 			this->cust_phone->TabIndex = 3;
 			// 
-			// itembox
-			// 
-			this->itembox->Dock = System::Windows::Forms::DockStyle::Right;
-			this->itembox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
-			this->itembox->FormattingEnabled = true;
-			this->itembox->ItemHeight = 24;
-			this->itembox->Location = System::Drawing::Point(468, 0);
-			this->itembox->Name = L"itembox";
-			this->itembox->Size = System::Drawing::Size(416, 560);
-			this->itembox->TabIndex = 5;
-			this->itembox->SelectedIndexChanged += gcnew System::EventHandler(this, &Return::itembox_SelectedIndexChanged);
-			// 
 			// panel2
 			// 
-			this->panel2->Controls->Add(this->flowLayoutPanel1);
 			this->panel2->Controls->Add(this->itembox);
+			this->panel2->Controls->Add(this->flowLayoutPanel1);
 			this->panel2->Controls->Add(this->cust_phone);
 			this->panel2->Controls->Add(this->search_num);
 			this->panel2->Controls->Add(this->inv_id);
@@ -226,6 +234,84 @@ namespace Store {
 			this->panel2->Name = L"panel2";
 			this->panel2->Size = System::Drawing::Size(884, 560);
 			this->panel2->TabIndex = 4;
+			// 
+			// itembox
+			// 
+			this->itembox->AllowUserToAddRows = false;
+			this->itembox->AllowUserToDeleteRows = false;
+			this->itembox->AllowUserToOrderColumns = true;
+			this->itembox->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::DisplayedCells;
+			this->itembox->AutoSizeRowsMode = System::Windows::Forms::DataGridViewAutoSizeRowsMode::DisplayedCells;
+			this->itembox->CellBorderStyle = System::Windows::Forms::DataGridViewCellBorderStyle::SingleHorizontal;
+			dataGridViewCellStyle1->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle1->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+																		static_cast<System::Byte>(0)));
+			dataGridViewCellStyle1->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle1->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle1->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle1->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->itembox->ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+			this->itembox->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->itembox->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+				this->Column1, this->Column2,
+					this->Column3
+			});
+			dataGridViewCellStyle2->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle2->BackColor = System::Drawing::SystemColors::Window;
+			dataGridViewCellStyle2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular,
+																		System::Drawing::GraphicsUnit::Point, static_cast<System::Byte>(0)));
+			dataGridViewCellStyle2->ForeColor = System::Drawing::SystemColors::ControlText;
+			dataGridViewCellStyle2->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle2->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle2->WrapMode = System::Windows::Forms::DataGridViewTriState::False;
+			this->itembox->DefaultCellStyle = dataGridViewCellStyle2;
+			this->itembox->Location = System::Drawing::Point(468, 0);
+			this->itembox->MultiSelect = false;
+			this->itembox->Name = L"itembox";
+			this->itembox->ReadOnly = true;
+			this->itembox->RightToLeft = System::Windows::Forms::RightToLeft::Yes;
+			dataGridViewCellStyle3->Alignment = System::Windows::Forms::DataGridViewContentAlignment::MiddleLeft;
+			dataGridViewCellStyle3->BackColor = System::Drawing::SystemColors::Control;
+			dataGridViewCellStyle3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+																		static_cast<System::Byte>(0)));
+			dataGridViewCellStyle3->ForeColor = System::Drawing::SystemColors::WindowText;
+			dataGridViewCellStyle3->SelectionBackColor = System::Drawing::SystemColors::Highlight;
+			dataGridViewCellStyle3->SelectionForeColor = System::Drawing::SystemColors::HighlightText;
+			dataGridViewCellStyle3->WrapMode = System::Windows::Forms::DataGridViewTriState::True;
+			this->itembox->RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+			this->itembox->RowHeadersVisible = false;
+			this->itembox->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
+			this->itembox->Size = System::Drawing::Size(416, 554);
+			this->itembox->TabIndex = 9;
+			this->itembox->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &Return::dataGridView1_CellContentClick);
+			// 
+			// Column1
+			// 
+			this->Column1->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::None;
+			this->Column1->Frozen = true;
+			this->Column1->HeaderText = L"الاسم";
+			this->Column1->Name = L"Column1";
+			this->Column1->ReadOnly = true;
+			this->Column1->Width = 160;
+			// 
+			// Column2
+			// 
+			this->Column2->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::None;
+			this->Column2->Frozen = true;
+			this->Column2->HeaderText = L"الوزن/العدد";
+			this->Column2->Name = L"Column2";
+			this->Column2->ReadOnly = true;
+			this->Column2->Width = 128;
+			// 
+			// Column3
+			// 
+			this->Column3->AutoSizeMode = System::Windows::Forms::DataGridViewAutoSizeColumnMode::None;
+			this->Column3->Frozen = true;
+			this->Column3->HeaderText = L"الاجمالي";
+			this->Column3->Name = L"Column3";
+			this->Column3->ReadOnly = true;
+			this->Column3->Width = 128;
 			// 
 			// flowLayoutPanel1
 			// 
@@ -245,6 +331,10 @@ namespace Store {
 			// 
 			// splitContainer1.Panel1
 			// 
+			this->splitContainer1->Panel1->Controls->Add(this->label6);
+			this->splitContainer1->Panel1->Controls->Add(this->label7);
+			this->splitContainer1->Panel1->Controls->Add(this->label5);
+			this->splitContainer1->Panel1->Controls->Add(this->ret_value);
 			this->splitContainer1->Panel1->Controls->Add(this->qunt_kilo);
 			this->splitContainer1->Panel1->Controls->Add(this->button3);
 			this->splitContainer1->Panel1->Controls->Add(this->label4);
@@ -258,9 +348,52 @@ namespace Store {
 			this->splitContainer1->Panel2->BackColor = System::Drawing::Color::LightGray;
 			this->splitContainer1->Panel2->Controls->Add(this->button4);
 			this->splitContainer1->Panel2->Controls->Add(this->button2);
-			this->splitContainer1->Size = System::Drawing::Size(884, 112);
+			this->splitContainer1->Size = System::Drawing::Size(884, 178);
 			this->splitContainer1->SplitterDistance = 464;
 			this->splitContainer1->TabIndex = 7;
+			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+															  static_cast<System::Byte>(0)));
+			this->label6->Location = System::Drawing::Point(334, 104);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(125, 24);
+			this->label6->TabIndex = 9;
+			this->label6->Text = L": المبلغ المستحق";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+															  static_cast<System::Byte>(0)));
+			this->label7->Location = System::Drawing::Point(12, 104);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(49, 24);
+			this->label7->TabIndex = 8;
+			this->label7->Text = L"0.00";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+															  static_cast<System::Byte>(0)));
+			this->label5->Location = System::Drawing::Point(334, 73);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(61, 24);
+			this->label5->TabIndex = 7;
+			this->label5->Text = L": المبلغ";
+			// 
+			// ret_value
+			// 
+			this->ret_value->DecimalPlaces = 2;
+			this->ret_value->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+																 static_cast<System::Byte>(0)));
+			this->ret_value->Location = System::Drawing::Point(14, 41);
+			this->ret_value->Name = L"ret_value";
+			this->ret_value->Size = System::Drawing::Size(296, 29);
+			this->ret_value->TabIndex = 6;
 			// 
 			// qunt_kilo
 			// 
@@ -279,7 +412,7 @@ namespace Store {
 			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															   static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(161, 63);
+			this->button3->Location = System::Drawing::Point(156, 133);
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(121, 37);
 			this->button3->TabIndex = 2;
@@ -289,21 +422,22 @@ namespace Store {
 			// 
 			// label4
 			// 
+			this->label4->AccessibleDescription = L"المبلغ المسموح ارجاعه للعميل";
 			this->label4->AutoSize = true;
 			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
 			this->label4->Location = System::Drawing::Point(334, 40);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(61, 24);
+			this->label4->Size = System::Drawing::Size(122, 24);
 			this->label4->TabIndex = 5;
-			this->label4->Text = L": المبلغ";
+			this->label4->Text = L": المبلغ المرتجع";
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(12, 40);
+			this->label2->Location = System::Drawing::Point(12, 73);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(49, 24);
 			this->label2->TabIndex = 3;
@@ -326,7 +460,7 @@ namespace Store {
 			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															   static_cast<System::Byte>(0)));
-			this->button4->Location = System::Drawing::Point(215, 26);
+			this->button4->Location = System::Drawing::Point(204, 54);
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(179, 53);
 			this->button4->TabIndex = 6;
@@ -338,7 +472,7 @@ namespace Store {
 			// 
 			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															   static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(35, 26);
+			this->button2->Location = System::Drawing::Point(34, 54);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(164, 53);
 			this->button2->TabIndex = 1;
@@ -350,7 +484,7 @@ namespace Store {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(884, 712);
+			this->ClientSize = System::Drawing::Size(884, 778);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->splitContainer1);
 			this->Controls->Add(this->head);
@@ -363,11 +497,13 @@ namespace Store {
 			this->head->PerformLayout();
 			this->panel2->ResumeLayout(false);
 			this->panel2->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->itembox))->EndInit();
 			this->splitContainer1->Panel1->ResumeLayout(false);
 			this->splitContainer1->Panel1->PerformLayout();
 			this->splitContainer1->Panel2->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->splitContainer1))->EndInit();
 			this->splitContainer1->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->ret_value))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->qunt_kilo))->EndInit();
 			this->ResumeLayout(false);
 
@@ -415,6 +551,7 @@ namespace Store {
 				MessageBox::Show(L"ادخل رقم الفاتوره");
 				return;
 			}
+			invoice = this->inv_id->Text;
 			getdata(this->inv_id->Text);
 		}
 		private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -442,7 +579,7 @@ namespace Store {
 						flowLayoutPanel1->Controls->Add(label);
 
 						Label^ label2 = gcnew Label();
-						label2->Text = "            " + L"باقي" + "      " + L"الاجمالي"+"               "+L"تاريخ الشراء";
+						label2->Text = "            " + L"باقي" + "      " + L"الاجمالي" + "               " + L"تاريخ الشراء";
 						label2->Size = System::Drawing::Size(440, 25);
 						label2->Font = gcnew System::Drawing::Font(label->Font->FontFamily, 14, System::Drawing::FontStyle::Bold);
 						flowLayoutPanel1->Controls->Add(label2);
@@ -484,263 +621,209 @@ namespace Store {
 				MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
 		}
+		private: String^ invoice;
 		private: System::Void button_Click(System::Object^ sender, System::EventArgs^ e) {
 			Button^ clickedButton = safe_cast<Button^>(sender);
 			getdata(clickedButton->Name);
+			invoice = clickedButton->Name;
 		}
-		private: void getdata(String^ inv_id) {
-			SqlConnection^ connection = gcnew SqlConnection(connectionString);
-			try {
-				connection->Open();
-				String^ query = "SELECT * FROM Purchase Where invoice_id=" + inv_id + "; ";
-				SqlCommand^ command = gcnew SqlCommand(query, connection);
-				SqlDataReader^ reader = command->ExecuteReader();
-				if (reader->HasRows) {
-					this->itembox->Items->Clear();
-					this->splitContainer1->Panel1->Enabled = 0;
-					this->itembox->Enabled = 1;
-					while (reader->Read()) {
-						SqlConnection^ itemconnection = gcnew SqlConnection(connectionString);
-						int itemID = reader->GetInt32(reader->GetOrdinal("item_id"));
-						String^ selectQuery = L"SELECT i.name AS item_name, c.name AS category_name ,i.enThick,i.thickness,enQunt,enKilo,i.category_id FROM Items i JOIN Category c ON i.category_id = c.id WHERE i.id = " + itemID + "; ";
-						try {
 
-							itemconnection->Open();
-							SqlCommand^ command2 = gcnew SqlCommand(selectQuery, itemconnection);
-							SqlDataReader^ reader2 = command2->ExecuteReader();
-							while (reader2->Read()) {
-								String^ name = reader2->GetString(reader2->GetOrdinal("item_name"));
-								String^ category = reader2->GetString(reader2->GetOrdinal("category_name"));
-								double thick = Convert::ToDouble(reader2->GetDecimal(reader2->GetOrdinal("thickness")));
-								double quantity = 0;
-								bool type = 0;
-								double sellprice = 0;
-								if (reader->GetBoolean(reader->GetOrdinal("enkilo"))) {
-									type = 1;
-									quantity = Convert::ToDouble(reader->GetDecimal(4));
-									quantity += Convert::ToDouble(reader->GetDecimal(14));
-									sellprice = Convert::ToDouble(reader->GetDecimal(5));
+		private: void getdata(String^ inv_id) {
+			SqlConnection^ connectionX = gcnew SqlConnection(connectionString);
+			String^ queryX = "SELECT item_id,SUM(kilo) AS total_kilo, SUM(quantity) AS total_quantity FROM Purchase WHERE invoice_id = " + inv_id + " GROUP BY item_id;";
+			try {
+				connectionX->Open();
+				SqlCommand^ commandX = gcnew SqlCommand(queryX, connectionX);
+				SqlDataReader^ readerX = commandX->ExecuteReader();
+				if (readerX->HasRows) {
+					this->itembox->Rows->Clear();
+					this->splitContainer1->Panel1->Enabled = 0;
+					SetItemBoxEnabled(1);
+					while (readerX->Read()) {
+
+						SqlConnection^ connection = gcnew SqlConnection(connectionString);
+						try {
+							connection->Open();
+							String^ query = "SELECT TOP 1 * FROM Purchase Where item_id=" + readerX->GetInt32(0) + " and invoice_id=" + inv_id + "; ";
+							SqlCommand^ command = gcnew SqlCommand(query, connection);
+							SqlDataReader^ reader = command->ExecuteReader();
+
+							while (reader->Read()) {
+								SqlConnection^ itemconnection = gcnew SqlConnection(connectionString);
+								int itemID = reader->GetInt32(reader->GetOrdinal("item_id"));
+								String^ selectQuery = L"SELECT i.name AS item_name, c.name AS category_name ,i.enThick,i.thickness,enQunt,enKilo,i.category_id FROM Items i JOIN Category c ON i.category_id = c.id WHERE i.id = " + itemID + "; ";
+								try {
+
+									itemconnection->Open();
+									SqlCommand^ command2 = gcnew SqlCommand(selectQuery, itemconnection);
+									SqlDataReader^ reader2 = command2->ExecuteReader();
+									while (reader2->Read()) {
+										String^ name = reader2->GetString(reader2->GetOrdinal("item_name"));
+										String^ category = reader2->GetString(reader2->GetOrdinal("category_name"));
+										double thick = Convert::ToDouble(reader2->GetDecimal(reader2->GetOrdinal("thickness")));
+										double quantity = 0;
+										bool type = 0;
+										double sellprice = 0;
+										if (reader->GetBoolean(reader->GetOrdinal("enkilo"))) {
+											type = 1;
+											quantity = Convert::ToDouble(readerX->GetDecimal(1));
+
+											sellprice = Convert::ToDouble(reader->GetDecimal(5));
+										}
+										else {
+											type = 0;
+											quantity = Convert::ToDouble(readerX->GetDecimal(2));
+
+											sellprice = Convert::ToDouble(reader->GetDecimal(10));
+										}
+										double price = quantity * sellprice;
+										ListItem^ newItem = gcnew ListItem(name, category, thick, itemID, price, quantity, type, sellprice);
+
+										String^ fullname;
+										if (thick) {
+											fullname = String::Format(L"{2} {1} {0} ", name, category, thick);
+										}
+										else {
+											fullname = String::Format(L"{1} {0} ", name, category);
+										}
+
+										int rowIndex = itembox->Rows->Add(fullname, quantity, price);
+
+										this->itembox->Rows[rowIndex]->Tag = newItem;
+									}
+									itemconnection->Close();
 								}
-								else {
-									type = 0;
-									quantity = Convert::ToDouble(reader->GetDecimal(8));
-									quantity += Convert::ToDouble(reader->GetDecimal(14));
-									sellprice = Convert::ToDouble(reader->GetDecimal(10));
+								catch (SqlException^ ex) {
+									Console::WriteLine("An error occurred: " + ex->Message);
 								}
-								double price = quantity * sellprice;
-								ListItem^ newItem = gcnew ListItem(name, category, thick, reader->GetInt32(0), price, quantity, type, sellprice);
-								itembox->Items->Add(newItem);
 							}
-							itemconnection->Close();
+
+							connection->Close();
 						}
 						catch (SqlException^ ex) {
-							Console::WriteLine("An error occurred: " + ex->Message);
+									// Handle any SQL errors
+							MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 						}
 					}
+					this->itembox->ClearSelection();
+					connectionX->Close();
 				}
 				else {
 					MessageBox::Show(L"رقم الفاتوره غير صحيح او لا توجد فاتوره بهذا الرقم");
 					return;
 				}
-				connection->Close();
 			}
 			catch (SqlException^ ex) {
-						// Handle any SQL errors
 				MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
-		}
-		private: double changeprice = 0;
-		private: System::Void itembox_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
-			ListBox^ listBox = safe_cast<ListBox^>(sender);
 
-			if (listBox->SelectedItem != nullptr) {
-				ListItem^ selectedItem = safe_cast<ListItem^>(listBox->SelectedItem);
-				this->qunt_kilo->Value = Convert::ToDecimal(selectedItem->Quantity);
-				changeprice = selectedItem->Sellprice;
-				this->label2->Text = FormatNumberWithCommas(changeprice * Convert::ToDouble(this->qunt_kilo->Value));
+
+		}
+
+		private: System::Void SetItemBoxEnabled(bool isEnabled) {
+			itembox->Enabled = isEnabled;
+
+			// Set custom style when disabled
+			if (!isEnabled) {
+				itembox->DefaultCellStyle->BackColor = System::Drawing::SystemColors::Control;
+				itembox->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::GrayText;
+			}
+			// Set regular style when enabled
+			else {
+				itembox->DefaultCellStyle->BackColor = System::Drawing::SystemColors::Window;
+				itembox->DefaultCellStyle->ForeColor = System::Drawing::SystemColors::WindowText;
 			}
 		}
+
+		private: double changeprice = 0;
+		private: System::Void itembox_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+
+		}
 		private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-			this->itembox->Enabled = 1;
+			SetItemBoxEnabled(1);
 			this->splitContainer1->Panel1->Enabled = 0;
 		}
 
 		private: System::Void splitContainer1_Panel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 		}
 		private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
-			if (this->itembox->SelectedItem != nullptr) {
-				this->itembox->Enabled = 0;
+			if (itembox->SelectedRows->Count > 0) {
+				SetItemBoxEnabled(0);
 				this->splitContainer1->Panel1->Enabled = 1;
-			}
-		}
-		private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
-			ListItem^ selectedItem = safe_cast<ListItem^>(this->itembox->SelectedItem);
-			//get the origin price of the selected item from items table
-			//return the the qunt/kilo with same origin price to items table
-			//return the rest to item_return
-			double retqunt_kilo = Convert::ToDouble(this->qunt_kilo->Value);
-			SqlConnection^ connection = gcnew SqlConnection(connectionString);
-			try {
-				connection->Open();
-				String^ query = "SELECT P.*, I.kilo_in_price AS ogkilo , I.qun_in_price As ogqun FROM Purchase P JOIN Items I ON P.item_id = I.id WHERE P.id = " + selectedItem->ID + ";";
-				SqlCommand^ command = gcnew SqlCommand(query, connection);
-				SqlDataReader^ reader = command->ExecuteReader();
-				bool fromfirst = 0;
-				double first = 0;
-				bool fromsecond = 0;
-				double second = 0;
-				bool toitem = 0;
-				double item = 0;
-				while (reader->Read()) {
-					if (selectedItem->Type) {
-						//check if this item has 2 in price
-						if (reader->GetBoolean(13)) {
-							double infirst = Convert::ToDouble(reader->GetDecimal(6));
-							double insec = Convert::ToDouble(reader->GetDecimal(15));
-							double og = Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("ogkilo")));
-							if (infirst == og) {
-								fromfirst = 1;
-								toitem = 1;
-								first = min(Convert::ToDouble(reader->GetDecimal(4)), retqunt_kilo);
-								item = first;
-								retqunt_kilo -= first;
-							}
-							if (insec == og) {
-								fromsecond = 1;
-								toitem = 1;
-								second = min(Convert::ToDouble(reader->GetDecimal(14)), retqunt_kilo);
-								item = second;
-								retqunt_kilo -= second;
-							}
-						}
-						else {
-							double infirst = Convert::ToDouble(reader->GetDecimal(6));
-							double og = Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("ogkilo")));
-							if (infirst == og) {
-								fromfirst = 1;
-								toitem = 1;
-								first = min(Convert::ToDouble(reader->GetDecimal(4)), retqunt_kilo);
-								item = first;
-								retqunt_kilo -= first;
-							}
-						}
-					}
-					else {
-						//check if this item has 2 in price
-						if (reader->GetBoolean(13)) {
-							double infirst = Convert::ToDouble(reader->GetDecimal(9));
-							double insec = Convert::ToDouble(reader->GetDecimal(15));
-							double og = Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("ogqun")));
-							if (infirst == og) {
-								fromfirst = 1;
-								toitem = 1;
-								first = min(Convert::ToDouble(reader->GetDecimal(8)), retqunt_kilo);
-								item = first;
-								retqunt_kilo -= first;
-							}
-							if (insec == og) {
-								fromsecond = 1;
-								toitem = 1;
-								second = min(Convert::ToDouble(reader->GetDecimal(14)), retqunt_kilo);
-								item = second;
-								retqunt_kilo -= second;
-							}
-						}
-						else {
-							double infirst = Convert::ToDouble(reader->GetDecimal(9));
-							double og = Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("ogqun")));
-							if (infirst == og) {
-								fromfirst = 1;
-								toitem = 1;
-								first = min(Convert::ToDouble(reader->GetDecimal(8)), retqunt_kilo);
-								item = first;
-								retqunt_kilo -= first;
-							}
-						}
-					}
-					//update the tables
-					SqlConnection^ updateconnection = gcnew SqlConnection(connectionString);
-					String^ query = "";
-					if (selectedItem->Type) {
-						if (toitem) {
-							query += "Update Items set kilo =kilo+" + item + " where id=" + reader->GetInt32(1) + ";";
-							if (fromfirst) {
-								query += "Update Purchase set kilo =kilo-" + first + " where id=" + selectedItem->ID + ";";
-								if (retqunt_kilo) {
-									query += "Update Item_return set kilo=kilo+" + retqunt_kilo + ", in_price=(SELECT MAX(value) FROM (VALUES ((in_price),(" + reader->GetDecimal(15) + ")) AS t(value)) where item_id=" + reader->GetInt32(1) + "; ";
-									query += "Update Purchase set kill_or_qunt =kill_or_qunt-" + retqunt_kilo + " where id=" + selectedItem->ID + ";";
-								}
-							}
-							else {
-								query += "Update Purchase set kill_or_qunt =kill_or_qunt-" + second + " where id=" + selectedItem->ID + ";";
-								if (retqunt_kilo) {
-									query += "Update Item_return set kilo=kilo+" + retqunt_kilo + ", in_price=(SELECT MAX(value) FROM (VALUES (in_price),(" + reader->GetDecimal(6) + ")) AS t(value)) where item_id=" + reader->GetInt32(1) + "; ";
-									query += "Update Purchase set kilo =kilo-" + retqunt_kilo + " where id=" + selectedItem->ID + ";";
-								}
-							}
-						}
-						else {
-							query += "Update Item_return set kilo=kilo+" + retqunt_kilo + ", in_price=(SELECT MAX(value) FROM (VALUES (in_price),(" + reader->GetDecimal(15) + "),(" + reader->GetDecimal(6) + ")) AS t(value)) where item_id = " + reader->GetInt32(1) + "; ";
-							double updateret1 = min(Convert::ToDouble(reader->GetDecimal(4)), retqunt_kilo);
-							retqunt_kilo -= updateret1;
-							double updateret2 = min(Convert::ToDouble(reader->GetDecimal(14)), retqunt_kilo);
-							query += "Update Purchase set kilo =kilo-" + updateret1 + " where id=" + selectedItem->ID + ";";
-							query += "Update Purchase set kill_or_qunt =kill_or_qunt-" + updateret2 + " where id=" + selectedItem->ID + ";";
-						}
-					}
-					else {
-						if (toitem) {
-							query += "Update Items set quantity =quantity+" + item + " where id=" + reader->GetInt32(1) + ";";
-							if (fromfirst) {
-								query += "Update Purchase set quantity =quantity-" + first + " where id=" + selectedItem->ID + ";";
-								if (retqunt_kilo) {
-									query += "Update Item_return set quantity=quantity+" + retqunt_kilo + ", in_price=(SELECT MAX(value) FROM (VALUES (in_price),(" + reader->GetDecimal(15) + ")) AS t(value)) where item_id=" + reader->GetInt32(1) + "; ";
-									query += "Update Purchase set kill_or_qunt =kill_or_qunt-" + retqunt_kilo + " where id=" + selectedItem->ID + ";";
-								}
-							}
-							else {
-								query += "Update Purchase set kill_or_qunt =kill_or_qunt-" + second + " where id=" + selectedItem->ID + ";";
-								if (retqunt_kilo) {
-									query += "Update Item_return set quantity=quantity+" + retqunt_kilo + ", in_price=(SELECT MAX(value) FROM (VALUES (in_price),(" + reader->GetDecimal(9) + ")) AS t(value)) where item_id=" + reader->GetInt32(1) + "; ";
-									query += "Update Purchase set quantity =quantity-" + retqunt_kilo + " where id=" + selectedItem->ID + ";";
-								}
-							}
-						}
-						else {
-							query += "Update Item_return set quantity=quantity+" + retqunt_kilo + ", in_price=(SELECT MAX(value) FROM (VALUES (in_price),(" + reader->GetDecimal(15) + "),(" + reader->GetDecimal(9) + ")) AS t(value)) where item_id = " + reader->GetInt32(1) + "; ";
-							double updateret1 = min(Convert::ToDouble(reader->GetDecimal(8)), retqunt_kilo);
-							retqunt_kilo -= updateret1;
-							double updateret2 = min(Convert::ToDouble(reader->GetDecimal(14)), retqunt_kilo);
-							query += "Update Purchase set quantity =quantity-" + updateret1 + " where id=" + selectedItem->ID + ";";
-							query += "Update Purchase set kill_or_qunt =kill_or_qunt-" + updateret2 + " where id=" + selectedItem->ID + ";";
-						}
-					}
-					query += "DELETE FROM Purchase WHERE(kilo + quantity + kill_or_qunt) = 0; ";
-					query += "DELETE FROM Invoice WHERE id = " + reader->GetInt32(2) + " AND id NOT IN(SELECT DISTINCT invoice_id FROM Purchase);";
-					query += "Update Invoice set remaining=remaining where id=" + reader->GetInt32(2) + ";";
-					updateconnection->Open();
-					SqlCommand^ command0 = gcnew SqlCommand(query, updateconnection);
-					command0->ExecuteNonQuery();
-					updateconnection->Close();
-					//end of update tables
-					MessageBox::Show(L"تم ارجاع العنصر", "Error", MessageBoxButtons::OK, MessageBoxIcon::Information);
-					this->splitContainer1->Panel1->Enabled = 0;
-					this->itembox->Enabled = 1;
-				}
-				connection->Close();
-			}
-			catch (SqlException^ ex) {
-				MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 			}
 
 		}
-		
+		private: System::Void button3_Click(System::Object^ sender, System::EventArgs^ e) {
+			if (itembox->SelectedRows->Count > 0) {
+				int selectedIndex = itembox->CurrentCell->RowIndex;
+				ListItem^ selectedItem = safe_cast<ListItem^>(itembox->Rows[selectedIndex]->Tag);
+				//get the origin price of the selected item from items table
+				//return the the qunt/kilo with same origin price to items table
+				//return the rest to item_return
+				double retqunt_kilo = Convert::ToDouble(this->qunt_kilo->Value);
+				SqlConnection^ connection = gcnew SqlConnection(connectionString);
+				try {
+					connection->Open();
+					String^ query = "SELECT P.* FROM Purchase P JOIN Items I ON P.item_id = I.id WHERE P.id = " + selectedItem->ID + ";";
+					SqlCommand^ command = gcnew SqlCommand(query, connection);
+					SqlDataReader^ reader = command->ExecuteReader();
+
+
+
+					connection->Close();
+				}
+				catch (SqlException^ ex) {
+					MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				}
+			}
+		}
+
 		private: System::Void qunt_kilo_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
-			if (itembox->SelectedItem != nullptr) {
+			if (itembox->SelectedRows->Count > 0) {
 				this->label2->Text = FormatNumberWithCommas(changeprice * Convert::ToDouble(this->qunt_kilo->Value));
 			}
 		}
 		private: System::Void flowLayoutPanel1_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
 		}
-};
+		private: double remaining;
+		private: void getInvData(String^ inv_id) {
+			SqlConnection^ itemconnection = gcnew SqlConnection(connectionString);
+			String^ selectQuery = L"SELECT * from Invoice where id=" + inv_id + ";";
+
+			try {
+
+				itemconnection->Open();
+				SqlCommand^ command2 = gcnew SqlCommand(selectQuery, itemconnection);
+				SqlDataReader^ reader2 = command2->ExecuteReader();
+				while (reader2->Read()) {
+					remaining = Convert::ToDouble(reader2->GetDecimal(reader2->GetOrdinal("remaining")));
+				}
+				itemconnection->Close();
+			}
+			catch (SqlException^ ex) {
+				Console::WriteLine("An error occurred: " + ex->Message);
+			}
+		}
+
+		private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+
+			if (itembox->CurrentCell != nullptr) {
+				int selectedIndex = itembox->CurrentCell->RowIndex;
+				ListItem^ selectedItem = safe_cast<ListItem^>(itembox->Rows[e->RowIndex]->Tag);
+
+				this->qunt_kilo->Maximum = Convert::ToDecimal(selectedItem->Quantity);
+				this->qunt_kilo->Value = Convert::ToDecimal(selectedItem->Quantity);
+
+				changeprice = selectedItem->Sellprice;
+				double totalam = changeprice * Convert::ToDouble(this->qunt_kilo->Value);
+				getInvData(invoice);
+				double mx_withdraw = totalam- min(totalam, Convert::ToDouble(remaining));
+				
+				this->ret_value->Maximum = Convert::ToDecimal(totalam);
+				this->ret_value->Value = Convert::ToDecimal(mx_withdraw);
+				this->label2->Text = FormatNumberWithCommas(totalam);
+			}
+
+		}
+	};
 }

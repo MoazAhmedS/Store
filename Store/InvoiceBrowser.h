@@ -47,14 +47,14 @@ namespace Store {
 
 		private: System::Windows::Forms::GroupBox^ groupBox2;
 		private: System::Windows::Forms::Button^ button3;
-		private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
+
 		private: System::Windows::Forms::DateTimePicker^ dateTimePicker2;
 		private: System::Windows::Forms::Label^ label3;
 		private: System::Windows::Forms::Label^ label1;
 		private: System::Windows::Forms::GroupBox^ groupBox1;
 		private: System::Windows::Forms::Button^ button1;
 		private: System::Windows::Forms::Label^ label4;
-		private: System::Windows::Forms::DateTimePicker^ dateTimePicker3;
+
 		private: System::Windows::Forms::Label^ label9;
 		private: System::Windows::Forms::Label^ label8;
 		private: System::Windows::Forms::Label^ label7;
@@ -68,6 +68,8 @@ namespace Store {
 		private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column1;
 		private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column2;
 		private: System::Windows::Forms::DataGridViewTextBoxColumn^ Column3;
+		private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
+		private: System::Windows::Forms::DateTimePicker^ dateTimePicker3;
 
 
 
@@ -110,14 +112,12 @@ namespace Store {
 			this->cust_phone = (gcnew System::Windows::Forms::TextBox());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->dateTimePicker2 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->label4 = (gcnew System::Windows::Forms::Label());
-			this->dateTimePicker3 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->flowLayoutPanel1 = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->panel4 = (gcnew System::Windows::Forms::Panel());
@@ -125,6 +125,8 @@ namespace Store {
 			this->Column1 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column2 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Column3 = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
+			this->dateTimePicker3 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->panel1->SuspendLayout();
 			this->panel2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
@@ -229,7 +231,7 @@ namespace Store {
 			this->label11->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															   static_cast<System::Byte>(0)));
 			this->label11->ForeColor = System::Drawing::Color::ForestGreen;
-			this->label11->Location = System::Drawing::Point(12, 521);
+			this->label11->Location = System::Drawing::Point(12, 478);
 			this->label11->Name = L"label11";
 			this->label11->Size = System::Drawing::Size(49, 24);
 			this->label11->TabIndex = 12;
@@ -241,7 +243,7 @@ namespace Store {
 			this->label10->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															   static_cast<System::Byte>(0)));
 			this->label10->ForeColor = System::Drawing::Color::ForestGreen;
-			this->label10->Location = System::Drawing::Point(12, 478);
+			this->label10->Location = System::Drawing::Point(12, 521);
 			this->label10->Name = L"label10";
 			this->label10->Size = System::Drawing::Size(49, 24);
 			this->label10->TabIndex = 11;
@@ -259,7 +261,7 @@ namespace Store {
 			// label8
 			// 
 			this->label8->AutoSize = true;
-			this->label8->Location = System::Drawing::Point(231, 521);
+			this->label8->Location = System::Drawing::Point(231, 478);
 			this->label8->Name = L"label8";
 			this->label8->Size = System::Drawing::Size(101, 24);
 			this->label8->TabIndex = 9;
@@ -277,7 +279,7 @@ namespace Store {
 			// label6
 			// 
 			this->label6->AutoSize = true;
-			this->label6->Location = System::Drawing::Point(220, 478);
+			this->label6->Location = System::Drawing::Point(220, 521);
 			this->label6->Name = L"label6";
 			this->label6->Size = System::Drawing::Size(112, 24);
 			this->label6->TabIndex = 7;
@@ -323,8 +325,8 @@ namespace Store {
 			// 
 			// groupBox2
 			// 
-			this->groupBox2->Controls->Add(this->button3);
 			this->groupBox2->Controls->Add(this->dateTimePicker1);
+			this->groupBox2->Controls->Add(this->button3);
 			this->groupBox2->Controls->Add(this->dateTimePicker2);
 			this->groupBox2->Controls->Add(this->label3);
 			this->groupBox2->Controls->Add(this->label1);
@@ -345,19 +347,6 @@ namespace Store {
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &InvoiceBrowser::button3_Click);
 			// 
-			// dateTimePicker1
-			// 
-			this->dateTimePicker1->CustomFormat = L"yyyy-MM-dd";
-			this->dateTimePicker1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																	   static_cast<System::Byte>(0)));
-			this->dateTimePicker1->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
-			this->dateTimePicker1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
-			this->dateTimePicker1->Location = System::Drawing::Point(10, 39);
-			this->dateTimePicker1->Name = L"dateTimePicker1";
-			this->dateTimePicker1->ShowUpDown = true;
-			this->dateTimePicker1->Size = System::Drawing::Size(244, 29);
-			this->dateTimePicker1->TabIndex = 0;
-			// 
 			// dateTimePicker2
 			// 
 			this->dateTimePicker2->CustomFormat = L"yyyy-MM-dd";
@@ -367,7 +356,6 @@ namespace Store {
 			this->dateTimePicker2->ImeMode = System::Windows::Forms::ImeMode::NoControl;
 			this->dateTimePicker2->Location = System::Drawing::Point(10, 85);
 			this->dateTimePicker2->Name = L"dateTimePicker2";
-			this->dateTimePicker2->ShowUpDown = true;
 			this->dateTimePicker2->Size = System::Drawing::Size(244, 29);
 			this->dateTimePicker2->TabIndex = 1;
 			// 
@@ -395,9 +383,9 @@ namespace Store {
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->Controls->Add(this->dateTimePicker3);
 			this->groupBox1->Controls->Add(this->button1);
 			this->groupBox1->Controls->Add(this->label4);
-			this->groupBox1->Controls->Add(this->dateTimePicker3);
 			this->groupBox1->Location = System::Drawing::Point(3, 6);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Size = System::Drawing::Size(339, 130);
@@ -425,19 +413,6 @@ namespace Store {
 			this->label4->Size = System::Drawing::Size(58, 24);
 			this->label4->TabIndex = 5;
 			this->label4->Text = L"التاريخ";
-			// 
-			// dateTimePicker3
-			// 
-			this->dateTimePicker3->CustomFormat = L"yyyy-MM-dd";
-			this->dateTimePicker3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-																	   static_cast<System::Byte>(0)));
-			this->dateTimePicker3->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
-			this->dateTimePicker3->ImeMode = System::Windows::Forms::ImeMode::On;
-			this->dateTimePicker3->Location = System::Drawing::Point(10, 39);
-			this->dateTimePicker3->Name = L"dateTimePicker3";
-			this->dateTimePicker3->Size = System::Drawing::Size(244, 29);
-			this->dateTimePicker3->TabIndex = 4;
-			this->dateTimePicker3->Value = System::DateTime(2023, 7, 17, 0, 0, 0, 0);
 			// 
 			// panel3
 			// 
@@ -517,6 +492,7 @@ namespace Store {
 			this->dataGridView1->SelectionMode = System::Windows::Forms::DataGridViewSelectionMode::FullRowSelect;
 			this->dataGridView1->Size = System::Drawing::Size(380, 647);
 			this->dataGridView1->TabIndex = 8;
+			this->dataGridView1->CellContentClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &InvoiceBrowser::dataGridView1_CellContentClick);
 			// 
 			// Column1
 			// 
@@ -544,6 +520,30 @@ namespace Store {
 			this->Column3->Name = L"Column3";
 			this->Column3->ReadOnly = true;
 			this->Column3->Width = 115;
+			// 
+			// dateTimePicker1
+			// 
+			this->dateTimePicker1->CustomFormat = L"yyyy-MM-dd";
+			this->dateTimePicker1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+																	   static_cast<System::Byte>(0)));
+			this->dateTimePicker1->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
+			this->dateTimePicker1->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->dateTimePicker1->Location = System::Drawing::Point(10, 39);
+			this->dateTimePicker1->Name = L"dateTimePicker1";
+			this->dateTimePicker1->Size = System::Drawing::Size(244, 29);
+			this->dateTimePicker1->TabIndex = 8;
+			// 
+			// dateTimePicker3
+			// 
+			this->dateTimePicker3->CustomFormat = L"yyyy-MM-dd";
+			this->dateTimePicker3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+																	   static_cast<System::Byte>(0)));
+			this->dateTimePicker3->Format = System::Windows::Forms::DateTimePickerFormat::Custom;
+			this->dateTimePicker3->ImeMode = System::Windows::Forms::ImeMode::NoControl;
+			this->dateTimePicker3->Location = System::Drawing::Point(10, 39);
+			this->dateTimePicker3->Name = L"dateTimePicker3";
+			this->dateTimePicker3->Size = System::Drawing::Size(244, 29);
+			this->dateTimePicker3->TabIndex = 9;
 			// 
 			// InvoiceBrowser
 			// 
@@ -757,81 +757,81 @@ namespace Store {
 			}
 		}
 		private: void getdata(String^ inv_id) {
-			{
-				SqlConnection^ connectionX = gcnew SqlConnection(connectionString);
-				String^ queryX = "SELECT item_id,SUM(kilo) AS total_kilo, SUM(quantity) AS total_quantity FROM Purchase WHERE invoice_id = " + inv_id + " GROUP BY item_id;";
-				try {
-					connectionX->Open();
-					SqlCommand^ commandX = gcnew SqlCommand(queryX, connectionX);
-					SqlDataReader^ readerX = commandX->ExecuteReader();
-					while (readerX->Read()) {
 
-						SqlConnection^ connection = gcnew SqlConnection(connectionString);
-						try {
-							connection->Open();
-							String^ query = "SELECT TOP 1 * FROM Purchase Where item_id="+readerX->GetInt32(0)+" and invoice_id=" + inv_id + "; ";
-							SqlCommand^ command = gcnew SqlCommand(query, connection);
-							SqlDataReader^ reader = command->ExecuteReader();
+			SqlConnection^ connectionX = gcnew SqlConnection(connectionString);
+			String^ queryX = "SELECT item_id,SUM(kilo) AS total_kilo, SUM(quantity) AS total_quantity FROM Purchase WHERE invoice_id = " + inv_id + " GROUP BY item_id;";
+			try {
+				connectionX->Open();
+				SqlCommand^ commandX = gcnew SqlCommand(queryX, connectionX);
+				SqlDataReader^ readerX = commandX->ExecuteReader();
+				while (readerX->Read()) {
 
-							while (reader->Read()) {
-								SqlConnection^ itemconnection = gcnew SqlConnection(connectionString);
-								int itemID = reader->GetInt32(reader->GetOrdinal("item_id"));
-								String^ selectQuery = L"SELECT i.name AS item_name, c.name AS category_name ,i.enThick,i.thickness,enQunt,enKilo,i.category_id FROM Items i JOIN Category c ON i.category_id = c.id WHERE i.id = " + itemID + "; ";
-								try {
+					SqlConnection^ connection = gcnew SqlConnection(connectionString);
+					try {
+						connection->Open();
+						String^ query = "SELECT TOP 1 * FROM Purchase Where item_id=" + readerX->GetInt32(0) + " and invoice_id=" + inv_id + "; ";
+						SqlCommand^ command = gcnew SqlCommand(query, connection);
+						SqlDataReader^ reader = command->ExecuteReader();
 
-									itemconnection->Open();
-									SqlCommand^ command2 = gcnew SqlCommand(selectQuery, itemconnection);
-									SqlDataReader^ reader2 = command2->ExecuteReader();
-									while (reader2->Read()) {
-										String^ name = reader2->GetString(reader2->GetOrdinal("item_name"));
-										String^ category = reader2->GetString(reader2->GetOrdinal("category_name"));
-										double thick = Convert::ToDouble(reader2->GetDecimal(reader2->GetOrdinal("thickness")));
-										double quantity = 0;
-										bool type = 0;
-										double sellprice = 0;
-										if (reader->GetBoolean(reader->GetOrdinal("enkilo"))) {
-											type = 1;
-											quantity = Convert::ToDouble(readerX->GetDecimal(1));
-											//quantity += Convert::ToDouble(reader->GetDecimal(14));
-											sellprice = Convert::ToDouble(reader->GetDecimal(5));
-										}
-										else {
-											type = 0;
-											quantity = Convert::ToDouble(readerX->GetDecimal(2));
-											//quantity += Convert::ToDouble(reader->GetDecimal(14));
-											sellprice = Convert::ToDouble(reader->GetDecimal(10));
-										}
-										double price = quantity * sellprice;
-										String^ fullname;
-										if (thick) {
-											fullname = String::Format(L"{2} {1} {0} ", name, category, thick);
-										}
-										else {
-											fullname = String::Format(L"{1} {0} ", name, category);
-										}
+						while (reader->Read()) {
+							SqlConnection^ itemconnection = gcnew SqlConnection(connectionString);
+							int itemID = reader->GetInt32(reader->GetOrdinal("item_id"));
+							String^ selectQuery = L"SELECT i.name AS item_name, c.name AS category_name ,i.enThick,i.thickness,enQunt,enKilo,i.category_id FROM Items i JOIN Category c ON i.category_id = c.id WHERE i.id = " + itemID + "; ";
+							try {
 
-										this->dataGridView1->Rows->Add(fullname, quantity, price);
+								itemconnection->Open();
+								SqlCommand^ command2 = gcnew SqlCommand(selectQuery, itemconnection);
+								SqlDataReader^ reader2 = command2->ExecuteReader();
+								while (reader2->Read()) {
+									String^ name = reader2->GetString(reader2->GetOrdinal("item_name"));
+									String^ category = reader2->GetString(reader2->GetOrdinal("category_name"));
+									double thick = Convert::ToDouble(reader2->GetDecimal(reader2->GetOrdinal("thickness")));
+									double quantity = 0;
+									bool type = 0;
+									double sellprice = 0;
+									if (reader->GetBoolean(reader->GetOrdinal("enkilo"))) {
+										type = 1;
+										quantity = Convert::ToDouble(readerX->GetDecimal(1));
+
+										sellprice = Convert::ToDouble(reader->GetDecimal(5));
 									}
-									itemconnection->Close();
-								}
-								catch (SqlException^ ex) {
-									Console::WriteLine("An error occurred: " + ex->Message);
-								}
-							}
+									else {
+										type = 0;
+										quantity = Convert::ToDouble(readerX->GetDecimal(2));
 
-							connection->Close();
+										sellprice = Convert::ToDouble(reader->GetDecimal(10));
+									}
+									double price = quantity * sellprice;
+									String^ fullname;
+									if (thick) {
+										fullname = String::Format(L"{2} {1} {0} ", name, category, thick);
+									}
+									else {
+										fullname = String::Format(L"{1} {0} ", name, category);
+									}
+
+									this->dataGridView1->Rows->Add(fullname, quantity, price);
+								}
+								itemconnection->Close();
+							}
+							catch (SqlException^ ex) {
+								Console::WriteLine("An error occurred: " + ex->Message);
+							}
 						}
-						catch (SqlException^ ex) {
-									// Handle any SQL errors
-							MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-						}
+
+						connection->Close();
 					}
-					connectionX->Close();
+					catch (SqlException^ ex) {
+								// Handle any SQL errors
+						MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+					}
 				}
-				catch (SqlException^ ex) {
-					MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-				}
+				connectionX->Close();
 			}
+			catch (SqlException^ ex) {
+				MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			}
+
 
 
 		}
@@ -896,5 +896,7 @@ namespace Store {
 			}
 
 		}
-	};
+		private: System::Void dataGridView1_CellContentClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e) {
+		}
+};
 }

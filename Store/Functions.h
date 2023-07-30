@@ -3,6 +3,6 @@
 using namespace System;
 
 String^ Load_Data();
-String^ FormatNumberWithCommas(Double number);
-
+String^ FormatNumberWithCommas(Double number); 
+  
 #endif

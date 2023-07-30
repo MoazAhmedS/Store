@@ -306,6 +306,7 @@ namespace Store {
 			this->panel2->Name = L"panel2";
 			this->panel2->Size = System::Drawing::Size(1221, 78);
 			this->panel2->TabIndex = 8;
+			this->panel2->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &ItemAvailable::panel2_Paint);
 			// 
 			// label12
 			// 
@@ -536,13 +537,13 @@ namespace Store {
 					}
 					String^ total_kilo = Convert::ToString(reader->GetDecimal(reader->GetOrdinal("total_kilo")));
 					String^ total_qunt = Convert::ToString(reader->GetDecimal(reader->GetOrdinal("total_qunt")));
-					double price;
-					double maxProfit;
-					double minProfit;
+					double price=0;
+					double maxProfit=0;
+					double minProfit=0;
 
-					double paid;
-					double maxincome;
-					double minincome;
+					double paid=0;
+					double maxincome=0;
+					double minincome=0;
 
 					if (reader->GetDecimal(reader->GetOrdinal("kilo_price")) != 0) {
 						price = Convert::ToDouble(reader->GetDecimal(reader->GetOrdinal("kilo_price")));
@@ -643,5 +644,7 @@ namespace Store {
 		private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 			this->Close();
 		}
-	};
+		private: System::Void panel2_Paint(System::Object^ sender, System::Windows::Forms::PaintEventArgs^ e) {
+		}
+};
 }

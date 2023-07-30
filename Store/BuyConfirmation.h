@@ -48,9 +48,9 @@ namespace Store {
 		private: System::Windows::Forms::Button^ button1;
 		private: System::Windows::Forms::Panel^ panel1;
 
-		private: System::Windows::Forms::Panel^ panel2;
-		private: System::Windows::Forms::Button^ button3;
-		private: System::Windows::Forms::Button^ button2;
+
+
+
 		private: System::Windows::Forms::Label^ label3;
 		private: System::Windows::Forms::Label^ label2;
 		private: System::Windows::Forms::NumericUpDown^ discount;
@@ -71,6 +71,9 @@ namespace Store {
 		private: System::Windows::Forms::Label^ label8;
 		private: System::Windows::Forms::Label^ label7;
 		private: System::Windows::Forms::Button^ button4;
+		private: System::Windows::Forms::Button^ button2;
+		private: System::Windows::Forms::Button^ button3;
+		private: System::Windows::Forms::Panel^ panel2;
 
 		private:
 			/// <summary>
@@ -104,9 +107,9 @@ namespace Store {
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->panel2 = (gcnew System::Windows::Forms::Panel());
-			this->button3 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
+			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->head->SuspendLayout();
 			this->panel1->SuspendLayout();
 			this->groupBox1->SuspendLayout();
@@ -114,6 +117,9 @@ namespace Store {
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->paid))->BeginInit();
 			this->panel2->SuspendLayout();
 			this->SuspendLayout();
+			// 
+			// head
+			// 
 			this->head->BackColor = System::Drawing::Color::LightGray;
 			this->head->Controls->Add(this->label1);
 			this->head->Controls->Add(this->button1);
@@ -125,9 +131,12 @@ namespace Store {
 			this->head->MouseDown += gcnew System::Windows::Forms::MouseEventHandler(this, &BuyConfirmation::panel1_MouseDown);
 			this->head->MouseMove += gcnew System::Windows::Forms::MouseEventHandler(this, &BuyConfirmation::panel1_MouseMove);
 			this->head->MouseUp += gcnew System::Windows::Forms::MouseEventHandler(this, &BuyConfirmation::panel1_MouseUp);
+			// 
+			// label1
+			// 
 			this->label1->AutoSize = true;
 			this->label1->Dock = System::Windows::Forms::DockStyle::Left;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(0, 0);
 			this->label1->Name = L"label1";
@@ -136,12 +145,15 @@ namespace Store {
 			this->label1->TabIndex = 3;
 			this->label1->Text = L"تاكيد عمليه البيع";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// button1
+			// 
 			this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
 			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->button1->Dock = System::Windows::Forms::DockStyle::Right;
 			this->button1->FlatAppearance->BorderSize = 0;
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															   static_cast<System::Byte>(0)));
 			this->button1->ForeColor = System::Drawing::Color::Red;
 			this->button1->Location = System::Drawing::Point(395, 0);
@@ -150,6 +162,9 @@ namespace Store {
 			this->button1->TabIndex = 0;
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &BuyConfirmation::button1_Click);
+			// 
+			// panel1
+			// 
 			this->panel1->Controls->Add(this->checkBox1);
 			this->panel1->Controls->Add(this->groupBox1);
 			this->panel1->Controls->Add(this->discount);
@@ -164,8 +179,11 @@ namespace Store {
 			this->panel1->Size = System::Drawing::Size(437, 466);
 			this->panel1->TabIndex = 2;
 			this->panel1->Paint += gcnew System::Windows::Forms::PaintEventHandler(this, &BuyConfirmation::panel1_Paint);
+			// 
+			// checkBox1
+			// 
 			this->checkBox1->AutoSize = true;
-			this->checkBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->checkBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 																 static_cast<System::Byte>(0)));
 			this->checkBox1->Location = System::Drawing::Point(182, 16);
 			this->checkBox1->Name = L"checkBox1";
@@ -174,6 +192,9 @@ namespace Store {
 			this->checkBox1->Text = L"اضافه فاتوره الي حساب العميل";
 			this->checkBox1->UseVisualStyleBackColor = true;
 			this->checkBox1->CheckedChanged += gcnew System::EventHandler(this, &BuyConfirmation::checkBox1_CheckedChanged);
+			// 
+			// groupBox1
+			// 
 			this->groupBox1->Controls->Add(this->cust_rem);
 			this->groupBox1->Controls->Add(this->cust_name);
 			this->groupBox1->Controls->Add(this->label8);
@@ -182,7 +203,7 @@ namespace Store {
 			this->groupBox1->Controls->Add(this->cust_num);
 			this->groupBox1->Controls->Add(this->label4);
 			this->groupBox1->Enabled = false;
-			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 																 static_cast<System::Byte>(0)));
 			this->groupBox1->Location = System::Drawing::Point(14, 50);
 			this->groupBox1->Name = L"groupBox1";
@@ -190,8 +211,11 @@ namespace Store {
 			this->groupBox1->TabIndex = 11;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"بيانات العميل";
+			// 
+			// cust_rem
+			// 
 			this->cust_rem->AutoSize = true;
-			this->cust_rem->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->cust_rem->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 																static_cast<System::Byte>(0)));
 			this->cust_rem->Location = System::Drawing::Point(21, 174);
 			this->cust_rem->Margin = System::Windows::Forms::Padding(10);
@@ -199,8 +223,11 @@ namespace Store {
 			this->cust_rem->Size = System::Drawing::Size(49, 24);
 			this->cust_rem->TabIndex = 11;
 			this->cust_rem->Text = L"0.00";
+			// 
+			// cust_name
+			// 
 			this->cust_name->AutoSize = true;
-			this->cust_name->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->cust_name->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 																 static_cast<System::Byte>(0)));
 			this->cust_name->Location = System::Drawing::Point(21, 130);
 			this->cust_name->Margin = System::Windows::Forms::Padding(10);
@@ -208,8 +235,11 @@ namespace Store {
 			this->cust_name->Size = System::Drawing::Size(52, 24);
 			this->cust_name->TabIndex = 10;
 			this->cust_name->Text = L"------";
+			// 
+			// label8
+			// 
 			this->label8->AutoSize = true;
-			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label8->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
 			this->label8->Location = System::Drawing::Point(285, 174);
 			this->label8->Margin = System::Windows::Forms::Padding(10);
@@ -217,8 +247,11 @@ namespace Store {
 			this->label8->Size = System::Drawing::Size(113, 24);
 			this->label8->TabIndex = 9;
 			this->label8->Text = L"المبلغ المستحق";
+			// 
+			// label7
+			// 
 			this->label7->AutoSize = true;
-			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label7->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
 			this->label7->Location = System::Drawing::Point(316, 130);
 			this->label7->Margin = System::Windows::Forms::Padding(10);
@@ -226,6 +259,9 @@ namespace Store {
 			this->label7->Size = System::Drawing::Size(82, 24);
 			this->label7->TabIndex = 8;
 			this->label7->Text = L"اسم العميل";
+			// 
+			// button4
+			// 
 			this->button4->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button4->Location = System::Drawing::Point(13, 77);
 			this->button4->Name = L"button4";
@@ -234,15 +270,21 @@ namespace Store {
 			this->button4->Text = L"فحص الرقم";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &BuyConfirmation::button4_Click);
-			this->cust_num->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			// 
+			// cust_num
+			// 
+			this->cust_num->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 																static_cast<System::Byte>(0)));
 			this->cust_num->Location = System::Drawing::Point(13, 35);
 			this->cust_num->Margin = System::Windows::Forms::Padding(10);
 			this->cust_num->Name = L"cust_num";
 			this->cust_num->Size = System::Drawing::Size(266, 29);
 			this->cust_num->TabIndex = 4;
+			// 
+			// label4
+			// 
 			this->label4->AutoSize = true;
-			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
 			this->label4->Location = System::Drawing::Point(316, 38);
 			this->label4->Margin = System::Windows::Forms::Padding(10);
@@ -250,8 +292,11 @@ namespace Store {
 			this->label4->Size = System::Drawing::Size(82, 24);
 			this->label4->TabIndex = 5;
 			this->label4->Text = L"رقم العميل";
+			// 
+			// discount
+			// 
 			this->discount->DecimalPlaces = 2;
-			this->discount->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->discount->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 																static_cast<System::Byte>(0)));
 			this->discount->Location = System::Drawing::Point(19, 324);
 			this->discount->Margin = System::Windows::Forms::Padding(10);
@@ -260,8 +305,11 @@ namespace Store {
 			this->discount->Size = System::Drawing::Size(254, 29);
 			this->discount->TabIndex = 10;
 			this->discount->ValueChanged += gcnew System::EventHandler(this, &BuyConfirmation::discount_ValueChanged);
+			// 
+			// label6
+			// 
 			this->label6->AutoSize = true;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label6->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
 			this->label6->Location = System::Drawing::Point(326, 326);
 			this->label6->Margin = System::Windows::Forms::Padding(10);
@@ -269,8 +317,11 @@ namespace Store {
 			this->label6->Size = System::Drawing::Size(92, 24);
 			this->label6->TabIndex = 9;
 			this->label6->Text = L"اضافه خصم";
+			// 
+			// paid
+			// 
 			this->paid->DecimalPlaces = 2;
-			this->paid->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->paid->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															static_cast<System::Byte>(0)));
 			this->paid->Location = System::Drawing::Point(19, 280);
 			this->paid->Margin = System::Windows::Forms::Padding(10);
@@ -278,8 +329,12 @@ namespace Store {
 			this->paid->Name = L"paid";
 			this->paid->Size = System::Drawing::Size(254, 29);
 			this->paid->TabIndex = 8;
+			this->paid->ValueChanged += gcnew System::EventHandler(this, &BuyConfirmation::paid_ValueChanged);
+			// 
+			// label5
+			// 
 			this->label5->AutoSize = true;
-			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
 			this->label5->Location = System::Drawing::Point(312, 282);
 			this->label5->Margin = System::Windows::Forms::Padding(10);
@@ -287,17 +342,24 @@ namespace Store {
 			this->label5->Size = System::Drawing::Size(106, 24);
 			this->label5->TabIndex = 7;
 			this->label5->Text = L"المبلغ المدفوع";
+			// 
+			// label3
+			// 
 			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
+			this->label3->ForeColor = System::Drawing::Color::DarkGreen;
 			this->label3->Location = System::Drawing::Point(19, 370);
 			this->label3->Margin = System::Windows::Forms::Padding(10);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(58, 25);
 			this->label3->TabIndex = 3;
 			this->label3->Text = L"0.00";
+			// 
+			// label2
+			// 
 			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															  static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(287, 370);
 			this->label2->Margin = System::Windows::Forms::Padding(10);
@@ -305,29 +367,13 @@ namespace Store {
 			this->label2->Size = System::Drawing::Size(131, 25);
 			this->label2->TabIndex = 2;
 			this->label2->Text = L"اجمالي الفاتوره";
-			this->panel2->Controls->Add(this->button3);
-			this->panel2->Controls->Add(this->button2);
-			this->panel2->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel2->Location = System::Drawing::Point(0, 451);
-			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(437, 55);
-			this->panel2->TabIndex = 0;
-			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
-																		static_cast<System::Int32>(static_cast<System::Byte>(192)));
-			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-															   static_cast<System::Byte>(0)));
-			this->button3->Location = System::Drawing::Point(3, 3);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(210, 50);
-			this->button3->TabIndex = 1;
-			this->button3->Text = L"إلغاء";
-			this->button3->UseVisualStyleBackColor = false;
-			this->button3->Click += gcnew System::EventHandler(this, &BuyConfirmation::button3_Click);
+			// 
+			// button2
+			// 
 			this->button2->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(192)), static_cast<System::Int32>(static_cast<System::Byte>(255)),
 																		static_cast<System::Int32>(static_cast<System::Byte>(192)));
 			this->button2->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
-			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->button2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 															   static_cast<System::Byte>(0)));
 			this->button2->Location = System::Drawing::Point(224, 3);
 			this->button2->Name = L"button2";
@@ -336,6 +382,34 @@ namespace Store {
 			this->button2->Text = L"تاكيد";
 			this->button2->UseVisualStyleBackColor = false;
 			this->button2->Click += gcnew System::EventHandler(this, &BuyConfirmation::button2_Click);
+			// 
+			// button3
+			// 
+			this->button3->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(255)), static_cast<System::Int32>(static_cast<System::Byte>(192)),
+																		static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->button3->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
+			this->button3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+															   static_cast<System::Byte>(0)));
+			this->button3->Location = System::Drawing::Point(3, 3);
+			this->button3->Name = L"button3";
+			this->button3->Size = System::Drawing::Size(210, 50);
+			this->button3->TabIndex = 1;
+			this->button3->Text = L"إلغاء";
+			this->button3->UseVisualStyleBackColor = false;
+			this->button3->Click += gcnew System::EventHandler(this, &BuyConfirmation::button3_Click);
+			// 
+			// panel2
+			// 
+			this->panel2->Controls->Add(this->button3);
+			this->panel2->Controls->Add(this->button2);
+			this->panel2->Dock = System::Windows::Forms::DockStyle::Bottom;
+			this->panel2->Location = System::Drawing::Point(0, 451);
+			this->panel2->Name = L"panel2";
+			this->panel2->Size = System::Drawing::Size(437, 55);
+			this->panel2->TabIndex = 0;
+			// 
+			// BuyConfirmation
+			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(437, 506);
@@ -412,7 +486,8 @@ namespace Store {
 
 			this->Region = gcnew System::Drawing::Region(path);
 			connectionString = Load_Data();
-			this->label3->Text = Convert::ToString(total);
+			this->label3->Text = FormatNumberWithCommas(total);
+			this->paid->Value = Convert::ToDecimal(total);
 		}
 
 		public: int cust_id = 1002;
@@ -441,7 +516,14 @@ namespace Store {
 				command->Parameters->AddWithValue("@discount", this->discount->Value);
 
 				// Execute the invoice query and retrieve the last inserted invoice ID
-				int invoiceId = Convert::ToInt32(command->ExecuteScalar());
+				int invoiceId;
+				if (MessageBox::Show(L"هل تريد تاكيد عمليه البيع!", L"تاكيد", MessageBoxButtons::OKCancel, MessageBoxIcon::Question) == System::Windows::Forms::DialogResult::OK) {
+					invoiceId = Convert::ToInt32(command->ExecuteScalar());
+				}
+				else {
+					return;
+				}
+				
 				//label1->Text = Convert::ToString(invoiceId);
 				purchaseitem(invoiceId, cust_id);
 
@@ -484,15 +566,13 @@ namespace Store {
 							}
 
 							item->Quantity = from_Returned_Item(item, invoice, Convert::ToDouble(reader_R->GetDecimal(reader_R->GetOrdinal("piece_weight"))));
-							MessageBox::Show("Return " + Convert::ToString(item->Quantity));
+				
 							if (item->Quantity) {
 								item->Quantity = from_Items(item, invoice, Convert::ToDouble(reader_R->GetDecimal(reader_R->GetOrdinal("piece_weight"))));
-								MessageBox::Show("Items " + Convert::ToString(item->Quantity));
 							}
 
 							if (item->Quantity) {
 								item->Quantity = from_Storage(item, invoice, Convert::ToDouble(reader_R->GetDecimal(reader_R->GetOrdinal("piece_weight"))));
-								MessageBox::Show("Storage " + Convert::ToString(item->Quantity));
 								from_storage_to_items(item);
 							}
 
@@ -519,7 +599,7 @@ namespace Store {
 				connection->Open();
 				command0->ExecuteNonQuery();
 				connection->Close();
-				MessageBox::Show(L"تم البيع", L"عمليه ناجحه");
+				MessageBox::Show(L"تم البيع", L"عمليه ناجحه", MessageBoxButtons::OK,MessageBoxIcon::Information);
 
 				clearthecartitems();
 				CatgButton1ClickEvent();
@@ -944,5 +1024,8 @@ namespace Store {
 		private: System::Void discount_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
 			this->label3->Text = FormatNumberWithCommas(total - Convert::ToDouble(this->discount->Value));
 		}
-	};
+		private: System::Void paid_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
+
+		}
+};
 }

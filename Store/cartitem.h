@@ -33,7 +33,5 @@ public ref class ListItem {
 		else {
 			return System::String::Format(L"{3:F2}\t{4:F2}\t {1} {0} ", Name, Catg, Thick, Price, Quantity);
 		}
-		
-
 	}
 };
