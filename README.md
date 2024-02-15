@@ -34,7 +34,7 @@ This project for now don't have license.
 
 ## Screenshot
 
-![Store Management System](screenshot.png)
+![Store Management System](Screenshot.jpg)
 
 ## Resources
 
