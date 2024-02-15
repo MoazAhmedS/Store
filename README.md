@@ -12,7 +12,7 @@ The Store Management System is a desktop application developed to address the ch
 
 To install and run the Store Management System, follow these steps:
 
-1. Download the installer from [link_to_installer](link_to_installer).
+1. Download the installer from [link_to_installer](https://github.com/MoazAhmedS/Store/releases/tag/v0.1-beta).
 
 2. Run the installer and follow the installation instructions.
 
